@@ -1,10 +1,10 @@
-title: Presidential Election
+title: Monarchial Election
 subtitle: Hindenburg runs for re-election...
-view-if: year = 1932 and (month = 4 or month = 5) and presidential_election_seen = 0
+view-if: year = 1932 and (month = 4 or month = 5) and monarchial_election_seen = 0
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: braun_campaign = 0; hitler_support_hindenburg = 0; presidential_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
+on-arrival: braun_campaign = 0; hitler_support_hindenburg = 0; monarchial_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
@@ -12,7 +12,7 @@ face-image: img/hindenburg_election.jpg
 
 @pres_election
 
-The presidential election is coming up soon. [? if ccf_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the PCC will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the PCC will run Ernst Thälmann. ?]
+The monarchial election is coming up soon. [? if ccf_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the monarch's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the PCC will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the PCC will run Ernst Thälmann. ?]
 [? if sapd_formed: The SAPD, our former leftists, are supporting Thälmann of the PCC, and will likely share an endorsement with the Communists. ?]
 
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
@@ -86,7 +86,7 @@ if (Q.rpc_relation >= 55 || (Q.rpc_relation > 35 && Q.rpc_party_leader == "Joos"
 go-to: rpc_failed if rpc_support_braun = 0 or (rpc_support_braun == 2 and historical_mode); rpc_success if rpc_support_braun = 1; rpc_partial if rpc_support_braun = 2 and not historical_mode
 max-visits: 1
 
-We remind the Center leaders of Hindenburg's anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Otto Braun, and our support for the Center candidate Wilhelm Marx in the 1925 presidential election.
+We remind the Center leaders of Hindenburg's anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Otto Braun, and our support for the Center candidate Wilhelm Marx in the 1925 monarchial election.
 
 @rpc_success
 go-to: braun_campaign
@@ -133,7 +133,7 @@ unavailable-subtitle: Not enough resources (need 3).
 on-arrival: resources -= 3; pcc_support_braun = 1
 go-to: braun_campaign
 
-The PCC now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
+The PCC now endorses Braun in the monarchial election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
 @pcc_relations
 view-if: pcc_relation >= 60 or (pcc_party_leader == "Conciliators" and pcc_relation >= 45)
@@ -141,7 +141,7 @@ unavailable-subtitle: Our relations are not good enough.
 on-arrival: pcc_support_braun = 1
 go-to: braun_campaign
 
-The PCC now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
+The PCC now endorses Braun in the monarchial election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
 
 
@@ -278,7 +278,7 @@ go-to: round2_menu
 
 There is no majority in this round. In the second round, any candidate who wins a plurality will win overall. What should we do?
 
-[? if braun_plurality or thalmann_plurality : In order to consolidate the vote for the Right, and to prevent a socialist from becoming president, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Hindenburg. ?]
+[? if braun_plurality or thalmann_plurality : In order to consolidate the vote for the Right, and to prevent a socialist from becoming monarch, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Hindenburg. ?]
 
 
 @round2_menu
@@ -321,7 +321,7 @@ on-departure: hitler_support_hindenburg = 1 if braun_votes + rpc_votes > hitler_
 
 [? if hitler_support_hindenburg : The Center's opinion is affected by the Nazis' support of Hindenburg, and is willing to turn away from him. ?] The Center are convinced! They will be part of the Braun coalition. [? if hitler_support_hindenburg : In addition, they will also bring in some minor parties who will support us. ?]
 
-[? if not hitler_support_hindenburg and braun_votes + rpc_votes > hitler_votes: With the Center Party supporting Braun, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed Hindenburg to prevent a socialist from becoming president. ?]
+[? if not hitler_support_hindenburg and braun_votes + rpc_votes > hitler_votes: With the Center Party supporting Braun, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed Hindenburg to prevent a socialist from becoming monarch. ?]
 
 @r2_rpc_partial
 
@@ -340,7 +340,7 @@ go-to: round2_menu
 
 With our resources, the Center are convinced to support Braun over Hindenburg.
 
-[? if not hitler_support_hindenburg and braun_votes + rpc_votes > hitler_votes: With the Center Party supporting Braun, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed Hindenburg to prevent a socialist from becoming president. ?]
+[? if not hitler_support_hindenburg and braun_votes + rpc_votes > hitler_votes: With the Center Party supporting Braun, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed Hindenburg to prevent a socialist from becoming monarch. ?]
 
 @r2_rpc_failed
 go-to: round2_menu
@@ -370,7 +370,7 @@ unavailable-subtitle: Not enough resources (need 3).
 on-arrival: resources -= 3; pcc_support_braun = 1
 go-to: round2_menu
 
-The PCC now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
+The PCC now endorses Braun in the monarchial election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
 @r2_pcc_relations
 view-if: pcc_relation >= 60 or (pcc_party_leader == "Conciliators" and pcc_relation >= 45)
@@ -378,7 +378,7 @@ unavailable-subtitle: Our relations are not good enough.
 on-arrival: pcc_support_braun = 1
 go-to: round2_menu
 
-The PCC now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters. 
+The PCC now endorses Braun in the monarchial election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters. 
 
 @round2_thalmann
 view-if: ccf_support_thalmann == 0 and pcc_support_braun == 0
@@ -418,27 +418,27 @@ go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_p
 
 
 @hindenburg_wins
-on-arrival: president = "Hindenburg"
+on-arrival: monarch = "Hindenburg"
 
 As expected, the incumbent Hindenburg wins the presidency. Let's hope he continues to keep the Nazis out of power.
 
 @thalmann_wins
-on-arrival: president = "Thälmann"; pcc_relation = 80;
+on-arrival: monarch = "Thälmann"; pcc_relation = 80;
 
 Ernst Thälmann of the PCC has won the presidency. Immediately, the far-right launches a coup attempt against the government. We have no choice but to unite with the PCC against the fascists...
 
 - @civil_war: This is civil war.
 
 @hitler_wins
-on-arrival: president = nsdap_candidate; chancellor = "Hitler"; chancellor_party = "NSDAP"
+on-arrival: monarch = nsdap_candidate; chancellor = "Hitler"; chancellor_party = "NSDAP"
 
 [? if nsdap_candidate == "Hitler" : Adolf Hitler of the NSDAP has won the presidency. He wastes no time in consolidating power. ?]
-[? if nsdap_candidate != "Hitler" : The NSDAP candidate [+ president +] has won. The first action President [+ president +] takes is inviting Hitler back into Germany, and appointing him chancellor. The Nazis waste no time in consolidating power. ?]
+[? if nsdap_candidate != "Hitler" : The NSDAP candidate [+ monarch +] has won. The first action Monarch [+ monarch +] takes is inviting Hitler back into Germany, and appointing him chancellor. The Nazis waste no time in consolidating power. ?]
 
 - @hitler_takes_power: What do we do now?
 
 
 @braun_wins
-on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_ccf += 8*(1-dissent); old_middle_ccf += 5*(1-dissent); new_middle_ccf += 5*(1-dissent); rural_ccf += 5*(1-dissent); unemployed_ccf += 5*(1-dissent);
+on-arrival: monarch = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_ccf += 8*(1-dissent); old_middle_ccf += 5*(1-dissent); new_middle_ccf += 5*(1-dissent); rural_ccf += 5*(1-dissent); unemployed_ccf += 5*(1-dissent);
 
 Otto Braun of the CCF has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.

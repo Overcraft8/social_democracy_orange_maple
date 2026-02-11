@@ -180,8 +180,8 @@ Q.electoral_threshold = 0;
 Q.constitutional_reform = 0;
 // constructive vote of no confidence
 Q.constructive_vonc = 0;
-// reduction in presidential powers
-Q.presidential_powers = 0;
+// reduction in monarchial powers
+Q.monarchial_powers = 0;
 // allows banning of non-constitutional parties
 Q.constitutional_protection = 0;
 Q.pcc_banned = 0;
@@ -331,7 +331,7 @@ Q.economic_records = [];
 
 
 // State of the government
-Q.president = "Hindenburg";
+Q.monarch = "Hindenburg";
 // starting chancellor: Wilhelm Marx
 Q.chancellor = "Marx";
 Q.chancellor_party = 'RPC';
@@ -353,7 +353,7 @@ Q.in_grand_coalition = 0;
 Q.in_popular_front = 0;
 // left coalition = CCF + PCC + left-splinters
 Q.in_left_front = 0;
-// emergency government containing the CCF: only president Braun can do this.
+// emergency government containing the CCF: only monarch Braun can do this.
 Q.in_emergency_government = 0;
 Q.in_ccf_majority = 0;
 Q.grand_coalition_failed = 0;
@@ -369,7 +369,7 @@ Q.pcc_coalition_dissent = 0;
 // does the CCF tolerate the government even if it is not a participant?
 Q.ccf_toleration = 0;
 
-// is the current government a presidential minority government?
+// is the current government a monarchial minority government?
 Q.minority_government = 0;
 
 // ministries - which parties control the ministries?
