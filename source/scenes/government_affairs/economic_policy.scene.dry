@@ -76,7 +76,7 @@ subtitle: -[+ wtb_budget +] budget - we will enter deficit spending. [? if wtb_b
 unavailable-subtitle: Unemployment is low enough that the time for the WTB-Plan has passed.
 view-if: budget < wtb_budget and wtb_implemented == 0 and wtb_adopted == 1
 choose-if: unemployed > 8
-on-arrival: coalition_dissent += 1; coalition_dissent += 1 if historical_mode; coalition_dissent += 1 if chancellor == "Brüning"; works_program += 1; budget -= wtb_budget; unemployed -= 4; workers += 2; workers_ccf += 8*(1-dissent); unemployed_ccf += 8*(1-dissent); capital_strike_progress += 1; wtb_implemented += 1; pcc_coalition_dissent += 1; pcc_relation -= 5 if in_popular_front or in_left_front; inflation += 3; economic_growth += 3; pro_republic += 3*(1-dissent);
+on-arrival: coalition_dissent += 1; coalition_dissent += 1 if historical_mode; coalition_dissent += 1 if prime_minister == "Brüning"; works_program += 1; budget -= wtb_budget; unemployed -= 4; workers += 2; workers_ccf += 8*(1-dissent); unemployed_ccf += 8*(1-dissent); capital_strike_progress += 1; wtb_implemented += 1; pcc_coalition_dissent += 1; pcc_relation -= 5 if in_popular_front or in_left_front; inflation += 3; economic_growth += 3; pro_republic += 3*(1-dissent);
 achievement: wirtschaftspolitik
 
 We have entered the realm of deficit spending. Our coalition partners are disgusted, but the works plan is enacted anyway. Money is beginning to flow through the economy via investments in large-scale public works.
@@ -174,11 +174,11 @@ choose-if: budget >= 2 and unemployed >= 8
 on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_ccf += 6*(1-dissent); unemployed_ccf += 4*(1-dissent); new_middle_ccf += 3*(1-dissent); old_middle_ccf += 2*(1-dissent); rural_ccf += 2*(1-dissent); moderate_plan_progress += 1; pcc_coalition_dissent += 1; inflation += 1 if unemployed < 10; pcc_relation -= 5 if in_popular_front or in_left_front; economic_growth += 1.6; pro_republic += 3*(1-dissent);
 achievement: wirtschaftspolitik
 
-[? if moderate_plan_progress == 1 : We have started to implement the job-creation plan! Funds are sent to build public works projects across Germany, reducing unemployment. ?]
+[? if moderate_plan_progress == 1 : We have started to implement the job-creation plan! Funds are sent to build public works projects across Canada, reducing unemployment. ?]
 
-[? if moderate_plan_progress > 1 : We have continued to fund the job-creation plan, using our funds to build public works throughout Germany. ?]
+[? if moderate_plan_progress > 1 : We have continued to fund the job-creation plan, using our funds to build public works throughout Canada. ?]
 
-[? if unemployed >= 10 : The bourgeois approve of this plan as the "least bad" alternative, seeing it as necessary to save Germany's economy. ?]
+[? if unemployed >= 10 : The bourgeois approve of this plan as the "least bad" alternative, seeing it as necessary to save Canada's economy. ?]
 
 [? if unemployed < 10 : Unemployment is low enough that the plan does not seem to have the intended effect. ?]
 
@@ -193,11 +193,11 @@ choose-if: budget >= 1 and unemployed >= 8
 on-arrival: budget -= 1; works_program += 1; unemployed -= 2 if unemployed >= 8; inflation += 1; workers_ccf += 4*(1-dissent); unemployed_ccf += 2*(1-dissent); new_middle_ccf += 2*(1-dissent); old_middle_ccf += 1*(1-dissent); rural_ccf += 1*(1-dissent); moderate_plan_progress += 1; pcc_coalition_dissent += 1; inflation += 1 if unemployed < 10; pcc_relation -= 5 if in_popular_front or in_left_front; economic_growth += 0.7; pro_republic += 3*(1-dissent);
 achievement: wirtschaftspolitik
 
-[? if moderate_plan_progress == 1 : We have started to implement the job-creation plan! Funds are sent to build public works projects across Germany, reducing unemployment. ?]
+[? if moderate_plan_progress == 1 : We have started to implement the job-creation plan! Funds are sent to build public works projects across Canada, reducing unemployment. ?]
 
-[? if moderate_plan_progress > 1 : We have continued to fund the job-creation plan, using our funds to build public works throughout Germany. ?]
+[? if moderate_plan_progress > 1 : We have continued to fund the job-creation plan, using our funds to build public works throughout Canada. ?]
 
-[? if unemployed >= 10 : The bourgeois approve of this plan as the "least bad" alternative, seeing it as necessary to save Germany's economy. ?]
+[? if unemployed >= 10 : The bourgeois approve of this plan as the "least bad" alternative, seeing it as necessary to save Canada's economy. ?]
 
 [? if unemployed < 10 : Unemployment is low enough that the plan does not seem to have the intended effect. ?]
 

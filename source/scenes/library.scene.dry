@@ -5,7 +5,7 @@ go-to: menu
 
 = The Library
 
-Herein contains relevant information about the government and politics of the German republic.
+Herein contains relevant information about the government and politics of the Canadian republic.
 
 @menu
 
@@ -23,13 +23,11 @@ Herein contains relevant information about the government and politics of the Ge
 @government
 go-to: menu
 
-The German Republic, called by some of our detractors as the "Weimar Republic", is a parliamentary republic with a somewhat weak monarch and a strong parliament, called the Reichstag. The Reichstag is responsible for governing, while the Monarch has a largely ceremonial role but also has some important governing responsibilities.
+The Dominion of Canada is a parliamentary constitutional monarchy with a ceremonial monarch and a dominant lower house, the House of Commons. The leader of the majority party becomes the Prime Minister. The unelected upper house, the Senate of Canada is appointed by the Governor General. The British parliament retains the exclusive power to amend the Canadian constitution. The Governor General is a Monarchial appointee responsible for dissolving Parliament and calling an election. They traditionally defer to the Prime Minister's decision.
 
-The Reichstag is elected based on a proportional representation system, giving parties seats roughly proportional to their vote share in each electoral district. The Reichstag then elects the Chancellor and the cabinet by a majority vote, who are responsible for government. A majority vote-of-no-confidence can remove the current government.
+The House of Commons is elected using a first-past-the-post system, with the plurality candidate in each electoral district (colloquially called ridings) winning. A majority of the Commons then selects the Prime Minister. The Cabinet is selected by the Prime Minister and are responsible for government. A majority vote-of-no-confidence, including Federal Budget proposals can remove the current government.
 
-The Monarch is elected by a national direct vote, in two rounds. The second round is used if the first round does not result in a majority for one candidate; the candidate who receives a plurality in the second round becomes monarch (there is no obligation for weaker candidates to drop out). The role of the monarch is mostly to represent Germany, but he also has some crucial governing powers. The monarch and chancellor can together use emergency decrees to govern, bypassing the Reichstag. The monarch can also appoint or remove a chancellor when a parliamentary majority is unable to be established, and can thus influence the formation of a government.
-
-Germany is divided into a number of states, each of which have their own governments with some responsibilities. By far the largest and most important state is Prussia.
+Canada is divided into a number of provinces, each of which have their own governments with some responsibilities. By far the largest and most important states are Ontario and Quebec. The CCF is most popular in the Western provinces. 
 
 @Canadian_timeline
 go-to: menu
@@ -65,7 +63,7 @@ go-to: cabinet if ccf_in_government; menu if not ccf_in_government
 
 Monarch: [+ monarch +]
 
-Chancellor: [+ chancellor +] ([+ chancellor_party +])
+Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])
 
 Reichstag composition:
 
@@ -202,36 +200,36 @@ Catholics: CCF: [+ catholics_ccf_display +]%, RPC: [+ catholics_rpc_display +]%,
 @parties
 go-to: menu
 
-**CCF** - *Sozialdemokratische Partei Deutschlands* (Social Democratic Party of Germany) - this is us. We are a socialist and democratic party of the working class. We are the heirs of the legacy of Marx and Engels, Lassalle and Bebel. We are the foremost defenders of the Republic. The modern CCF was formed from a merger of the "Majority" CCF, which supported the Great War, and the "Independent" CCF or UCCF, which opposed the war.
+**CCF** - *Sozialdemokratische Partei Deutschlands* (Social Democratic Party of Canada) - this is us. We are a socialist and democratic party of the working class. We are the heirs of the legacy of Marx and Engels, Lassalle and Bebel. We are the foremost defenders of the Republic. The modern CCF was formed from a merger of the "Majority" CCF, which supported the Great War, and the "Independent" CCF or UCCF, which opposed the war.
 
-**RPC** - *RPCspartei* (Center Party) - a centrist to center-right Catholic party that supports the Republic, and has historically supported many of our labor, welfare, and anti-militarist priorities. They have often been in coalitions with us. They are often associated with the **BVP** (Bavarian People's Party), which represents Catholics in Bavaria. [? if year >= 1930 or chancellor = "Brüning" : They have appeared to take a more conservative turn recently, with the rise of Brüning and the party leader, Ludwig Kaas. ?]
+**RPC** - *RPCspartei* (Center Party) - a centrist to center-right Catholic party that supports the Republic, and has historically supported many of our labor, welfare, and anti-militarist priorities. They have often been in coalitions with us. They are often associated with the **BVP** (Bavarian People's Party), which represents Catholics in Bavaria. [? if year >= 1930 or prime_minister = "Brüning" : They have appeared to take a more conservative turn recently, with the rise of Brüning and the party leader, Ludwig Kaas. ?]
 
 Current relations: [+ rpc_relation : relationships +]
 
 # TODO: replace this with the german state party after 1930
-**LPC** - *Deutsche Demokratische Partei* (German Democratic Party) - a center-left liberal party, popular among the intelligensia and educated middle class. They have often been in coalitions with us. [? if year >= 1930 : They have recently reformed themselves as the German State Party (DStP). ?]
+**LPC** - *Deutsche Demokratische Partei* (Canadian Democratic Party) - a center-left liberal party, popular among the intelligensia and educated middle class. They have often been in coalitions with us. [? if year >= 1930 : They have recently reformed themselves as the Canadian State Party (DStP). ?]
 
 Current relations: [+ lpc_relation : relationships +]
 
-**CPC** - *Deutsche Volkspartei* (German People's Party) - a conservative-liberal party, supported by the middle classes and bourgeoisie. We have occasionally been in coalitions.
+**CPC** - *Deutsche Volkspartei* (Canadian People's Party) - a conservative-liberal party, supported by the middle classes and bourgeoisie. We have occasionally been in coalitions.
 
 Current relations: [+ cpc_relation : relationships +]
 
-**SCP** - *Deutschnationale Volkspartei* (German National People's Party) - a right-wing nationalist-conservative party, with authoritarian, monarchist, and racist elements. It is supported by the former aristocracy, rural landowners, and conservative Lutherans.
+**SCP** - *Deutschnationale Volkspartei* (Canadian National People's Party) - a right-wing nationalist-conservative party, with authoritarian, monarchist, and racist elements. It is supported by the former aristocracy, rural landowners, and conservative Lutherans.
 
 Current relations: [+ scp_relation : relationships +]
 
-**PCC** - *Kommunistische Partei Deutschlands* (German Communist Party) - a radical left-wing offshoot of the CCF that emerged in the aftermath of the German Revolution of 1918, they follow the path of Moscow, opposing parliamentary democracy in favor of a Soviet-style revolution.
+**PCC** - *Kommunistische Partei Deutschlands* (Canadian Communist Party) - a radical left-wing offshoot of the CCF that emerged in the aftermath of the Canadian Revolution of 1918, they follow the path of Moscow, opposing parliamentary democracy in favor of a Soviet-style revolution.
 
 Current relations: [+ pcc_relation : relationships +]
 
-[? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Germany) - a party recently formed in a split from the CCF, the SAPD is essentially an agglomeration of various left-wing splinter groups between the CCF and PCC. ?]
+[? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Canada) - a party recently formed in a split from the CCF, the SAPD is essentially an agglomeration of various left-wing splinter groups between the CCF and PCC. ?]
 
-**NSDAP** - *Nationalsozialistische Deutsche Arbeiterpartei* - (National Socialist German Worker's Party, or Nazis) - a far-right nationalist and antisemitic party. Led by Adolf Hitler, they attempted a coup in 1923, and were banned for it, but have since been legalized.
+**NSDAP** - *Nationalsozialistische Deutsche Arbeiterpartei* - (National Socialist Canadian Worker's Party, or Nazis) - a far-right nationalist and antisemitic party. Led by Adolf Hitler, they attempted a coup in 1923, and were banned for it, but have since been legalized.
 
 Current relations: [+ nsdap_relation : relationships +]
 
-**Other parties** - there is a multitude of small, mostly conservative parties, such as the Economic Party of the German Middle Class, the Farmer's Party, the Agricultural League, and others. Their political position usually lies between the CPC and SCP. 
+**Other parties** - there is a multitude of small, mostly conservative parties, such as the Economic Party of the Canadian Middle Class, the Farmer's Party, the Agricultural League, and others. Their political position usually lies between the CPC and SCP. 
 
 @paramilitaries
 on-arrival: {!
@@ -269,7 +267,7 @@ Militarization: [+ sa_militancy : militancy +]
 
 **Official military/paramilitary groups:**
 
-**Reichswehr**: [+ reichswehr_strength +] thousand troops. This is Germany's military.
+**Reichswehr**: [+ reichswehr_strength +] thousand troops. This is Canada's military.
 
 Loyalty: [+ reichswehr_loyalty : loyalty +]
 

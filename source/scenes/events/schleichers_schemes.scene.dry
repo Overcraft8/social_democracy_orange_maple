@@ -1,6 +1,6 @@
 title: Schleicher's Schemes
-subtitle: Chancellor Schleicher claims to have a plan to save Germany...
-view-if: year >= 1932 and monarch = "Hindenburg" and chancellor = "Schleicher" and ccf_in_government = 0 and largest_party = "NSDAP" and hitler_deported = 0 and not monarchial_powers
+subtitle: Prime Minister Schleicher claims to have a plan to save Canada...
+view-if: year >= 1932 and monarch = "George V" and prime_minister = "Schleicher" and ccf_in_government = 0 and largest_party = "NSDAP" and hitler_deported = 0 and not monarchial_powers
 on-arrival: economic_growth += 1; budget -= 1; unemployed -= 3 if unemployed > 10; rural_scp += 3; old_middle_scp += 3; new_middle_scp += 3; workers_scp += 3
 new-page: true
 max-visits: 1
@@ -9,13 +9,13 @@ tags: event
 
 = Schleicher's Schemes
 
-Chancellor Kurt von Schleicher claims to have a plan to save Germany, and he has reached out to the Social Democrats with vague promises. He claims that in order to govern, the Reichstag must be temporarily suspended to prevent the Nazis and Communists from disrupting government, in effect giving him and Hindenburg dictatorial powers. In the meantime, he is enacting a public works program and job creation plan, which he claims will stabilize the economy, 
+Prime Minister Kurt von Schleicher claims to have a plan to save Canada, and he has reached out to the Social Democrats with vague promises. He claims that in order to govern, the Reichstag must be temporarily suspended to prevent the Nazis and Communists from disrupting government, in effect giving him and George V dictatorial powers. In the meantime, he is enacting a public works program and job creation plan, which he claims will stabilize the economy, 
 
 [? if works_program <= 0: The trade unions are somewhat favorable to Schleicher's plan, as they see a commonality between Schleicher's economic plan and the ADGB's WTB-plan for debt-funded job creation. However, the rest of our party is vehemently against Schleicher. ?]
 
 Rumors are that Schleicher is also reaching out to the Nazis with similar promises of cooperation; he seems to believe that he can "tame" the Nazis. Most in our party do not trust him to not bring the Nazis to power. In addition, working with him would essentially mean the end of our claim to be a "democratic" party.
 
-# if this works: delay elections by 1 year (requires over 50% support - need RPC and CPC and others to join as well based on relations; SCP might support? Also should depend on Hindenburg relations).
+# if this works: delay elections by 1 year (requires over 50% support - need RPC and CPC and others to join as well based on relations; SCP might support? Also should depend on George V relations).
 
 
 - @accept

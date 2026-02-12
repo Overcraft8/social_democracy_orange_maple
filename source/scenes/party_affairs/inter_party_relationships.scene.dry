@@ -6,13 +6,13 @@ is-card: true
 on-arrival: month_actions += 1; inter_party_relationships_timer = 6;
 card-image: img/weimar_coalition_2.jpg
 max-visits: 12
-#subtitle: Building relations with the other political parties of Germany.
+#subtitle: Building relations with the other political parties of Canada.
 
 = Inter-Party Relationships
 
 The CCF cannot govern by itself yet. Because we do not have an electoral majority, we need the support of other parties. Recently, our governments have consisted of the Weimar Coalition of the CCF, Center, and Democratic parties. We can reach out and build additional connections with these parties, or perhaps we can stand alone.
 
-- @liberals: Strengthen our bonds with the left-liberal German Democratic Party and conservative-liberal German People's Party.
+- @liberals: Strengthen our bonds with the left-liberal Canadian Democratic Party and conservative-liberal Canadian People's Party.
 - @center: Strengthen our bonds with the Catholic Center Party.
 - @pcc: Work towards repairing relationships with the Communist Party.
 - @ccf_alone: The CCF can stand alone for now.
@@ -68,7 +68,7 @@ subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; rpc_relation += 2 if rpc_party_leader == "Joos"
-go-to: center_op if rpc_in_government = 1 and ccf_in_government = 0 and chancellor != "Brüning"; center_coalition if ccf_in_government = 1 and rpc_in_government = 1; center_bruning if chancellor = "Brüning"
+go-to: center_op if rpc_in_government = 1 and ccf_in_government = 0 and prime_minister != "Brüning"; center_coalition if ccf_in_government = 1 and rpc_in_government = 1; center_bruning if prime_minister = "Brüning"
 
 @center_op
 on-arrival: rpc_relation += 5*(1 - dissent)
@@ -104,14 +104,14 @@ on-arrival: cpc_relation += 5*(1 - dissent)
 
 With the death of Gustav Stresemann, the CPC is much less likely to be accommodating of us. In addition, the liberal parties are electorally in decline, so perhaps our efforts are best spent elsewhere.
 
-However, given the influence of the CPC among the other right-leaning parties [? if monarch == "Hindenburg": and with Monarch Hindenburg ?], it can still be helpful to influence them.
+However, given the influence of the CPC among the other right-leaning parties [? if monarch == "George V": and with Monarch George V ?], it can still be helpful to influence them.
 
 @cpc_moribund
 on-arrival: cpc_relation += 5*(1 - dissent)
 
 The liberal parties (both the [+ lpc_name +] and CPC) are electorally moribund, so perhaps our efforts are best spent elsewhere.
 
-However, given the influence of the CPC among the other right-leaning parties[? if monarch == "Hindenburg": and with Monarch Hindenburg ?], it can still be helpful to influence them.
+However, given the influence of the CPC among the other right-leaning parties[? if monarch == "George V": and with Monarch George V ?], it can still be helpful to influence them.
 
 @ccf_alone
 

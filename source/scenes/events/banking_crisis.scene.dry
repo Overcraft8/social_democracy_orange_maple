@@ -1,5 +1,5 @@
 title: Banking Crisis
-subtitle: The collapse of the German banking system...
+subtitle: The collapse of the Canadian banking system...
 new-page: true
 on-arrival: banking_crisis_seen = 1; workers_pcc += 5; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 4; rural_nsdap += 3; unemployed += 3; crisis_urgency += 1; workers_ccf -= 4 if ccf_in_government; new_middle_ccf -= 5 if ccf_in_government; old_middle_ccf -= 5 if ccf_in_government; rural_ccf -= 4 if ccf_in_government; economic_growth -= 1;
 tags: event
@@ -9,13 +9,13 @@ face-image: img/danat_bank.jpg
 
 = Banking Crisis
 
-The Darmstädter und Nationalbank, or Danat Bank, has collapsed! Along with it goes much of the German banking system. The cause seemed to be due to the government's pursuit of a customs union with Austria, which led to de facto international sanctions.
+The Darmstädter und Nationalbank, or Danat Bank, has collapsed! Along with it goes much of the Canadian banking system. The cause seemed to be due to the government's pursuit of a customs union with Austria, which led to de facto international sanctions.
 
 This is a bourgeois dispute, but the costs will be borne by the proletariat. The people are facing ever-increasing hunger and poverty, and perhaps we are partly to blame.
 
 - @nothing_to_do: There is nothing we can do.
 - @stabilization: Take action to stabilize the economy!
-- @austerity: Chancellor [+ chancellor +]'s response is, as always, more austerity.
+- @austerity: Prime Minister [+ prime_minister +]'s response is, as always, more austerity.
 - @end_toleration: We are tired of austerity. End the toleration arrangement!
 
 @nothing_to_do
@@ -36,13 +36,13 @@ In the face of the banking crisis, we have taken emergency action to stabilize t
 view-if: ccf_in_government = 0
 on-arrival: welfare -= 1; workers_ccf -= 3; unemployed_ccf -= 3; pro_republic -= 3; economic_growth -= 1;
 
-Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.
+Prime Minister [+ prime_minister +] responds to the banking crisis with more cuts to welfare.
 
 @end_toleration
 view-if: ccf_toleration = 1
 on-arrival: time_to_election = 3; ccf_in_government = 0; in_grand_coalition = 0; ccf_toleration = 0;
 call: set_next_election_time
 
-We are tired of [+ chancellor +]'s policy of austerity. After [+ chancellor +]'s attempt to use emergency powers to pass another welfare cut, we have worked with the other parties to reverse this policy. In response, the Reichstag has been dissolved, and new elections called.
+We are tired of [+ prime_minister +]'s policy of austerity. After [+ prime_minister +]'s attempt to use emergency powers to pass another welfare cut, we have worked with the other parties to reverse this policy. In response, the Reichstag has been dissolved, and new elections called.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].

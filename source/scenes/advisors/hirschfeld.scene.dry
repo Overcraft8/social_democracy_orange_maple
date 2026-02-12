@@ -36,8 +36,8 @@ go-to: womens_rights
 @science_funding
 title: Science funding
 subtitle: Increase funding for scientific research.
-choose-if: advisor_action_timer = 0 and ccf_in_government and economic_minister_party = "CCF" and chancellor_party = "CCF"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not ccf_in_government : The CCF is not currently in government. ?][? if economic_minister_party != "CCF": This requires the Economic Ministry. ?][? if chancellor_party != "CCF": The Chancellor must be an CCF member. ?]
+choose-if: advisor_action_timer = 0 and ccf_in_government and economic_minister_party = "CCF" and prime_minister_party = "CCF"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not ccf_in_government : The CCF is not currently in government. ?][? if economic_minister_party != "CCF": This requires the Economic Ministry. ?][? if prime_minister_party != "CCF": The Prime Minister must be an CCF member. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1
 go-to: education_science.increase_science
 

@@ -8,7 +8,7 @@ view-if: panzerkreuzer_b_seen = 0 and year = 1931 and month >= 2 and (ccf_in_gov
 
 = Panzerkreuzer B
 
-The Navy is demanding the construction of another new battlecruiser. [? if panzerkreuzer_funded: The previous battlecruiser had been funded, and has already been launched. Another ship would futher progress Germany's rearmament. ?][? if not panzerkreuzer_funded: The previous battlecruiser requested by the Navy was not funded, thanks to us. The military remains bitter, but nevertheless they are still pursuing their rearmament plan, and must seek funding from the Reichstag. ?]
+The Navy is demanding the construction of another new battlecruiser. [? if panzerkreuzer_funded: The previous battlecruiser had been funded, and has already been launched. Another ship would futher progress Canada's rearmament. ?][? if not panzerkreuzer_funded: The previous battlecruiser requested by the Navy was not funded, thanks to us. The military remains bitter, but nevertheless they are still pursuing their rearmament plan, and must seek funding from the Reichstag. ?]
 
 Much of our party is deeply opposed to rearmament, while the center and right parties are united in support. What will we do?
 
@@ -40,7 +40,7 @@ The center-right parties are critical of our decision to abstain, and the pressu
 @built
 on-arrival: panzerkreuzer_b_funded = 1
 
-Chancellor [+ chancellor +] brings the matter to a full Reichstag vote, which passes with all parties in favor except the CCF and PCC. The ship will be built.
+Prime Minister [+ prime_minister +] brings the matter to a full Reichstag vote, which passes with all parties in favor except the CCF and PCC. The ship will be built.
 
 @not_built
 on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0

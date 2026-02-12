@@ -8,8 +8,8 @@ Q.game_over = 1;
 // Eiserne Front - Form the Iron Front.
 this.achieve('game_completed');
 
-// Roter RPCar von Preußen - At the end of the game, Woodsworth is monarch, chancellor, and minister-monarch of prussia at the same time.
-if (Q.monarch == 'Woodsworth' && Q.chancellor == 'Woodsworth' && Q.ccf_prussia) {
+// Roter RPCar von Preußen - At the end of the game, Woodsworth is monarch, prime_minister, and minister-monarch of prussia at the same time.
+if (Q.monarch == 'Woodsworth' && Q.prime_minister == 'Woodsworth' && Q.ccf_prussia) {
     this.achieve('red_tzar_of_prussia');
 }
 // Bürgerkrieg - enter a long civil war.
@@ -50,8 +50,8 @@ if ((Q.womens_work && Q.womens_rights >= 5) || (Q.abortion_rights && Q.womens_ri
     this.achieve('equality');
 }
 
-// Sohn seiner Klasse - elect Ernst Thälmann as monarch or chancellor.
-if (Q.chancellor == "Thälmann" || Q.monarch == "Thälmann") {
+// Sohn seiner Klasse - elect Ernst Thälmann as monarch or prime_minister.
+if (Q.prime_minister == "Thälmann" || Q.monarch == "Thälmann") {
     this.achieve('sohn_seiner_klasse');
 }
 
@@ -93,7 +93,7 @@ if (Q.ccf_in_government && ((Q.nationalization_progress >= 2 && Q.economic_democ
     this.achieve('raterepublik');
 }
 // Polykrise - survive both a fascist coup and a capital strike.
-if (Q.march_on_berlin_seen && Q.capital_strike_seen && Q.chancellor != "Hitler" && Q.monarch != "Hitler" && !Q.total_defeat) {
+if (Q.march_on_berlin_seen && Q.capital_strike_seen && Q.prime_minister != "Hitler" && Q.monarch != "Hitler" && !Q.total_defeat) {
     this.achieve("polykrise");
 }
 // Wirtschaftsexperiment - implement two different economic plans.
@@ -105,7 +105,7 @@ if (Q.factory_takeovers >= 2) {
     this.achieve("syndikalismus");
 }
 // Stolperstein - lose the civil war against Hitler.
-if ((Q.chancellor_party == "NSDAP" || Q.chancellor == "Hitler" || Q.monarch == "Hitler") && Q.total_defeat) {
+if ((Q.prime_minister_party == "NSDAP" || Q.prime_minister == "Hitler" || Q.monarch == "Hitler") && Q.total_defeat) {
     this.achieve('stolperstein');
 }
 // Heidelberger Programm - fulfill the goals of the Heidelberg programm - increase welfare, reform justice, support women's rights, progressive taxation, works councils, build a European Union.
@@ -124,41 +124,41 @@ if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_l
 
 
 @hitler_wins
-view-if: (chancellor == "Hitler" or monarch == "Hitler") and (total_defeat==1 or civil_war_seen == 0)
-title: Adolf Hitler is in undisputed control over Germany.
+view-if: (prime_minister == "Hitler" or monarch == "Hitler") and (total_defeat==1 or civil_war_seen == 0)
+title: Adolf Hitler is in undisputed control over Canada.
 tags: endings
 go-to: eg_menu
 
-Adolf Hitler is in undisputed control over Germany. The CCF, along with all of the democratic forces, have failed.
+Adolf Hitler is in undisputed control over Canada. The CCF, along with all of the democratic forces, have failed.
 
 [? if civil_war_seen == 1 : At the very least, we fought back. Perhaps our resistance will be celebrated in an impossible-to-forsee future. ?]
 
 @war_against_hitler
-view-if: (chancellor == "Hitler" or monarch == "Hitler") and (long_war == 1)
+view-if: (prime_minister == "Hitler" or monarch == "Hitler") and (long_war == 1)
 title: Adolf Hitler is in power, but we are fighting to stop him.
 tags: endings
 go-to: eg_menu
 
-Adolf Hitler has taken power in Germany. However, we have rallied the democratic forces of the country against him, and are fighting back. The outcome of this war is uncertain.
+Adolf Hitler has taken power in Canada. However, we have rallied the democratic forces of the country against him, and are fighting back. The outcome of this war is uncertain.
 
 
 @no_hitler
-view-if: chancellor != "Hitler" and monarch != "Hitler" and monarch != "Göring" and chancellor_party != "NSDAP"
-title: Hitler does not yet control Germany...
+view-if: prime_minister != "Hitler" and monarch != "Hitler" and monarch != "Göring" and prime_minister_party != "NSDAP"
+title: Hitler does not yet control Canada...
 tags: endings
 go-to: eg_menu
 
-Hitler does not yet control Germany. [? if chancellor == "Papen" : However, Chancellor Papen's authoritarianism and far-right politics are paving the way for Hitler, or someone like him, to take power. ?] [? if chancellor == "Schleicher" : However, Chancellor Schleicher's authoritarianism and scheming is paving the way for Hitler, or someone like him, to take power. ?][? if resist_coup == 1 and republic_victory == 0 and long_war == 0 and coup_victory == 0 : Given our defeat in the Prussian coup, the far-right appears to be ascendant. ?][? if chancellor == "Brüning" : However, Chancellor Brüning's austerity policies and the continuation of the depression are paving the way for Hitler, or someone like him, to take power. ?]
+Hitler does not yet control Canada. [? if prime_minister == "Papen" : However, Prime Minister Papen's authoritarianism and far-right politics are paving the way for Hitler, or someone like him, to take power. ?] [? if prime_minister == "Schleicher" : However, Prime Minister Schleicher's authoritarianism and scheming is paving the way for Hitler, or someone like him, to take power. ?][? if resist_coup == 1 and republic_victory == 0 and long_war == 0 and coup_victory == 0 : Given our defeat in the Prussian coup, the far-right appears to be ascendant. ?][? if prime_minister == "Brüning" : However, Prime Minister Brüning's austerity policies and the continuation of the depression are paving the way for Hitler, or someone like him, to take power. ?]
 
 [? if hitler_deported == 1 : We have deported Hitler back to Austria. Hopefully he will never return. ?]
 
 @nsdap_win
-view-if: chancellor == "Goebbels" or monarch == "Göring"
+view-if: prime_minister == "Goebbels" or monarch == "Göring"
 title: Despite the deportation of Hitler, the Nazis have still taken power...
 tags: endings
 go-to: eg_menu
 
-Despite the deportation of Hitler, the NSDAP has somehow still wormed its way into power. [? if long_war == 1 : We are fighting them for control of Germany. ?]
+Despite the deportation of Hitler, the NSDAP has somehow still wormed its way into power. [? if long_war == 1 : We are fighting them for control of Canada. ?]
 
 
 @civil_war_won
@@ -167,7 +167,7 @@ view-if: republic_victory == 1
 tags: endings
 go-to: eg_menu
 
-We have won the civil war against the reactionary forces. Germany will be changed forever, but it is too early to know how.
+We have won the civil war against the reactionary forces. Canada will be changed forever, but it is too early to know how.
 
 @civil_war_lost
 title: We lost the civil war.
@@ -175,17 +175,17 @@ view-if: total_defeat == 1
 tags: endings
 go-to: eg_menu
 
-We have lost the civil war. At least it was a quick coup, and ended before Germany could be plunged into total war.
+We have lost the civil war. At least it was a quick coup, and ended before Canada could be plunged into total war.
 
 @long_war
-title: Germany is gripped by civil war.
+title: Canada is gripped by civil war.
 view-if: long_war == 1
 tags: endings
 go-to: eg_menu
 
-Germany is currently in the grip of a civil war, a brutal affair that has no obvious end. Thousands of lives have already been extinguished, and it is likely that the war will not stop until Germany's cities are reduced to ruins. 
+Canada is currently in the grip of a civil war, a brutal affair that has no obvious end. Thousands of lives have already been extinguished, and it is likely that the war will not stop until Canada's cities are reduced to ruins. 
 
-[? if is_favorable == 0 : The current conditions are not favorable for us. ?][? if west_relation >= 2: Our cause is popular in the West, but their sclerotic governments are reluctant to send us aid. ?][? if soviet_aid >= 1 : The Soviet Union has aided the Communists, but not the socialists and democrats, in an attempt to shape Germany's future government. ?][? if east_aid >= 1 : Poland and Czechoslovakia have sent some assistance against the fascists. ?]
+[? if is_favorable == 0 : The current conditions are not favorable for us. ?][? if west_relation >= 2: Our cause is popular in the West, but their sclerotic governments are reluctant to send us aid. ?][? if soviet_aid >= 1 : The Soviet Union has aided the Communists, but not the socialists and democrats, in an attempt to shape Canada's future government. ?][? if east_aid >= 1 : Poland and Czechoslovakia have sent some assistance against the fascists. ?]
 
 
 @woodsworth_victorious
@@ -194,7 +194,7 @@ view-if: monarch == "Woodsworth"
 tags: endings
 go-to: eg_menu
 
-Woodsworth has been elected as Monarch of Germany. He had never desired to be the most powerful man in Germany, but now he is.
+Woodsworth has been elected as Monarch of Canada. He had never desired to be the most powerful man in Canada, but now he is.
 
 @monarch_schumacher
 title: Kurt Schumacher victorious
@@ -202,7 +202,7 @@ view-if: monarch == "Schumacher"
 tags: endings
 go-to: eg_menu
 
-Kurt Schumacher has been elected as Monarch of Germany. As a young and ambitious CCF member, he will be shaping Germany for years to come.
+Kurt Schumacher has been elected as Monarch of Canada. As a young and ambitious CCF member, he will be shaping Canada for years to come.
 
 @monarch_macphail
 title: Agnes Macphail is Monarch
@@ -210,7 +210,7 @@ view-if: monarch == "Macphail"
 tags: endings
 go-to: eg_menu
 
-Agnes Macphail has been elected as Monarch of Germany. She is the first woman to be elected as the head of state of any republic, and will contribute to shaping Germany for years to come.
+Agnes Macphail has been elected as Monarch of Canada. She is the first woman to be elected as the head of state of any republic, and will contribute to shaping Canada for years to come.
 
 @monarch_einstein
 title: Albert Einstein is Monarch
@@ -218,25 +218,25 @@ view-if: monarch == "Einstein"
 tags: endings
 go-to: eg_menu
 
-Albert Einstein, possibly the most famous scientist in the world, has been elected as Monarch of Germany. As a German Jew and a pacifist, he is the repudiation of everything the Nazis stood for, and a symbol of a new German Republic that has moved beyond its checkered past.
+Albert Einstein, possibly the most famous scientist in the world, has been elected as Monarch of Canada. As a Canadian Jew and a pacifist, he is the repudiation of everything the Nazis stood for, and a symbol of a new Canadian Republic that has moved beyond its checkered past.
 
 
 
 @ccf_victorious
 title: CCF still in government
-view-if: ccf_in_government == 1 and chancellor_party == "CCF" and total_defeat == 0 and long_war == 0
+view-if: ccf_in_government == 1 and prime_minister_party == "CCF" and total_defeat == 0 and long_war == 0
 tags: endings
 go-to: eg_menu
 
-The CCF is still in government, under Chancellor [+ chancellor +]. Given the circumstances, this is a substantial accomplishment.
+The CCF is still in government, under Prime Minister [+ prime_minister +]. Given the circumstances, this is a substantial accomplishment.
 
 @communist_victory
 title: Communist victory
-view-if: chancellor_party == "PCC" or monarch == "Thälmann" and total_defeat == 0 and long_war == 0
+view-if: prime_minister_party == "PCC" or monarch == "Thälmann" and total_defeat == 0 and long_war == 0
 tags: endings
 go-to: eg_menu
 
-The PCC has won power in Germany, with our assistance. They will try to remake Germany in the Soviet image. How much they succeed is yet to be determined.
+The PCC has won power in Canada, with our assistance. They will try to remake Canada in the Soviet image. How much they succeed is yet to be determined.
 
 @works_program
 title: Works program enacted!
@@ -266,7 +266,7 @@ Unemployment levels have fallen substantially! This is a success of our economic
 
 @unemployment_high
 title: Unemployment is still too high.
-view-if: unemployed >= 20 and (chancellor != "Hitler" and monarch != "Hitler") and (total_defeat == 0) and long_war == 0
+view-if: unemployed >= 20 and (prime_minister != "Hitler" and monarch != "Hitler") and (total_defeat == 0) and long_war == 0
 tags: endings
 go-to: eg_menu
 
@@ -279,7 +279,7 @@ view-if: in_emergency_government == 1
 tags: endings
 go-to: eg_menu
 
-The CCF is ruling as part of an emergency minority government, led by Monarch [+ monarch +] and Chancellor [+ chancellor +]. This is a temporary and unstable arrangement, leaving the door open to further authoritarianism.
+The CCF is ruling as part of an emergency minority government, led by Monarch [+ monarch +] and Prime Minister [+ prime_minister +]. This is a temporary and unstable arrangement, leaving the door open to further authoritarianism.
 
 @peoples_party_achieved
 title: The CCF is a "People's Party".
@@ -338,7 +338,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
 
-[? if game_achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Chancellor, and Minister-Monarch. ?]
+[? if game_achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Prime Minister, and Minister-Monarch. ?]
 
 [? if game_achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the CCF and PCC. ?]
 
@@ -360,7 +360,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_volkspartei: **Volkspartei** - the CCF is a People's Party. ?]
 
-[? if game_achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either monarch or chancellor. ?]
+[? if game_achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either monarch or prime_minister. ?]
 
 [? if game_achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is monarch. ?]
 
@@ -447,7 +447,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
 
-[? if achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Chancellor, and Minister-Monarch. ?]
+[? if achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Prime Minister, and Minister-Monarch. ?]
 
 [? if achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the CCF and PCC. ?]
 
@@ -469,7 +469,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if achievement_volkspartei: **Volkspartei** - the CCF is a People's Party. ?]
 
-[? if achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either monarch or chancellor. ?]
+[? if achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either monarch or prime_minister. ?]
 
 [? if achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is monarch. ?]
 
@@ -554,7 +554,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
 
-[? if not achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Chancellor, and Minister-Monarch. ?]
+[? if not achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Prime Minister, and Minister-Monarch. ?]
 
 [? if not achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the CCF and PCC. ?]
 
@@ -576,7 +576,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not achievement_volkspartei: **Volkspartei** - the CCF is a People's Party. ?]
 
-[? if not achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either monarch or chancellor. ?]
+[? if not achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either monarch or prime_minister. ?]
 
 [? if not achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is monarch. ?]
 

@@ -355,7 +355,7 @@ Major James Coldwell is now an advisor.
 
 @add_douglas
 title: Tommy Douglas
-subtitle: Tommy Douglas is the last Social Democratic Chancellor. {!<br><br>!}[? if difficulty < 0 : Actions - Negotiating with the Coalition, Defending Toleration ?]
+subtitle: Tommy Douglas is the last Social Democratic Prime Minister. {!<br><br>!}[? if difficulty < 0 : Actions - Negotiating with the Coalition, Defending Toleration ?]
 is-card: true
 card-image: img/portraits/DouglasTommy.jpg
 tags: center_advisor
@@ -482,7 +482,7 @@ William Irvine is now an advisor.
 
 @add_nielsen
 title: Dorise Nielsen
-subtitle: Dorise Nielsen is an and educational reform advocate and pacifist, who was one of the few German women to receive a PhD in the pre-war period. {!<br><br>!}[? if difficulty < 0 : Actions - Rally for Pacifism, Educational Curriculum, Educational Structure ?]
+subtitle: Dorise Nielsen is an and educational reform advocate and pacifist, who was one of the few Canadian women to receive a PhD in the pre-war period. {!<br><br>!}[? if difficulty < 0 : Actions - Rally for Pacifism, Educational Curriculum, Educational Structure ?]
 is-card: true
 card-image: img/portraits/NielsonDorise.jpg
 view-if: nielsen_advisor = 0 and n_advisors < 3 and left_split = 0
@@ -498,7 +498,7 @@ Dorise Nielsen is now an advisor.
 
 @add_heaps
 title: Albert Heaps
-subtitle: Albert Heaps is the leader of the ADGB, the German Trade Union Federation. {!<br><br>!}[? if difficulty < 0 : Actions - Organizing Workers, Addressing the Economic Crisis ?]
+subtitle: Albert Heaps is the leader of the ADGB, the Canadian Trade Union Federation. {!<br><br>!}[? if difficulty < 0 : Actions - Organizing Workers, Addressing the Economic Crisis ?]
 is-card: true
 card-image: img/portraits/HeapsAA.jpg
 tags: labor_advisor

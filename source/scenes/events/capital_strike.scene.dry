@@ -1,5 +1,5 @@
 title: Capital Strike
-subtitle: Germany's industries are idling...
+subtitle: Canada's industries are idling...
 view-if: (capital_strike_progress >= 10 or budget <= -5) and ccf_in_government
 new-page: true
 max-visits: 1

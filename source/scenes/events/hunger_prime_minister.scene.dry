@@ -1,17 +1,17 @@
-title: The Hunger Chancellor
-subtitle: Popular discontent with Chancellor [+ chancellor +] rises.
+title: The Hunger Prime Minister
+subtitle: Popular discontent with Prime Minister [+ prime_minister +] rises.
 new-page: true
 view-if: year >= 1931 and month >= 2 and unemployed >= 18 and welfare < 0 and works_program == 0
-on-arrival: workers_ccf *= 0.9 if chancellor_party == "CCF"; workers_ccf *= 0.9 if ccf_in_government == 1; workers_nsdap += 5 if ccf_in_government; workers_pcc += 5 if ccf_in_government; unemployed_nsdap += 5 if ccf_in_government
+on-arrival: workers_ccf *= 0.9 if prime_minister_party == "CCF"; workers_ccf *= 0.9 if ccf_in_government == 1; workers_nsdap += 5 if ccf_in_government; workers_pcc += 5 if ccf_in_government; unemployed_nsdap += 5 if ccf_in_government
 tags: event
 max-visits: 1
 face-image: img/Kollwitrpc_Hospital.jpg
 
-= The Hunger Chancellor
+= The Hunger Prime Minister
 
-People are calling Chancellor [+ chancellor +] the Hunger Chancellor because of his perceived callousness in the face of the depression. [? if chancellor_party == "CCF" or ccf_in_government : This is obviously a very bad sign for us. ?]
+People are calling Prime Minister [+ prime_minister +] the Hunger Prime Minister because of his perceived callousness in the face of the depression. [? if prime_minister_party == "CCF" or ccf_in_government : This is obviously a very bad sign for us. ?]
 
-[? if ccf_toleration == 1 : As we are currently tolerating the [+ chancellor +] government, this could very well reflect badly on us. ?]
+[? if ccf_toleration == 1 : As we are currently tolerating the [+ prime_minister +] government, this could very well reflect badly on us. ?]
 
 - @maintain_toleration: Maintain the current governing arrangement.
 - @break_toleration: Break toleration; vote against this government.
@@ -29,6 +29,6 @@ subtitle: This is likely to result in new elections.
 view-if: ccf_toleration == 1
 on-arrival: next_election_time = time+3 if next_election_time >= time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; ccf_in_government = 0; in_grand_coalition = 0; ccf_toleration = 0;
 
-We have definitively broken with the [+ chancellor +] government, and have voted against them in a vote of no confidence.
+We have definitively broken with the [+ prime_minister +] government, and have voted against them in a vote of no confidence.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].

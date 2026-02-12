@@ -1,6 +1,6 @@
 title: Coup in Prussia
-subtitle: The Chancellor attempts to overthrow the Prussian government.
-view-if: (chancellor = "Papen" or chancellor = "Schleicher") and monarch = "Hindenburg" and year >= 1932 and month >= 8 and ccf_in_government == 0 and ccf_prussia = 1 and not monarchial_powers
+subtitle: The Prime Minister attempts to overthrow the Prussian government.
+view-if: (prime_minister = "Papen" or prime_minister = "Schleicher") and monarch = "George V" and year >= 1932 and month >= 8 and ccf_in_government == 0 and ccf_prussia = 1 and not monarchial_powers
 on-arrival: prussian_coup_seen = 1
 new-page: true
 tags: event
@@ -9,7 +9,7 @@ face-image: img/Reichswehr.jpg
 
 = Coup in Prussia
 
-A crisis! Chancellor [+ chancellor +] has ordered the dismissal of the Prussian government in a procedure known as the *Reichsexecution*. His argument is that the Prussian state government is unable to maintain order due to the battles on the streets between the SA, Reichsbanner, and other paramilitaries. This is despite his own government legalizing them.
+A crisis! Prime Minister [+ prime_minister +] has ordered the dismissal of the Prussian government in a procedure known as the *Reichsexecution*. His argument is that the Prussian state government is unable to maintain order due to the battles on the streets between the SA, Reichsbanner, and other paramilitaries. This is despite his own government legalizing them.
 
 The legality of the action is questionable. Many of our members are ready to resist.
 
@@ -37,7 +37,7 @@ on-arrival: sa_strength *= 0.8; sh_strength *= 0.8; pro_republic += 10; workers_
 achievement: bollwerk_der_demokratie
 go-to: defend_2_victory_2
 
-Our forces confront the government troops and their reactionary auxiliaries, and somehow, our enemies retreat without a fight! They were overwhelmed by our display of strength, and have chosen to slink away. Chancellor [+ chancellor +] withdraws the dismissal of the Prussian government, at least for now.
+Our forces confront the government troops and their reactionary auxiliaries, and somehow, our enemies retreat without a fight! They were overwhelmed by our display of strength, and have chosen to slink away. Prime Minister [+ prime_minister +] withdraws the dismissal of the Prussian government, at least for now.
 
 The show of force has reinvigorated support for the republic and for the CCF, and has weakened the fascists.
 

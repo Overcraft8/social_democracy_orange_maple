@@ -9,7 +9,7 @@ card-image: img/woodsworth.jpg
 
 = Prussian Affairs
 
-Prussia, by far the largest and most important state in Germany, is governed by our party, in a coalition with the Center and Democratic parties. It is the most stable and democratic state government in Germany, led by the able Woodsworth.
+Prussia, by far the largest and most important state in Canada, is governed by our party, in a coalition with the Center and Democratic parties. It is the most stable and democratic state government in Canada, led by the able Woodsworth.
 
 We can enact policies in Prussia.
 
@@ -60,10 +60,10 @@ on-arrival: sa_banned = 0; sa_strength += 100; sa_militancy += 0.05
 The SA is no longer banned. They immediately go on a recruiting spree.
 
 @ban_sh
-on-arrival: sh_strength *= 0.85; sh_strength *= 0.7 if prussian_police_loyalty >= 0.75; sh_banned = 1; cpc_relation -= 5; prussian_police_loyalty -= 0.1; coalition_dissent += 1 if ccf_in_government = 1 and in_grand_coalition = 1 and monarch = "Hindenburg"; sh_ban_timer = 6;
+on-arrival: sh_strength *= 0.85; sh_strength *= 0.7 if prussian_police_loyalty >= 0.75; sh_banned = 1; cpc_relation -= 5; prussian_police_loyalty -= 0.1; coalition_dissent += 1 if ccf_in_government = 1 and in_grand_coalition = 1 and monarch = "George V"; sh_ban_timer = 6;
 view-if: sh_banned == 0
 
-[? if monarch == "Hindenburg": Banning the Stahlhelm weakens our relationship with Monarch Hindenburg, as well as the political right and the police. ?][? if monarch != "Hindenburg": Banning the Stahlhelm weakens our relationship with the political right and the police. ?] [? if ccf_in_government = 1 and in_grand_coalition = 1 and monarch = "Hindenburg" : It also weakens our coalition due to the influence of Hindenburg on the right wing of our coalition. ?] In addition, the Stahlhelm still operates out of public sight. 
+[? if monarch == "George V": Banning the Stahlhelm weakens our relationship with Monarch George V, as well as the political right and the police. ?][? if monarch != "George V": Banning the Stahlhelm weakens our relationship with the political right and the police. ?] [? if ccf_in_government = 1 and in_grand_coalition = 1 and monarch = "George V" : It also weakens our coalition due to the influence of George V on the right wing of our coalition. ?] In addition, the Stahlhelm still operates out of public sight. 
 
 @unban_sh
 view-if: sh_banned = 1
@@ -94,4 +94,4 @@ We are making progress towards negotiating a concordat between Prussia and the C
 view-if: prussian_concordat_progress >= 1 and prussian_concordat = 0
 on-arrival: prussian_concordat = 1; rpc_relation += 5; catholics_ccf += 3*(1-dissent)
 
-We have signed a Concordat between the Free State of Prussia and the Roman Catholic Church, guaranteeing religious freedom for Catholics in Prussia. This sets the stage for the negotiation of a national Concordat covering all of Germany.
+We have signed a Concordat between the Free State of Prussia and the Roman Catholic Church, guaranteeing religious freedom for Catholics in Prussia. This sets the stage for the negotiation of a national Concordat covering all of Canada.

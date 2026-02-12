@@ -1,36 +1,36 @@
 title: Monarchial Election
-subtitle: Hindenburg runs for re-election...
+subtitle: George V runs for re-election...
 view-if: year = 1932 and (month = 4 or month = 5) and monarchial_election_seen = 0
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: woodsworth_campaign = 0; hitler_support_hindenburg = 0; monarchial_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
+on-arrival: woodsworth_campaign = 0; hitler_support_georgev = 0; monarchial_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
-face-image: img/hindenburg_election.jpg
+face-image: img/georgev_election.jpg
 
 @pres_election
 
-The monarchial election is coming up soon. [? if ccf_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the monarch's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the PCC will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the PCC will run Ernst Thälmann. ?]
+The monarchial election is coming up soon. [? if ccf_in_government = 0 : While the position of Prime Minister is typically more important, recent governments have depended on the monarch's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the PCC will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Canada. Meanwhile, the PCC will run Ernst Thälmann. ?]
 [? if sapd_formed: The SAPD, our former leftists, are supporting Thälmann of the PCC, and will likely share an endorsement with the Communists. ?]
 
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
 # Goering runs, essentially as a proxy for Hitler, who is now stateless.
 
-Many are calling for us to support the incumbent Hindenburg, despite his well-known reactionary tendencies. Is he truly the best bulwark against Hitler's ascension? On the other hand, many in our party are calling for Woodsworth to run again, but he is reluctant.
+Many are calling for us to support the incumbent George V, despite his well-known reactionary tendencies. Is he truly the best bulwark against Hitler's ascension? On the other hand, many in our party are calling for Woodsworth to run again, but he is reluctant.
 
 [? if pcc_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support Thälmann or our own candidate. ?]
 
 
-- @support_hindenburg: Support Hindenburg.
+- @support_georgev: Support George V.
 - @support_woodsworth: Run Woodsworth of the CCF.
 - @support_thalmann: Support Ernst Thälmann of the PCC.
 
-@support_hindenburg
+@support_georgev
 subtitle: This is the default option.
 
-Despite his known reactionary nature, Hindenburg has at least been keeping the Nazis at bay. Thus, we must support him.
+Despite his known reactionary nature, George V has at least been keeping the Nazis at bay. Thus, we must support him.
 
 - @final_election: The final vote...
 
@@ -41,9 +41,9 @@ unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 2; woodsworth_campaign = 1
 go-to: woodsworth_campaign
 
-It takes effort to run a somewhat unexpected campaign. First, Woodsworth has to be convinced to run. He himself had supported voting for Hindenburg, and it takes a good deal of prodding to convince him of his destiny.
+It takes effort to run a somewhat unexpected campaign. First, Woodsworth has to be convinced to run. He himself had supported voting for George V, and it takes a good deal of prodding to convince him of his destiny.
 
-The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Woodsworth? What about the Communists?
+The miniscule remnants of the Democratic Party (now called the Canadian State Party) will likely support us. Who else will? Can we convince the Center to support Woodsworth? What about the Communists?
 
 
 @support_thalmann
@@ -54,7 +54,7 @@ Supporting Thälmann is rather unpopular in our party, even if the Communists ac
 
 - @support_thalmann_2: Yes, we will support Thälmann, despite the reformists' pleas against it.
 - @support_woodsworth: Support Woodsworth instead.
-- @support_hindenburg: Support Hindenburg instead.
+- @support_georgev: Support George V instead.
 
 @support_thalmann_2
 on-arrival: ccf_support_thalmann = 1; reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_ccf -= 5; workers_ccf -= 3; pcc_relation += 10; communist_coalition += 2; rpc_relation -= 15; cpc_relation -= 15; lpc_relation -= 10
@@ -86,7 +86,7 @@ if (Q.rpc_relation >= 55 || (Q.rpc_relation > 35 && Q.rpc_party_leader == "Joos"
 go-to: rpc_failed if rpc_support_woodsworth = 0 or (rpc_support_woodsworth == 2 and historical_mode); rpc_success if rpc_support_woodsworth = 1; rpc_partial if rpc_support_woodsworth = 2 and not historical_mode
 max-visits: 1
 
-We remind the Center leaders of Hindenburg's anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Woodsworth, and our support for the Center candidate Wilhelm Marx in the 1925 monarchial election.
+We remind the Center leaders of George V's anti-Catholicism, and try to convince them that George V's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Woodsworth, and our support for the Center candidate R.B. Bennett in the 1925 monarchial election.
 
 @rpc_success
 go-to: woodsworth_campaign
@@ -107,12 +107,12 @@ unavailable-subtitle: Not enough resources (need 3)
 on-arrival: resources -= 3; rpc_support_woodsworth = 1
 go-to: woodsworth_campaign
 
-With our resources, the Center are convinced to support Woodsworth over Hindenburg.
+With our resources, the Center are convinced to support Woodsworth over George V.
 
 @rpc_failed
 go-to: woodsworth_campaign
 
-Unfortunately, we fail to turn them away from Hindenburg.
+Unfortunately, we fail to turn them away from George V.
 
 @convince_pcc
 choose-if: ccf_votes >= pcc_votes
@@ -174,14 +174,14 @@ set-jump: post_election
 @post_election
 on-arrival: {!
 Q.woodsworth_votes = 0;
-Q.hindenburg_votes = 0;
+Q.georgev_votes = 0;
 Q.hitler_votes = 0;
 Q.thalmann_votes = 0;
 
 // initial phase:
 Q.hitler_votes += Q.nsdap_normalized;
-Q.hindenburg_votes += Q.other_normalized;
-Q.hindenburg_votes += Q.scp_normalized;
+Q.georgev_votes += Q.other_normalized;
+Q.georgev_votes += Q.scp_normalized;
 
 if (Q.woodsworth_campaign) {
     Q.woodsworth_votes += Q.ccf_normalized;
@@ -189,7 +189,7 @@ if (Q.woodsworth_campaign) {
     if (Q.rpc_support_woodsworth && Q.rpc_support_woodsworth == 1) {
         Q.woodsworth_votes += Q.rpc_normalized;
     } else {
-        Q.hindenburg_votes += Q.rpc_normalized;
+        Q.georgev_votes += Q.rpc_normalized;
     }
     if (Q.pcc_support_woodsworth) {
         Q.woodsworth_votes += Q.pcc_normalized;
@@ -205,29 +205,29 @@ if (Q.woodsworth_campaign) {
     if (Q.cpc_support_woodsworth) {
         Q.woodsworth_votes += Q.cpc_normalized;
     } else {
-        Q.hindenburg_votes += Q.cpc_normalized;
+        Q.georgev_votes += Q.cpc_normalized;
     }
 } else if (Q.ccf_support_thalmann) {
     Q.thalmann_votes += Q.pcc_normalized;
     Q.thalmann_votes += Q.ccf_normalized;
-    Q.hindenburg_votes += Q.rpc_normalized;
-    Q.hindenburg_votes += Q.lpc_normalized;
-    Q.hindenburg_votes += Q.cpc_normalized;
+    Q.georgev_votes += Q.rpc_normalized;
+    Q.georgev_votes += Q.lpc_normalized;
+    Q.georgev_votes += Q.cpc_normalized;
 } else {
-    Q.hindenburg_votes += Q.ccf_normalized;
-    Q.hindenburg_votes += Q.rpc_normalized;
-    Q.hindenburg_votes += Q.lpc_normalized;
-    Q.hindenburg_votes += Q.cpc_normalized;
+    Q.georgev_votes += Q.ccf_normalized;
+    Q.georgev_votes += Q.rpc_normalized;
+    Q.georgev_votes += Q.lpc_normalized;
+    Q.georgev_votes += Q.cpc_normalized;
     Q.thalmann_votes += Q.pcc_normalized;
 }
-if (Q.hitler_support_hindenburg) {
+if (Q.hitler_support_georgev) {
     Q.hitler_votes -= Q.nsdap_normalized;
-    Q.hindenburg_votes += Q.nsdap_normalized;
+    Q.georgev_votes += Q.nsdap_normalized;
 }
 
-if (Q.hindenburg_to_woodsworth_bonus) {
-    Q.hindenburg_votes -= Q.hindenburg_to_woodsworth_bonus;
-    Q.woodsworth_votes += Q.hindenburg_to_woodsworth_bonus;
+if (Q.georgev_to_woodsworth_bonus) {
+    Q.georgev_votes -= Q.georgev_to_woodsworth_bonus;
+    Q.woodsworth_votes += Q.georgev_to_woodsworth_bonus;
 }
 if (Q.thalmann_to_woodsworth_bonus) {
     Q.thalmann_votes -= Q.thalmann_to_woodsworth_bonus;
@@ -235,36 +235,36 @@ if (Q.thalmann_to_woodsworth_bonus) {
 }
 
 // check for majority
-Q.hindenburg_votes = Math.round(Q.hindenburg_votes*1000)/10;
+Q.georgev_votes = Math.round(Q.georgev_votes*1000)/10;
 Q.woodsworth_votes = Math.round(Q.woodsworth_votes*1000)/10;
 Q.hitler_votes = Math.round(Q.hitler_votes*1000)/10;
 Q.thalmann_votes = Math.round(Q.thalmann_votes*1000)/10;
 
-Q.hindenburg_majority = (Q.hindenburg_votes >= 50);
+Q.georgev_majority = (Q.georgev_votes >= 50);
 Q.thalmann_majority = (Q.thalmann_votes >= 50);
 Q.hitler_majority = (Q.hitler_votes >= 50);
 Q.woodsworth_majority = (Q.woodsworth_votes >= 50);
-Q.any_majority = Q.hindenburg_majority | Q.thalmann_majority | Q.hitler_majority | Q.woodsworth_majority;
+Q.any_majority = Q.georgev_majority | Q.thalmann_majority | Q.hitler_majority | Q.woodsworth_majority;
 
 // check for plurality
-Q.hindenburg_plurality = (Q.hindenburg_votes >= Q.hitler_votes && Q.hindenburg_votes >= Q.woodsworth_votes && Q.hindenburg_votes >= Q.thalmann_votes);
-Q.thalmann_plurality = (Q.thalmann_votes >= Q.hindenburg_votes && Q.thalmann_votes >= Q.woodsworth_votes && Q.thalmann_votes >= Q.hitler_votes);
-Q.hitler_plurality = (Q.hitler_votes >= Q.hindenburg_votes && Q.hitler_votes >= Q.woodsworth_votes && Q.hitler_votes >= Q.thalmann_votes);
-Q.woodsworth_plurality = (Q.woodsworth_votes >= Q.hindenburg_votes && Q.woodsworth_votes >= Q.hitler_votes && Q.woodsworth_votes >= Q.thalmann_votes);
+Q.georgev_plurality = (Q.georgev_votes >= Q.hitler_votes && Q.georgev_votes >= Q.woodsworth_votes && Q.georgev_votes >= Q.thalmann_votes);
+Q.thalmann_plurality = (Q.thalmann_votes >= Q.georgev_votes && Q.thalmann_votes >= Q.woodsworth_votes && Q.thalmann_votes >= Q.hitler_votes);
+Q.hitler_plurality = (Q.hitler_votes >= Q.georgev_votes && Q.hitler_votes >= Q.woodsworth_votes && Q.hitler_votes >= Q.thalmann_votes);
+Q.woodsworth_plurality = (Q.woodsworth_votes >= Q.georgev_votes && Q.woodsworth_votes >= Q.hitler_votes && Q.woodsworth_votes >= Q.thalmann_votes);
 // If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
 Q.election_round += 1;
 
 // making the vote numbers nicer for the display
-Q.hindenburg_votes_disp = Q.hindenburg_votes.toFixed(1);
+Q.georgev_votes_disp = Q.georgev_votes.toFixed(1);
 Q.woodsworth_votes_disp = Q.woodsworth_votes.toFixed(1);
 Q.hitler_votes_disp = Q.hitler_votes.toFixed(1);
 Q.thalmann_votes_disp = Q.thalmann_votes.toFixed(1);
 !}
-go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; woodsworth_wins if woodsworth_majority == 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
+go-to: georgev_wins if georgev_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; woodsworth_wins if woodsworth_majority == 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
 
 Results:
 
-Hindenburg - [+ hindenburg_votes_disp +]%
+George V - [+ georgev_votes_disp +]%
 
 [+ nsdap_candidate +] - [+ hitler_votes_disp +]%
 
@@ -273,19 +273,19 @@ Hindenburg - [+ hindenburg_votes_disp +]%
 [? if woodsworth_campaign > 0 : Woodsworth - [+ woodsworth_votes_disp +]% ?]
 
 @no_majority_round1
-on-arrival: hitler_support_hindenburg = 1 if (woodsworth_plurality or thalmann_plurality)
+on-arrival: hitler_support_georgev = 1 if (woodsworth_plurality or thalmann_plurality)
 go-to: round2_menu
 
 There is no majority in this round. In the second round, any candidate who wins a plurality will win overall. What should we do?
 
-[? if woodsworth_plurality or thalmann_plurality : In order to consolidate the vote for the Right, and to prevent a socialist from becoming monarch, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Hindenburg. ?]
+[? if woodsworth_plurality or thalmann_plurality : In order to consolidate the vote for the Right, and to prevent a socialist from becoming monarch, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to George V. ?]
 
 
 @round2_menu
 
 - @round2_convince_rpc: Convince the Center to switch their support to us.
 - @round2_convince_pcc: Convince the PCC to switch their support to us. 
-- @round2_hindenburg: Switch our support to Hindenburg.
+- @round2_georgev: Switch our support to George V.
 - @round2_thalmann: Switch our support to Thälmann of the PCC.
 - @round2_vote: Let the second round voting begin.
 
@@ -296,17 +296,17 @@ choose-if: ccf_votes >= rpc_votes
 unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: {!
 Q.rpc_support_woodsworth = 0;
-// if Hindenburg support is greater than Hitler and Woodsworth support, this should be much harder
+// if George V support is greater than Hitler and Woodsworth support, this should be much harder
 
-if ((Q.rpc_relation >= 55 && Q.woodsworth_votes >= Q.hindenburg_votes) || (Q.rpc_relation > 35 && Q.rpc_party_leader == "Joos")) {
+if ((Q.rpc_relation >= 55 && Q.woodsworth_votes >= Q.georgev_votes) || (Q.rpc_relation > 35 && Q.rpc_party_leader == "Joos")) {
     Q.rpc_support_woodsworth = 1;
-    if (Q.hitler_support_hindenburg) {
-        Q.hindenburg_to_woodsworth_bonus += Q.other_normalized/2;
+    if (Q.hitler_support_georgev) {
+        Q.georgev_to_woodsworth_bonus += Q.other_normalized/2;
     }
-} else if (Q.rpc_relation >= 50 && Q.hitler_support_hindenburg) {
+} else if (Q.rpc_relation >= 50 && Q.hitler_support_georgev) {
     Q.rpc_support_woodsworth = 1;
-    Q.hindenburg_to_woodsworth_bonus += Q.other_normalized/2;
-} else if (Q.rpc_relation <= 35 || (Q.rpc_relation <= 45 && Q.woodsworth_votes < Q.hindenburg_votes && Q.hindenburg_votes > Q.hitler_votes && Q.difficulty >= 0)) {
+    Q.georgev_to_woodsworth_bonus += Q.other_normalized/2;
+} else if (Q.rpc_relation <= 35 || (Q.rpc_relation <= 45 && Q.woodsworth_votes < Q.georgev_votes && Q.georgev_votes > Q.hitler_votes && Q.difficulty >= 0)) {
     Q.rpc_support_woodsworth = 0;
 } else {
     Q.rpc_support_woodsworth = 2;
@@ -317,15 +317,15 @@ max-visits: 1
 
 @r2_rpc_success
 go-to: round2_menu
-on-departure: hitler_support_hindenburg = 1 if woodsworth_votes + rpc_votes > hitler_votes
+on-departure: hitler_support_georgev = 1 if woodsworth_votes + rpc_votes > hitler_votes
 
-[? if hitler_support_hindenburg : The Center's opinion is affected by the Nazis' support of Hindenburg, and is willing to turn away from him. ?] The Center are convinced! They will be part of the Woodsworth coalition. [? if hitler_support_hindenburg : In addition, they will also bring in some minor parties who will support us. ?]
+[? if hitler_support_georgev : The Center's opinion is affected by the Nazis' support of George V, and is willing to turn away from him. ?] The Center are convinced! They will be part of the Woodsworth coalition. [? if hitler_support_georgev : In addition, they will also bring in some minor parties who will support us. ?]
 
-[? if not hitler_support_hindenburg and woodsworth_votes + rpc_votes > hitler_votes: With the Center Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed Hindenburg to prevent a socialist from becoming monarch. ?]
+[? if not hitler_support_georgev and woodsworth_votes + rpc_votes > hitler_votes: With the Center Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed George V to prevent a socialist from becoming monarch. ?]
 
 @r2_rpc_partial
 
-The Center are not satisfied with our arguments, but they are open to being convinced[? if hitler_support_hindenburg: , especially given the Nazis' support for Hindenburg. ?]. They are willing to run a joint campaign if we front the resources.
+The Center are not satisfied with our arguments, but they are open to being convinced[? if hitler_support_georgev: , especially given the Nazis' support for George V. ?]. They are willing to run a joint campaign if we front the resources.
 
 - @r2_pay_rpc: Give them the resources they need.
 - @round2_menu: Forget about the Center.
@@ -335,17 +335,17 @@ choose-if: resources >= 2
 subtitle: -2 resources
 unavailable-subtitle: Not enough resources (need 2)
 on-arrival: resources -= 2; rpc_support_woodsworth = 1
-on-departure: hitler_support_hindenburg = 1 if woodsworth_votes + rpc_votes > hitler_votes
+on-departure: hitler_support_georgev = 1 if woodsworth_votes + rpc_votes > hitler_votes
 go-to: round2_menu
 
-With our resources, the Center are convinced to support Woodsworth over Hindenburg.
+With our resources, the Center are convinced to support Woodsworth over George V.
 
-[? if not hitler_support_hindenburg and woodsworth_votes + rpc_votes > hitler_votes: With the Center Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed Hindenburg to prevent a socialist from becoming monarch. ?]
+[? if not hitler_support_georgev and woodsworth_votes + rpc_votes > hitler_votes: With the Center Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed George V to prevent a socialist from becoming monarch. ?]
 
 @r2_rpc_failed
 go-to: round2_menu
 
-Unfortunately, we fail to turn them away from Hindenburg. [? if hindenburg_votes > woodsworth_votes : Given that Hindenburg received more votes than Woodsworth, they believe that we should turn to Hindenburg, not the other way around. ?]
+Unfortunately, we fail to turn them away from George V. [? if georgev_votes > woodsworth_votes : Given that George V received more votes than Woodsworth, they believe that we should turn to George V, not the other way around. ?]
 
 
 
@@ -356,7 +356,7 @@ unavailable-subtitle: The PCC knows that they are more popular than us; they do 
 view-if: woodsworth_campaign > 0 and pcc_support_woodsworth == 0 
 max-visits: 1
 
-The PCC is committed to supporting Ernst Thälmann. [? if pcc_relation >= 45 : However, the Nazi-Hindenburg coalition worries them enough that they are willing to be convinced to drop their campaign and support Woodsworth. ?][? if pcc_relation < 45 : They do not seem willing to be convinced. ?]
+The PCC is committed to supporting Ernst Thälmann. [? if pcc_relation >= 45 : However, the Nazi-George V coalition worries them enough that they are willing to be convinced to drop their campaign and support Woodsworth. ?][? if pcc_relation < 45 : They do not seem willing to be convinced. ?]
 
 - @r2_pcc_resources: Use our resources.
 - @r2_pcc_relations: Use our good relations.
@@ -397,15 +397,15 @@ on-departure: rpc_support_woodsworth = 0; pcc_support_woodsworth = 0;
 
 Fine. We have thrown our support to Chairman Thälmann of the PCC.
 
-[? if rpc_support_woodsworth : The Center Party is confused at our capricious behavior, and have switched their support to Hindenburg. ?]
+[? if rpc_support_woodsworth : The Center Party is confused at our capricious behavior, and have switched their support to George V. ?]
 
 - @round2_vote: Let the second round voting begin.
 
-@round2_hindenburg
+@round2_georgev
 view-if: woodsworth_campaign > 0 or ccf_support_thalmann > 0
 on-arrival: woodsworth_campaign = 0; ccf_support_thalmann = 0
 
-We have switched our support to Hindenburg.
+We have switched our support to George V.
 
 - @round2_vote: Let the second round voting begin.
 
@@ -414,13 +414,13 @@ go-to: election_algorithm
 set-jump: post_election
 
 @round2_results
-go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_plurality == 1; woodsworth_wins if woodsworth_plurality == 1; hitler_wins if hitler_plurality == 1
+go-to: georgev_wins if georgev_plurality == 1; thalmann_wins if thalmann_plurality == 1; woodsworth_wins if woodsworth_plurality == 1; hitler_wins if hitler_plurality == 1
 
 
-@hindenburg_wins
-on-arrival: monarch = "Hindenburg"
+@georgev_wins
+on-arrival: monarch = "George V"
 
-As expected, the incumbent Hindenburg wins the presidency. Let's hope he continues to keep the Nazis out of power.
+As expected, the incumbent George V wins the presidency. Let's hope he continues to keep the Nazis out of power.
 
 @thalmann_wins
 on-arrival: monarch = "Thälmann"; pcc_relation = 80;
@@ -430,10 +430,10 @@ Ernst Thälmann of the PCC has won the presidency. Immediately, the far-right la
 - @civil_war: This is civil war.
 
 @hitler_wins
-on-arrival: monarch = nsdap_candidate; chancellor = "Hitler"; chancellor_party = "NSDAP"
+on-arrival: monarch = nsdap_candidate; prime_minister = "Hitler"; prime_minister_party = "NSDAP"
 
 [? if nsdap_candidate == "Hitler" : Adolf Hitler of the NSDAP has won the presidency. He wastes no time in consolidating power. ?]
-[? if nsdap_candidate != "Hitler" : The NSDAP candidate [+ monarch +] has won. The first action Monarch [+ monarch +] takes is inviting Hitler back into Germany, and appointing him chancellor. The Nazis waste no time in consolidating power. ?]
+[? if nsdap_candidate != "Hitler" : The NSDAP candidate [+ monarch +] has won. The first action Monarch [+ monarch +] takes is inviting Hitler back into Canada, and appointing him prime_minister. The Nazis waste no time in consolidating power. ?]
 
 - @hitler_takes_power: What do we do now?
 

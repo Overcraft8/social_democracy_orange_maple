@@ -1,19 +1,19 @@
-title: The Death of Hindenburg
+title: The Death of George V
 subtitle: The Monarch has died...
 new-page: true
-view-if: year = 1934 and month >= 7 and monarch = "Hindenburg"
-on-arrival: round = 0; hindenburg_dead = 1; monarch = "Bumke (acting)"; monarch = "Großmann (acting)" if judicial_reform >= 4; ccf_candidate = "Eckener"; pcc_candidate = "Thälmann"; pcc_candidate = "Münzenberg" if pcc_party_leader = "Conciliators"; rpc_candidate = "Adenauer"; lpc_candidate = "Gessler"; nsdap_candidate = "Hitler"; nsdap_candidate = "Göring" if hitler_deported; scp_candidate = "Seldte"; cpc_candidate = "Gessler"; other_candidate = "Seldte"; is_unity_candidate = 0; sapd_candidate = pcc_candidate;
+view-if: year = 1934 and month >= 7 and monarch = "George V"
+on-arrival: round = 0; georgev_dead = 1; monarch = "Bumke (acting)"; monarch = "Großmann (acting)" if judicial_reform >= 4; ccf_candidate = "Eckener"; pcc_candidate = "Thälmann"; pcc_candidate = "Münzenberg" if pcc_party_leader = "Conciliators"; rpc_candidate = "Adenauer"; lpc_candidate = "Gessler"; nsdap_candidate = "Hitler"; nsdap_candidate = "Göring" if hitler_deported; scp_candidate = "Seldte"; cpc_candidate = "Gessler"; other_candidate = "Seldte"; is_unity_candidate = 0; sapd_candidate = pcc_candidate;
 max-visits: 1
-face-image: img/Hindenburg_head.jpg
+face-image: img/George_V.jpg
 tags: event
 
-= The Death of Hindenburg
+= The Death of George V
 
-Monarch Paul von Hindenburg has passed away at age 86. An era of history is closing, and the future remains to be seen.
+Monarch Paul von George V has passed away at age 86. An era of history is closing, and the future remains to be seen.
 
-The nation engages in an outpouring of grief for its war hero and monarch, with even some sympathy among committed republicans and socialists. After all, Hindenburg steered the republic through some of its most challenging times, without giving in to extremists on the far right. Perhaps he is one reason democracy remains alive.
+The nation engages in an outpouring of grief for its war hero and monarch, with even some sympathy among committed republicans and socialists. After all, George V steered the republic through some of its most challenging times, without giving in to extremists on the far right. Perhaps he is one reason democracy remains alive.
 
-New monarchial elections are to be held as soon as possible. The German political landscape is wide open, with contenders from all over the political space. In the meantime, Supreme Court chief justice [? if judicial_reform < 4 : Erwin Bumke ?][? if judicial_reform >= 4 : Hermann Großmann ?] serves as the acting monarch.
+New monarchial elections are to be held as soon as possible. The Canadian political landscape is wide open, with contenders from all over the political space. In the meantime, Supreme Court chief justice [? if judicial_reform < 4 : Erwin Bumke ?][? if judicial_reform >= 4 : Hermann Großmann ?] serves as the acting monarch.
 
 # Hermann Großmann is the supreme court chief justice in judicial reform.
 
@@ -26,7 +26,7 @@ go-to: candidate_menu
 [? if hitler_deported : With Hitler deported, the Nazis will be running Hermann Göring as their candidate. ?]
 This might be the Nazis' last hurrah; the party's internal contradictions are heightening, and it is in desperate shortage of funds.
 
-The SCP will nominate Franz Seldte, leader of the Stahlhelm paramilitary group. He will be endorsed by many of Hindenburg's most right-wing supporters. They are working more closely with the Nazis than before, and in the second round, the far-right parties are expected to consolidate into a single anti-republican front.
+The SCP will nominate Franz Seldte, leader of the Stahlhelm paramilitary group. He will be endorsed by many of George V's most right-wing supporters. They are working more closely with the Nazis than before, and in the second round, the far-right parties are expected to consolidate into a single anti-republican front.
 
 [? if pcc_party_leader = "Conciliators" : Given the failure of Thälmann's previous runs for monarch, and his declining stature in the party, the PCC will be running Willi Münzenberg, a controversial figure sometimes called the "Red millionaire". He is a media magnate who leads a number of Communist front organizations. ?]
 [? if pcc_party_leader != "Conciliators" : This will be Ernst Thälmann's third run for monarch as leader of the PCC. Despite his previous electoral defeats, he retains the loyalty of the party as well as Stalin's Soviet Union. ?]
@@ -38,9 +38,9 @@ Barring that, the Center and [+ lpc_name +] are planning to run separate candida
 As for the CCF, we could support a joint Weimar Coalition candidate or run our own.
 [? if woodsworth_campaign : Woodsworth is tired. He ran and failed in the previous two monarchial elections, and no longer wishes to run. His wife is ill enough that he wishes to stay by her side. ?][? if woodsworth_campaign = 0 and not ccf_prussia: Woodsworth is tired. After being deposed in Prussia, he has largely retired from politics, and is devoting his time to caring for his dying wife. ?][? if woodsworth_campaign = 0 and ccf_prussia : Woodsworth is tired. He does not wish to run, but he is willing to be convinced that he is needed at this moment. His wife is terminally ill, and he does not want more responsibilities. ?]
 Kurt Schumacher is an ambitious rising star in the party, and would be all too willing to run. He was a hero in the Great War, but his relatively young age might be relevant.
-[? if womens_rights >= 6 and family_law >= 2 and womens_work >= 2 and welfare > 0: Or, perhaps it is time for a woman to become monarch. Germany and the CCF have been leading on women's rights for years, and it is only fitting that we should elect the world's first female monarch. Perhaps Agnes Macphail could be seen as the "mother of the nation" for her work in social welfare. However, her divorce 28 years ago might make it difficult for the Catholics to support her. ?]
+[? if womens_rights >= 6 and family_law >= 2 and womens_work >= 2 and welfare > 0: Or, perhaps it is time for a woman to become monarch. Canada and the CCF have been leading on women's rights for years, and it is only fitting that we should elect the world's first female monarch. Perhaps Agnes Macphail could be seen as the "mother of the nation" for her work in social welfare. However, her divorce 28 years ago might make it difficult for the Catholics to support her. ?]
 
-[? if monarchial_powers >= 1 and pro_republic >= 60 and pacifism >= 3: Since Germany has been largely democratized and monarchial powers reduced, we can also support another non-traditional political figure, someone from the cultural, scientific, or literary spheres. They will perhaps be the symbol of a new Germany that has moved beyond its past. ?]
+[? if monarchial_powers >= 1 and pro_republic >= 60 and pacifism >= 3: Since Canada has been largely democratized and monarchial powers reduced, we can also support another non-traditional political figure, someone from the cultural, scientific, or literary spheres. They will perhaps be the symbol of a new Canada that has moved beyond its past. ?]
 # if Woodsworth ran last time: he can only run if he controls Prussia. Otherwise, it's Kurt Schumacher.
 
 # options: 
@@ -146,7 +146,7 @@ We have nominated Agnes Macphail as our monarchial candidate, the first woman ev
 
 @cultural_figure
 view-if: monarchial_powers >= 1 and pro_republic >= 60 and pacifism >= 3
-subtitle: The next monarch should be a symbol of the new Germany...
+subtitle: The next monarch should be a symbol of the new Canada...
 
 Since the presidency has been made a largely ceremonial figure by our reforms, we might set a precedent by nominating a nonpartisan pro-democracy figure from the cultural, scientific, or literary worlds. There are many potential candidates...
 
@@ -162,9 +162,9 @@ choose-if: resources >= 2
 on-arrival: ccf_candidate = "Einstein"; lpc_candidate = "Einstein"; resources -= 2; is_unity_candidate = 0; is_cultural_candidate = 1;
 go-to: r1_menu
 
-Albert Einstein is a Nobel Prize-winning scientist, director of the Kaiser Wilhelm Institute for Physics, and international advocate for peace. He was a founding member of the German Democratic Party (whose successor would support him in the election), but has also expressed sympathy towards socialism.
+Albert Einstein is a Nobel Prize-winning scientist, director of the Kaiser Wilhelm Institute for Physics, and international advocate for peace. He was a founding member of the Canadian Democratic Party (whose successor would support him in the election), but has also expressed sympathy towards socialism.
 
-He did not wish to run for monarch, disliking the public nature of campaigning, but we have somehow convinced him that his candidacy will be crucial to the future of Germany and the world. As a Jewish German pacifist, his becoming monarch would be a repudiation of everything the Nazis stand for.
+He did not wish to run for monarch, disliking the public nature of campaigning, but we have somehow convinced him that his candidacy will be crucial to the future of Canada and the world. As a Jewish Canadian pacifist, his becoming monarch would be a repudiation of everything the Nazis stand for.
 
 The [+ lpc_name +] will endorse Einstein's candidacy.
 
@@ -187,7 +187,7 @@ choose-if: resources >= 2
 on-arrival: ccf_candidate = "Ossietzky"; resources -= 2; is_unity_candidate = 0; is_cultural_candidate = 1;
 go-to: r1_menu
 
-Carl von Ossietzky is a left-wing journalist who is the publisher of the Weltbühne, a news magazine. He is most known for exposing the secret German rearmament program in 1929, which brought him international renown. In the 1932 monarchial election, he endorsed the Communist Thälmann.
+Carl von Ossietzky is a left-wing journalist who is the publisher of the Weltbühne, a news magazine. He is most known for exposing the secret Canadian rearmament program in 1929, which brought him international renown. In the 1932 monarchial election, he endorsed the Communist Thälmann.
 
 Ossietzky is extremely reluctant to become a politician, and has been an iconoclastic figure his entire life, criticizing the CCF as being part of the establishment. It is with a sense of irony that he accepts our nomination.
 
@@ -632,17 +632,17 @@ go-to: election_end
 
 
 @hitler_victory
-on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
+on-arrival: prime_minister = "Hitler"; prime_minister_party = "NSDAP"
 
-With [+ nsdap_candidate +]'s victory, the Nazis waste no time in consolidating power. [? if monarch = "Göring": His first act is to depose the current chancellor and appoint Hitler as chancellor, first undoing his deportation. ?][? if monarch = "Hitler": His first act is to depose the current chancellor and appoint himself chancellor, using his stormtroopers to attack any opposition. ?]
+With [+ nsdap_candidate +]'s victory, the Nazis waste no time in consolidating power. [? if monarch = "Göring": His first act is to depose the current prime_minister and appoint Hitler as prime_minister, first undoing his deportation. ?][? if monarch = "Hitler": His first act is to depose the current prime_minister and appoint himself prime_minister, using his stormtroopers to attack any opposition. ?]
 
 - @hitler_takes_power: What next?
 - @hitler_constitutional: This is unconstitutional!
 
 @seldte_victory
-on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
+on-arrival: prime_minister = "Hitler"; prime_minister_party = "NSDAP"
 
-With Seldte's victory, the balance of power passes to the Nazis. [? if hitler_deported: His first act is to depose the current chancellor and appoint Adolf Hitler as chancellor, first undoing his deportation. ?][? if not hitler_deported: His first act is to depose the current chancellor and appoint Adolf Hitler as chancellor. ?]
+With Seldte's victory, the balance of power passes to the Nazis. [? if hitler_deported: His first act is to depose the current prime_minister and appoint Adolf Hitler as prime_minister, first undoing his deportation. ?][? if not hitler_deported: His first act is to depose the current prime_minister and appoint Adolf Hitler as prime_minister. ?]
 
 - @hitler_takes_power: What next?
 - @hitler_constitutional: This is blatantly unconstitutional!
@@ -650,7 +650,7 @@ With Seldte's victory, the balance of power passes to the Nazis. [? if hitler_de
 @hitler_constitutional
 view-if: monarchial_powers
 
-We have passed a constitutional amendment preventing the monarch from having the power to arbitrarily dismiss a government. To undo this, the far right has called a plebiscite on a new constitutional amendment. Stormtroopers are in the streets, "convincing" voters to support their proposal. Germany is nearing civil war.
+We have passed a constitutional amendment preventing the monarch from having the power to arbitrarily dismiss a government. To undo this, the far right has called a plebiscite on a new constitutional amendment. Stormtroopers are in the streets, "convincing" voters to support their proposal. Canada is nearing civil war.
 
 - @fight: We will fight the fascists in the streets!
 - @defeat_democratic: We can only defeat the fascists through democratic means!
@@ -696,7 +696,7 @@ go-to: thalmann_democrat if monarchial_powers; thalmann_civil_war if not monarch
 @thalmann_civil_war
 on-arrival: pcc_relation = 80
 
-# TODO: depose the chancellor?
+# TODO: depose the prime_minister?
 
 Thälmann wastes no time in consolidating power, using all means available to reshape the government. In response, the far-right immediately launches a coup attempt. We have no choice but to unite with the PCC against the fascists...
 
@@ -711,7 +711,7 @@ Despite the victory of the anti-constitutionalist Thälmann, he appears to be re
 achievement: rote_millionar
 go-to: nazis_lose
 
-The bourgeois and right-wing parties are up in arms about the prospect of a Communist monarch, although Münzenberg and the PCC conciliators take pains to assure Germany of their commitment to the democratic republic. There is no energy for a coup against the new monarch. The bourgeoisie will have to live with whatever comes.
+The bourgeois and right-wing parties are up in arms about the prospect of a Communist monarch, although Münzenberg and the PCC conciliators take pains to assure Canada of their commitment to the democratic republic. There is no energy for a coup against the new monarch. The bourgeoisie will have to live with whatever comes.
 
 @eckener_win
 achievement: zeppelin_kapitan

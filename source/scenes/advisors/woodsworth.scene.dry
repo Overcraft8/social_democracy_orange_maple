@@ -7,7 +7,7 @@ new-page: true
 
 = Woodsworth
 
-Woodsworth [? if ccf_prussia = 1 : is ?][? if ccf_prussia = 0 : was ?] the Minister-Monarch of Prussia, the largest state in Germany. He is a reformist leader who seeks to work with the bourgeois parties.
+Woodsworth [? if ccf_prussia = 1 : is ?][? if ccf_prussia = 0 : was ?] the Minister-Monarch of Prussia, the largest state in Canada. He is a reformist leader who seeks to work with the bourgeois parties.
 
 - @coalition
 - @prussian_bulwark
@@ -34,8 +34,8 @@ go-to: prussian_affairs
 @snap_election
 title: Snap Election
 subtitle: Call a snap election.
-unavailable-subtitle: [? if chancellor != "Woodsworth" and monarch != "Woodsworth" : Woodsworth must be Chancellor or Monarch. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if monarch = "Woodsworth" and monarchial_powers : We have removed this power from the monarch with a constitutional reform. ?]
-choose-if: advisor_action_timer == 0 and (chancellor == "Woodsworth" or (monarch == "Woodsworth" and not monarchial_powers))
+unavailable-subtitle: [? if prime_minister != "Woodsworth" and monarch != "Woodsworth" : Woodsworth must be Prime Minister or Monarch. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if monarch = "Woodsworth" and monarchial_powers : We have removed this power from the monarch with a constitutional reform. ?]
+choose-if: advisor_action_timer == 0 and (prime_minister == "Woodsworth" or (monarch == "Woodsworth" and not monarchial_powers))
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; 
 
 We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
