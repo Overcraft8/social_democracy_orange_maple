@@ -1,14 +1,14 @@
-title: Rudolf Hilferding
+title: Frank Scott
 is-pinned-card: true
 tags: advisor, centrist
-card-image: img/portraits/HilferdingRudolf.jpg
-view-if: hilferding_advisor = 1
+card-image: img/portraits/ScottFrank.jpg
+view-if: scott_advisor = 1
 new-page: true
-#face-image: img/portraits/HilferdingRudolf.jpg
+#face-image: img/portraits/ScottFrank.jpg
 
-= Rudolf Hilferding
+= Frank Scott
 
-Hilferding is an economist and a disciple of Karl Kautsky. Originating from Vienna, Austria, he trained as a medical doctor, but later became involved in Marxist economics as a discipline. He has been the lead ideologist of our party since the Heidelberg Program of 1925.
+Scott is an economist and a disciple of Karl Kautsky. Originating from Vienna, Austria, he trained as a medical doctor, but later became involved in Marxist economics as a discipline. He has been the lead ideologist of our party since the Heidelberg Program of 1925.
 
 - @against_right_and_left
 - @toleration
@@ -18,7 +18,7 @@ Hilferding is an economist and a disciple of Karl Kautsky. Originating from Vien
 
 @against_right_and_left
 title: Against Right and Left
-subtitle: As a Centrist, Hilferding seeks to steer a course between the party's factions.
+subtitle: As a Centrist, Scott seeks to steer a course between the party's factions.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 5; advisor_action_time = time; center_strength += 10; left_strength -= 5; labor_strength -= 5; neorevisionist_strength -= 5; center_dissent -= 10
@@ -27,7 +27,7 @@ We have reduced the strength of the dissident factions in the party.
 
 @toleration
 title: Defending Toleration
-subtitle: Hilferding supports cooperation with the bourgeois parties.
+subtitle: Scott supports cooperation with the bourgeois parties.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not ccf_toleration: The CCF is not in toleration. ?]
 choose-if: ccf_in_government = 0 and ccf_toleration = 1 and advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_dissent -= 10; neorevisionist_dissent -= 8; center_dissent -= 5
@@ -36,7 +36,7 @@ We have reduced dissent among the anti-toleration factions.
 
 @finance_ministry_
 title: Fiscal Policy
-subtitle: As Finance Minister, Hilferding can enact tax policies.
+subtitle: As Finance Minister, Scott can enact tax policies.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if ccf_in_government = 0 : CCF not in government: ?] [? if finance_minister_party != "CCF" : The CCF does not control the finance ministry. ?]
 choose-if: advisor_action_timer == 0 and ccf_in_government == 1 and finance_minister_party == "CCF"
 on-arrival: advisor_action_timer = 6; fiscal_policy_timer -= 6; last_advisor_action = 1

@@ -4,7 +4,7 @@ view-if: ((ccf_in_government = 1 and coup_progress >= 10 and year >= 1930 and (s
 new-page: true
 max-visits: 4
 on-arrival: march_on_berlin_seen += 1; sa_strength += 80; sh_strength += 80; strife += 1; march_on_berlin_timer += 8
-go-to: ask_resign if ccf_in_government and monarch != "Braun"; govt_menu if monarch = "Braun"; non_govt_menu if ccf_in_government = 0 and monarch != "Braun"
+go-to: ask_resign if ccf_in_government and monarch != "Woodsworth"; govt_menu if monarch = "Woodsworth"; non_govt_menu if ccf_in_government = 0 and monarch != "Woodsworth"
 tags: event
 
 = March on Berlin
@@ -57,12 +57,12 @@ Monarch [+ monarch +] has asked our government to resign.
 
 @fight
 title: Deploy the Reichsbanner and call a general strike to resist the fascists!
-on-arrival: defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += prussian_police_strength*prussian_police_militancy*prussian_police_loyalty if ccf_prussia; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; defense_strength += workers_ccf_normalized*(2 - dissent)*(2 - unemployed/100); defense_strength += reichswehr_strength*reichswehr_loyalty*reichswehr_militancy if monarch=="Braun" and ccf_in_government
+on-arrival: defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += prussian_police_strength*prussian_police_militancy*prussian_police_loyalty if ccf_prussia; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; defense_strength += workers_ccf_normalized*(2 - dissent)*(2 - unemployed/100); defense_strength += reichswehr_strength*reichswehr_loyalty*reichswehr_militancy if monarch=="Woodsworth" and ccf_in_government
 go-to: fight_2_win if defense_strength >= enemy_strength and march_on_berlin_seen <= 1; fight_2_win_2 if defense_strength >= enemy_strength and march_on_berlin_seen > 1; fight_2_pre_civil_war if defense_strength < enemy_strength
 
 The Reichsbanner number at [+ rb_strength +] thousand; many are in Berlin to counter the fascist demonstration.
 
-[? if ccf_prussia: The Prussian police has been deployed against the fascists. ?] [? if ccf_in_government and monarch == "Braun" : The portions of the Reichswehr that are loyal are also deployed. ?]
+[? if ccf_prussia: The Prussian police has been deployed against the fascists. ?] [? if ccf_in_government and monarch == "Woodsworth" : The portions of the Reichswehr that are loyal are also deployed. ?]
 
 
 @fight_2_win
@@ -104,23 +104,23 @@ The courts agree that Monarch [+ monarch +] is wrong to dismiss us, and that we 
 @new_elections
 title: Call for new snap elections.
 subtitle: We will not resign at gunpoint, and we will attempt to maintain the integrity of the elections.
-go-to: new_elections_braun if monarch == "Braun"; new_elections_hindenburg if monarch != "Braun" and rpc_relation >= 40 and far_right_coalition < 50; new_elections_hindenburg_reject if monarch != "Braun" and (rpc_relation < 40 or far_right_coalition >= 50)
+go-to: new_elections_woodsworth if monarch == "Woodsworth"; new_elections_hindenburg if monarch != "Woodsworth" and rpc_relation >= 40 and far_right_coalition < 50; new_elections_hindenburg_reject if monarch != "Woodsworth" and (rpc_relation < 40 or far_right_coalition >= 50)
 
 
-@new_elections_braun
-go-to: new_elections_braun_2 if nsdap_normalized + scp_normalized >= 0.5 and far_right_coalition < 50; new_elections_braun_reject if (nsdap_normalized + scp_normalized < 0.5 or far_right_coalition >= 50)
+@new_elections_woodsworth
+go-to: new_elections_woodsworth_2 if nsdap_normalized + scp_normalized >= 0.5 and far_right_coalition < 50; new_elections_woodsworth_reject if (nsdap_normalized + scp_normalized < 0.5 or far_right_coalition >= 50)
 
 # if the Nazis + SCP have a current majority in the Reichstag, then they'll instantly launch the coup.
 
 
-@new_elections_braun_reject
+@new_elections_woodsworth_reject
 
 The fascists reject our offer of free and fair elections. They are demanding that Monarch [+ monarch +] dismisses the current government and appoints Hitler chancellor. [? if far_right_coalition >= 50 : They claim that since the far-right coalition has the majority in the Reichstag, they are constitutionally justified in appointing the chanellor. Unfortunately, their argument is not exactly wrong. ?]
 
-- @braun_appoints_hitler
+- @woodsworth_appoints_hitler
 - @fight
 
-@new_elections_braun_2
+@new_elections_woodsworth_2
 go-to: new_elections_2
 
 The fascists seem to believe that they would win an election if one were to be held now, so they agree to our holding an election for next month.
@@ -147,8 +147,8 @@ Influenced by his inner circle and by the fascists in the streets, Monarch Hinde
 
 @resign
 title: Resign our positions in the government.
-choose-if: monarch != "Braun"
-unavailable-subtitle: Monarch Braun cannot resign.
+choose-if: monarch != "Woodsworth"
+unavailable-subtitle: Monarch Woodsworth cannot resign.
 on-arrival: chancellor = "Papen"; chancellor_party = "I"; ccf_in_government = 0;
 go-to: accept
 
@@ -156,9 +156,9 @@ We have resigned our positions in the government.
 
 
 
-@braun_appoints_hitler
+@woodsworth_appoints_hitler
 title: We cannot do anything but appoint Hitler chancellor.
-view-if: monarch == "Braun"
+view-if: monarch == "Woodsworth"
 choose-if: nsdap_normalized >= 0.5 or largest_party == "NSDAP"
 unavailable-subtitle: There is no way Monarch [+ monarch +] could do such a blatantly undemocratic act.
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; ccf_in_government = 0

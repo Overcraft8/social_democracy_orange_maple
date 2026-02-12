@@ -8,8 +8,8 @@ Q.game_over = 1;
 // Eiserne Front - Form the Iron Front.
 this.achieve('game_completed');
 
-// Roter RPCar von Preußen - At the end of the game, Otto Braun is monarch, chancellor, and minister-monarch of prussia at the same time.
-if (Q.monarch == 'Braun' && Q.chancellor == 'Braun' && Q.ccf_prussia) {
+// Roter RPCar von Preußen - At the end of the game, Woodsworth is monarch, chancellor, and minister-monarch of prussia at the same time.
+if (Q.monarch == 'Woodsworth' && Q.chancellor == 'Woodsworth' && Q.ccf_prussia) {
     this.achieve('red_tzar_of_prussia');
 }
 // Bürgerkrieg - enter a long civil war.
@@ -188,13 +188,13 @@ Germany is currently in the grip of a civil war, a brutal affair that has no obv
 [? if is_favorable == 0 : The current conditions are not favorable for us. ?][? if west_relation >= 2: Our cause is popular in the West, but their sclerotic governments are reluctant to send us aid. ?][? if soviet_aid >= 1 : The Soviet Union has aided the Communists, but not the socialists and democrats, in an attempt to shape Germany's future government. ?][? if east_aid >= 1 : Poland and Czechoslovakia have sent some assistance against the fascists. ?]
 
 
-@braun_victorious
-title: Otto Braun victorious
-view-if: monarch == "Braun"
+@woodsworth_victorious
+title: Woodsworth victorious
+view-if: monarch == "Woodsworth"
 tags: endings
 go-to: eg_menu
 
-Otto Braun has been elected as Monarch of Germany. He had never desired to be the most powerful man in Germany, but now he is.
+Woodsworth has been elected as Monarch of Germany. He had never desired to be the most powerful man in Germany, but now he is.
 
 @monarch_schumacher
 title: Kurt Schumacher victorious
@@ -338,7 +338,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
 
-[? if game_achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Otto Braun is Monarch, Chancellor, and Minister-Monarch. ?]
+[? if game_achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Chancellor, and Minister-Monarch. ?]
 
 [? if game_achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the CCF and PCC. ?]
 
@@ -447,7 +447,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
 
-[? if achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Otto Braun is Monarch, Chancellor, and Minister-Monarch. ?]
+[? if achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Chancellor, and Minister-Monarch. ?]
 
 [? if achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the CCF and PCC. ?]
 
@@ -554,7 +554,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
 
-[? if not achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Otto Braun is Monarch, Chancellor, and Minister-Monarch. ?]
+[? if not achievement_red_tzar_of_prussia : **Roter RPCar von Preußen** - Woodsworth is Monarch, Chancellor, and Minister-Monarch. ?]
 
 [? if not achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the CCF and PCC. ?]
 

@@ -1,13 +1,13 @@
-title: Fritz Baade
+title: Percy Wright
 is-pinned-card: true
 tags: advisor, reformist
-card-image: img/portraits/BaadeFritz.jpg
-view-if: baade_advisor = 1
+card-image: img/portraits/WrightFritz.jpg
+view-if: wright_advisor = 1
 new-page: true 
 
-= Fritz Baade
+= Percy Wright
 
-Baade is one of the few agricultural experts in the CCF, and an unorthodox economist.
+Wright is one of the few agricultural experts in the CCF, and an unorthodox economist.
 
 - @agriculture
 - @rural_campaign
@@ -16,7 +16,7 @@ Baade is one of the few agricultural experts in the CCF, and an unorthodox econo
 
 @agriculture
 title: Agricultural Policy
-subtitle: Baade is the Minister of Agriculture.
+subtitle: Wright is the Minister of Agriculture.
 choose-if: advisor_action_timer <= 0 and ccf_in_government and agriculture_minister_party == "CCF"
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not ccf_in_government : The CCF is not in government. ?][? if agriculture_minister_party != "CCF": The CCF does not have the Agriculture Ministry. ?]
 on-arrival: advisor_action_timer = 6; agricultural_policy_timer -= 6; last_advisor_action = 1
@@ -39,5 +39,5 @@ choose-if: advisor_action_timer <= 0 and wtb_adopted = 0 and black_thursday_seen
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if wtb_adopted > 0 : We have already adopted the WTB-Plan. ?]
 on-arrival: advisor_action_timer = 6; wtb_support += 2; center_dissent += 10; labor_strength += 1
 
-The WTB-Plan, standing for its primary supporters Woytinsky, Tarnow, and Baade, has been adopted as the unions' plan for getting us out of the depression. Baade canvasses in favor of this plan throughout the party.
+The WTB-Plan, standing for its primary supporters Woytinsky, Tarnow, and Wright, has been adopted as the unions' plan for getting us out of the depression. Wright canvasses in favor of this plan throughout the party.
 

@@ -36,15 +36,15 @@ Many republicans of the Center, [+ lpc_name +], and CCF float the idea of runnin
 Barring that, the Center and [+ lpc_name +] are planning to run separate candidates in the first round if the CCF runs its own candidate. The Center is considering nominating Konrad Adenauer, mayor of Köln and member of the Prussian state legislature. He calls for an alliance of conservative Christian democrats that encompasses both Catholics and Protestants. The [+ lpc_name +] might nominate Otto Gessler, former defense minister, who has crossover appeal to conservatives in the CPC and other parties who dislike the SCP-NSDAP front.
 
 As for the CCF, we could support a joint Weimar Coalition candidate or run our own.
-[? if braun_campaign : Otto Braun is tired. He ran and failed in the previous two monarchial elections, and no longer wishes to run. His wife is ill enough that he wishes to stay by her side. ?][? if braun_campaign = 0 and not ccf_prussia: Otto Braun is tired. After being deposed in Prussia, he has largely retired from politics, and is devoting his time to caring for his dying wife. ?][? if braun_campaign = 0 and ccf_prussia : Otto Braun is tired. He does not wish to run, but he is willing to be convinced that he is needed at this moment. His wife is terminally ill, and he does not want more responsibilities. ?]
+[? if woodsworth_campaign : Woodsworth is tired. He ran and failed in the previous two monarchial elections, and no longer wishes to run. His wife is ill enough that he wishes to stay by her side. ?][? if woodsworth_campaign = 0 and not ccf_prussia: Woodsworth is tired. After being deposed in Prussia, he has largely retired from politics, and is devoting his time to caring for his dying wife. ?][? if woodsworth_campaign = 0 and ccf_prussia : Woodsworth is tired. He does not wish to run, but he is willing to be convinced that he is needed at this moment. His wife is terminally ill, and he does not want more responsibilities. ?]
 Kurt Schumacher is an ambitious rising star in the party, and would be all too willing to run. He was a hero in the Great War, but his relatively young age might be relevant.
 [? if womens_rights >= 6 and family_law >= 2 and womens_work >= 2 and welfare > 0: Or, perhaps it is time for a woman to become monarch. Germany and the CCF have been leading on women's rights for years, and it is only fitting that we should elect the world's first female monarch. Perhaps Marie Juchacz could be seen as the "mother of the nation" for her work in social welfare. However, her divorce 28 years ago might make it difficult for the Catholics to support her. ?]
 
 [? if monarchial_powers >= 1 and pro_republic >= 60 and pacifism >= 3: Since Germany has been largely democratized and monarchial powers reduced, we can also support another non-traditional political figure, someone from the cultural, scientific, or literary spheres. They will perhaps be the symbol of a new Germany that has moved beyond its past. ?]
-# if Otto Braun ran last time: he can only run if he controls Prussia. Otherwise, it's Kurt Schumacher.
+# if Woodsworth ran last time: he can only run if he controls Prussia. Otherwise, it's Kurt Schumacher.
 
 # options: 
-# - Otto Braun (only if ccf_prussia)
+# - Woodsworth (only if ccf_prussia)
 # - Kurt Schumacher
 # - Marie Juchacz (The mother of the nation, only available if women's rights is full)
 
@@ -55,7 +55,7 @@ Kurt Schumacher is an ambitious rising star in the party, and would be all too w
 - @gessler_r1: Support Otto Gessler of the [+ lpc_name +].
 - @thalmann_r1: Support Ernst Thälmann of the PCC.
 - @munzenberg_r1: Support Willi Münzenberg of the PCC.
-- @braun_r1: Support Otto Braun.
+- @woodsworth_r1: Support Woodsworth.
 - @schumacher_r1: Support Kurt Schumacher.
 - @juchacrpc_r1: Support Marie Juchacz.
 - @cultural_figure: Support a nonpartisan cultural figure?
@@ -114,14 +114,14 @@ go-to: r1_menu
 We have endorsed Willi Münzenberg of the PCC.
 
 
-@braun_r1
+@woodsworth_r1
 subtitle: -2 resources.
-unavailable-subtitle: [? if resources < 2 : -2 resources - Not enough resources. ?][? if braun_campaign != 0 or not ccf_prussia : Braun no longer wants to run. ?]
-choose-if: braun_campaign = 0 and ccf_prussia and resources >= 2
-on-arrival: ccf_candidate = "Braun"; resources -= 2; is_unity_candidate = 0
+unavailable-subtitle: [? if resources < 2 : -2 resources - Not enough resources. ?][? if woodsworth_campaign != 0 or not ccf_prussia : Woodsworth no longer wants to run. ?]
+choose-if: woodsworth_campaign = 0 and ccf_prussia and resources >= 2
+on-arrival: ccf_candidate = "Woodsworth"; resources -= 2; is_unity_candidate = 0
 go-to: r1_menu
 
-We have convinced Otto Braun to run for monarch once more.
+We have convinced Woodsworth to run for monarch once more.
 
 
 @schumacher_r1
@@ -210,17 +210,17 @@ view-if: round = 0
 title: Convince the Center Party to support [+ ccf_candidate +].
 view-if: (ccf_candidate = "Eckener" or ccf_candidate = "Gessler") and rpc_candidate != ccf_candidate
 on-arrival: {!
-Q.rpc_support_braun = 0;
+Q.rpc_support_woodsworth = 0;
 if (Q.rpc_relation >= 40 || (Q.rpc_relation > 20 && Q.rpc_party_leader == "Joos")) {
-    Q.rpc_support_braun = 1;
+    Q.rpc_support_woodsworth = 1;
 } else if (Q.rpc_relation <= 20) {
-    Q.rpc_support_braun = 0;
+    Q.rpc_support_woodsworth = 0;
 } else {
-    Q.rpc_support_braun = 2;
+    Q.rpc_support_woodsworth = 2;
 }
 !}
 max-visits: 1
-go-to: rpc_failed if rpc_support_braun = 0 or (rpc_support_braun == 2 and historical_mode); rpc_success if rpc_support_braun = 1; rpc_partial if rpc_support_braun = 2 and not historical_mode
+go-to: rpc_failed if rpc_support_woodsworth = 0 or (rpc_support_woodsworth == 2 and historical_mode); rpc_success if rpc_support_woodsworth = 1; rpc_partial if rpc_support_woodsworth = 2 and not historical_mode
 
 # use the same supports as the Center Party in 1932
 We implore the Center Party to support [+ ccf_candidate +] as a unity candidate against fascism, arguing that together, the Weimar Coalition can defeat the Nazis. [? if rpc_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
@@ -231,29 +231,29 @@ We implore the Center Party to support [+ ccf_candidate +] as a unity candidate 
 title: Convince the Center Party to support [+ ccf_candidate +].
 choose-if: ccf_votes >= rpc_votes
 unavailable-subtitle: [? if ccf_votes < rpc_votes: The Center knows that they are more popular than us; they do not see a reason to support our candidate. ?]
-view-if: (ccf_candidate = "Braun" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz" or is_cultural_candidate) and rpc_candidate != ccf_candidate
+view-if: (ccf_candidate = "Woodsworth" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz" or is_cultural_candidate) and rpc_candidate != ccf_candidate
 on-arrival: {!
-Q.rpc_support_braun = 0;
+Q.rpc_support_woodsworth = 0;
 if (Q.ccf_candidate == "Juchacz") {
     if (Q.rpc_relation >= 60 || (Q.rpc_relation > 40 && Q.rpc_party_leader == "Joos")) {
-        Q.rpc_support_braun = 1;
+        Q.rpc_support_woodsworth = 1;
     } else if (Q.rpc_relation <= 40) {
-        Q.rpc_support_braun = 0;
+        Q.rpc_support_woodsworth = 0;
     } else {
-        Q.rpc_support_braun = 2;
+        Q.rpc_support_woodsworth = 2;
     }
 } else {
     if (Q.rpc_relation >= 55 || (Q.rpc_relation > 35 && Q.rpc_party_leader == "Joos")) {
-        Q.rpc_support_braun = 1;
+        Q.rpc_support_woodsworth = 1;
     } else if (Q.rpc_relation <= 35) {
-        Q.rpc_support_braun = 0;
+        Q.rpc_support_woodsworth = 0;
     } else {
-        Q.rpc_support_braun = 2;
+        Q.rpc_support_woodsworth = 2;
     }
 }
 !}
 max-visits: 1
-go-to: rpc_failed if rpc_support_braun = 0 or (rpc_support_braun == 2 and historical_mode); rpc_success if rpc_support_braun = 1; rpc_partial if rpc_support_braun = 2 and not historical_mode
+go-to: rpc_failed if rpc_support_woodsworth = 0 or (rpc_support_woodsworth == 2 and historical_mode); rpc_success if rpc_support_woodsworth = 1; rpc_partial if rpc_support_woodsworth = 2 and not historical_mode
 
 We implore the Center Party to support [+ ccf_candidate +]. We attempt to convince them of the necessity for unity in the face of fascism: that if we were divided, we would fall to the Nazis. [? if rpc_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
 
@@ -302,7 +302,7 @@ max-visits: 1
 
 @convince_lpc_ccf
 title: Convince the [+ lpc_name +] to support [+ ccf_candidate +].
-view-if: (ccf_candidate = "Braun" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz"or is_cultural_candidate) and lpc_candidate != ccf_candidate
+view-if: (ccf_candidate = "Woodsworth" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz"or is_cultural_candidate) and lpc_candidate != ccf_candidate
 on-arrival: lpc_candidate = ccf_candidate if lpc_relation >= 40
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
@@ -312,7 +312,7 @@ max-visits: 1
 
 @convince_pcc_ccf
 title: Convince the PCC to support [+ ccf_candidate +].
-view-if: (ccf_candidate = "Braun" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz" or is_cultural_candidate) and pcc_candidate != ccf_candidate
+view-if: (ccf_candidate = "Woodsworth" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz" or is_cultural_candidate) and pcc_candidate != ccf_candidate
 choose-if: ccf_votes >= pcc_votes
 unavailable-subtitle: The PCC knows that they are more popular than us; they do not see a reason to support our candidate.
 max-visits: 1
@@ -346,7 +346,7 @@ The PCC now endorses [+ ccf_candidate +] in the monarchial election! We ask them
 @convince_cpc_ccf
 title: Convince the CPC to support [+ ccf_candidate +].
 unavailable-subtitle: The CPC is not willing to support our candidate.
-view-if: ccf_candidate = "Braun" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz" or is_cultural_candidate
+view-if: ccf_candidate = "Woodsworth" or ccf_candidate = "Schumacher" or ccf_candidate = "Juchacz" or is_cultural_candidate
 choose-if: (cpc_relation >= 50 and candidate != "Juchacz") or (cpc_relation >= 60 and candidate = "Juchacz")
 on-arrival: cpc_candidate = ccf_candidate
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
@@ -383,7 +383,7 @@ Adenauer: "Konrad Adenauer of the Center Party",
 Gessler: "Otto Gessler, independent formerly of the LPC",
 Thalmann: "Ernst Thälmann of the PCC",
 Munzenberg: "Willi Münzenberg of the PCC",
-Braun: "Otto Braun of the CCF",
+Woodsworth: "Woodsworth of the CCF",
 Schumacher: "Kurt Schumacher of the CCF",
 Juchacz: "Marie Juchacz of the CCF",
 Einstein: "Albert Einstein, scientist",
@@ -451,7 +451,7 @@ Election results:
 
 [? if Eckener_running : Eckener - [+ Eckener_votes_disp +]% ?]
 
-[? if Braun_running : Braun - [+ Braun_votes_disp +]% ?]
+[? if Woodsworth_running : Woodsworth - [+ Woodsworth_votes_disp +]% ?]
 [? if Schumacher_running : Schumacher - [+ Schumacher_votes_disp +]% ?]
 [? if Juchacrpc_running : Juchacz - [+ Juchacrpc_votes_disp +]% ?]
 # cultural candidates
@@ -543,10 +543,10 @@ view-if: ccf_candidate != "Thälmann" and pcc_candidate = "Thälmann"
 choose-if: pcc_relation >= 50 and left_strength > reformist_strength
 unavailable-subtitle: [? if pcc_relation < 50 : We do not have good enough relations with the Communists, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this bizarre arrangement. ?]
 on-arrival: reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_ccf -= 5; workers_ccf -= 3; pcc_relation += 10; communist_coalition += 2; rpc_relation -= 15; cpc_relation -= 15; lpc_relation -= 12
-on-departure: rpc_candidate = "Adenauer" if rpc_candidate = "Braun" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz"; lpc_candidate = rpc_candidate if lpc_candidate = "Braun" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz"; cpc_candidate = rpc_candidate if cpc_candidate = "Braun" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz"; ccf_candidate = "Thälmann"; 
+on-departure: rpc_candidate = "Adenauer" if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz"; lpc_candidate = rpc_candidate if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz"; cpc_candidate = rpc_candidate if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz"; ccf_candidate = "Thälmann"; 
 max-visits: 1
 
-We have switched our endorsement to Ernst Thälmann of the PCC. [? if rpc_candidate = ccf_candidate : Our former allies in the Center Party see this as a betrayal. ?][? if rpc_candidate = "Braun" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Braun" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz": The [+ lpc_name +] will switch their support to the Center Party candidate. ?][? if cpc_candidate = "Braun" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz": The CPC will also support the Center Party candidate. ?]
+We have switched our endorsement to Ernst Thälmann of the PCC. [? if rpc_candidate = ccf_candidate : Our former allies in the Center Party see this as a betrayal. ?][? if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz": The [+ lpc_name +] will switch their support to the Center Party candidate. ?][? if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz": The CPC will also support the Center Party candidate. ?]
 
 - @r2_vote: Let the voting begin.
 
@@ -557,10 +557,10 @@ view-if: ccf_candidate != "Münzenberg" and pcc_candidate = "Münzenberg"
 choose-if: pcc_relation >= 50 and left_strength > reformist_strength
 unavailable-subtitle: [? if pcc_relation < 50 : We do not have good enough relations with the Communists, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this bizarre arrangement. ?]
 on-arrival: reformist_dissent += 12; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_ccf -= 5; workers_ccf -= 3; pcc_relation += 10; communist_coalition += 2; rpc_relation -= 12; lpc_relation -= 10; cpc_relation -= 15; 
-on-departure: rpc_candidate = "Adenauer" if rpc_candidate = "Braun" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz"; lpc_candidate = rpc_candidate if lpc_candidate = "Braun" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz"; cpc_candidate = rpc_candidate if cpc_candidate = "Braun" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz"; ccf_candidate = "Münzenberg"; 
+on-departure: rpc_candidate = "Adenauer" if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz"; lpc_candidate = rpc_candidate if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz"; cpc_candidate = rpc_candidate if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz"; ccf_candidate = "Münzenberg"; 
 max-visits: 1
 
-We have switched our endorsement to Willi Münzenberg of the PCC. [? if rpc_candidate = ccf_candidate : Our former allies in the Center Party see this as a betrayal. ?][? if rpc_candidate = "Braun" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Braun" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz": The [+ lpc_name +] will switch their support to the Center Party candidate. ?][? if cpc_candidate = "Braun" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz": The CPC will also support the Center Party candidate. ?]
+We have switched our endorsement to Willi Münzenberg of the PCC. [? if rpc_candidate = ccf_candidate : Our former allies in the Center Party see this as a betrayal. ?][? if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Juchacz": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Juchacz": The [+ lpc_name +] will switch their support to the Center Party candidate. ?][? if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Juchacz": The CPC will also support the Center Party candidate. ?]
 
 - @r2_vote: Let the voting begin.
 
@@ -685,7 +685,7 @@ Despite the Nazi threats, supporters of the CCF and the democratic parties refus
 
 
 @election_end
-go-to: eckener_win if winner = "Eckener"; juchacrpc_win if winner = "Juchacz"; bundesrepublik_win if winner = "Schumacher" or winner = "Adenauer"; hitler_victory if winner = "Hitler" or winner = "Göring" or winner = "Goring"; seldte_victory if winner = "Seldte"; munzenberg_victory if winner = "Munzenberg" or winner = "Münzenberg"; thalmann_victory if winner = "Thalmann" or winner = "Thälmann"; nazis_lose if winner = "Braun" or winner = "Gessler"; cultural_victory if winner = "Ossietzky" or winner = "Mann"; einstein_victory if winner = "Einstein"
+go-to: eckener_win if winner = "Eckener"; juchacrpc_win if winner = "Juchacz"; bundesrepublik_win if winner = "Schumacher" or winner = "Adenauer"; hitler_victory if winner = "Hitler" or winner = "Göring" or winner = "Goring"; seldte_victory if winner = "Seldte"; munzenberg_victory if winner = "Munzenberg" or winner = "Münzenberg"; thalmann_victory if winner = "Thalmann" or winner = "Thälmann"; nazis_lose if winner = "Woodsworth" or winner = "Gessler"; cultural_victory if winner = "Ossietzky" or winner = "Mann"; einstein_victory if winner = "Einstein"
 on-arrival: monarch = winner; monarch = "Thälmann" if monarch == "Thalmann"; monarch = "Münzenberg" if monarch = "Munzenberg"; monarch = "Göring" if monarch = "Goring"
 
 The election has been won by [+ winner_desc +].

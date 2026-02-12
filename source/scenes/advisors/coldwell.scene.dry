@@ -1,13 +1,13 @@
-title: Otto Wels
+title: Major James Coldwell
 is-pinned-card: true
 tags: advisor, centrist
-card-image: img/portraits/WelsOtto.jpg
-view-if: wels_advisor = 1
+card-image: img/portraits/ColdwellMJ.jpg
+view-if: coldwell_advisor = 1
 new-page: true
 
-= Otto Wels
+= Major James Coldwell
 
-Wels is the long-time chairman of the CCF. He is a gifted organizer and a member of the centrist faction.
+Coldwell is the long-time chairman of the CCF. He is a gifted organizer and a member of the centrist faction.
 
 - @clear_agenda
 - @party_discipline
@@ -53,8 +53,8 @@ We have gained +[+ dues +] resources.
 @snap_election
 title: Snap Election
 subtitle: Call a snap election.
-unavailable-subtitle: [? if chancellor != "Wels" : Wels must be Chancellor or Monarch. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-choose-if: advisor_action_timer == 0 and (chancellor == "Wels")
+unavailable-subtitle: [? if chancellor != "Coldwell" : Coldwell must be Chancellor or Monarch. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer == 0 and (chancellor == "Coldwell")
 on-arrival: advisor_action_timer = 6; time_to_election = 3
 call: set_next_election_time
 
