@@ -570,11 +570,6 @@ table {
     fill: #C40000;
 }
 
-.tooltip-text {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-}
-
 .mytooltip {
   position: relative;
   cursor: pointer;
@@ -614,4 +609,3 @@ table {
   left: calc(var(--mouse-x, 0px));
   transform: translate(-50%, -100%);
 }
-
