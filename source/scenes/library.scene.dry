@@ -127,7 +127,7 @@ go-to: menu
 
 **Rural**: Small and large farmers and independent rural workers. Protestant farmers often support the SCP. 20-30% of the population.
 
-**Catholics** are the largest religious minority, at about 30% of the population. They disproportionately support the Center Party (or the Bavarian People's Party in Bavaria).
+**Catholics** are the largest religious minority, at about 30% of the population. They disproportionately support the RPC Party (or the Bavarian People's Party in Bavaria).
 
 **Jews** account for between 0.5% to 1% of the population, and tend to support liberal parties, mostly the LPC, although substantial numbers support the CCF or CP.
 
@@ -200,7 +200,7 @@ Catholics: CCF: [+ catholics_ccf_display +]%, RPC: [+ catholics_rpc_display +]%,
 @parties
 go-to: menu
 
-**CCF** - *Co-operative Commonwealth Federation* - this is us. We are a multi-faceted socialist party, home to agrarian populists, radical labour members, and social gospelers. We are the foremost representative of those struck down by the capitalist system. 
+**CCF** - *Co-operative Commonwealth Federation* - this is us. We are a multi-faceted socialist party, home to reformist populists, radical labour members, and social gospelers. We are the foremost representative of those struck down by the capitalist system. 
 
 **RPC** - *Reconstruction Party*  - An offshoot of the Conservatives, the RPC is a center-right party that supports moderate economic reform and increased social spending, but within the confines of capitalism. 
 
@@ -219,7 +219,7 @@ Current relations: [+ cpc_relation : relationships +]
 
 Current relations: [+ scp_relation : relationships +]
 
-**CP** - *Communist Party* - A far-Left revolutionary party aiming to overthrow capitalism and establish a dictatorship of the proletariat. They are supported by a minority of the working class, and are heavily repressed by the government. They have strong links to Moscow. 
+**CP** - *Communist Party* - A far-Left revolutionary party aiming to overthrow capitalism and establish a dictatorship of the proletariat. They are supported by a minority of the working class, and are heavily repressed by the government. They have alleged links to Moscow
 
 Current relations: [+ cp_relation : relationships +]
 
@@ -241,7 +241,7 @@ go-to: menu
 
 **Paramilitary groups:**
 
-**Reichsbanner Schwarz-Rot-Gold**: There are various farmer's organizations in Canada, mainly acting as wheat pool cooperatives. They have are represented by the agrarian wing of our party.
+**Reichsbanner Schwarz-Rot-Gold**: There are various farmer's organizations in Canada, mainly acting as wheat pool cooperatives. They have are represented by the reformist wing of our party.
 
 Strength: [+ rb_strength +] thousand
 
@@ -292,11 +292,11 @@ Strength: [+ left_strength : strength +]
 
 Dissent: [+ left_dissent : dissent +]
 
-**Centrists**
+**Agrarians**
 
-Centrists in the CCF are followers of the doctrine of orthodox Marxism as expounded by Karl Kautsky and later Frank Scott. They seek a middle course between reform and revolution, while defending the democratic state.
+Agrarians in the CCF are followers of the doctrine of orthodox Marxism as expounded by Karl Kautsky and later Frank Scott. They seek a middle course between reform and revolution, while defending the democratic state.
 
-Strength: [+ center_strength : strength +]
+Strength: [+ agrarian_strength : strength +]
 
 Dissent: [+ center_dissent : dissent +]
 
@@ -363,8 +363,8 @@ data = data.concat([
     },
     {
         "id": "rpc",
-        "legend": "Center",
-        "name": "Center",
+        "legend": "RPC",
+        "name": "RPC",
         "seats": (Q.rpc_r - 3)*5,
     },
     {
@@ -410,8 +410,8 @@ if (d3 && window) {
     }
     var parliament = d3.parliament();
     parliament.width(width).height(height).innerRadiusCoef(0.4);
-    parliament.enter.fromCenter(true).smallToBig(true);
-    parliament.exit.toCenter(false).bigToSmall(true);
+    parliament.enter.fromRPC(true).smallToBig(true);
+    parliament.exit.toRPC(false).bigToSmall(true);
     d3.select("#reichstag").datum(data).call(parliament);
 
     var lines = d3.linegraph(false, false,

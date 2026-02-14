@@ -12,7 +12,7 @@ The CP has called a vote of no confidence against us, due to our various policie
 @menu
 
 - @try_assuage: Try to assuage them somehow.
-- @support_center: Could we form a new government based on the Center Party and [+ lpc_name +] (and possibly CPC)?
+- @support_center: Could we form a new government based on the RPC Party and [+ lpc_name +] (and possibly CPC)?
 - @let_it_happen: Let the vote happen.
 
 @try_assuage
@@ -50,7 +50,7 @@ By transferring resources to our coalition partners, we can reduce their dissent
 
 @support_center
 choose-if: (weimar_coalition >= 50 and rpc_relation >= 40) or (grand_coalition >= 50 and rpc_relation >= 45 and cpc_relation >= 30)
-unavailable-subtitle: [? if grand_coalition < 50 : This would not give us a majority. ?] [? if rpc_relation < 45 : After working with the Communists, the Center Party does not wish to form a coalition with us. ?] [? if cpc_relation < 30 : The CPC would rather see the government fall than rescue us from the Communists. ?]
+unavailable-subtitle: [? if grand_coalition < 50 : This would not give us a majority. ?] [? if rpc_relation < 45 : After working with the Communists, the RPC Party does not wish to form a coalition with us. ?] [? if cpc_relation < 30 : The CPC would rather see the government fall than rescue us from the Communists. ?]
 
 We could try to boot the CP from our governing coalition, and form a new government[? if ccf_r <= 50 : with the bourgeois parties ?].
 

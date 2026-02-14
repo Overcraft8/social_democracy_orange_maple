@@ -43,7 +43,7 @@ go-to: woodsworth_campaign
 
 It takes effort to run a somewhat unexpected campaign. First, Woodsworth has to be convinced to run. He himself had supported voting for George V, and it takes a good deal of prodding to convince him of his destiny.
 
-The miniscule remnants of the Democratic Party (now called the Canadian State Party) will likely support us. Who else will? Can we convince the Center to support Woodsworth? What about the Communists?
+The miniscule remnants of the Democratic Party (now called the Canadian State Party) will likely support us. Who else will? Can we convince the RPC to support Woodsworth? What about the Communists?
 
 
 @support_thalmann
@@ -65,14 +65,14 @@ Fine. We have thrown our support to Chairman Thälmann of the CP.
 
 @woodsworth_campaign
 
-- @convince_rpc: Convince the Center Party.
+- @convince_rpc: Convince the RPC Party.
 - @convince_cp: Convince the Communists.
 - @convince_liberals: Convince the remaining liberals, wherever they are.
 - @final_election: The final vote...
 
 @convince_rpc
 choose-if: ccf_votes >= rpc_votes
-unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
+unavailable-subtitle: The RPC knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: {!
 Q.rpc_support_woodsworth = 0;
 if (Q.rpc_relation >= 55 || (Q.rpc_relation > 35 && Q.rpc_party_leader == "Joos")) {
@@ -86,19 +86,19 @@ if (Q.rpc_relation >= 55 || (Q.rpc_relation > 35 && Q.rpc_party_leader == "Joos"
 go-to: rpc_failed if rpc_support_woodsworth = 0 or (rpc_support_woodsworth == 2 and historical_mode); rpc_success if rpc_support_woodsworth = 1; rpc_partial if rpc_support_woodsworth = 2 and not historical_mode
 max-visits: 1
 
-We remind the Center leaders of George V's anti-Catholicism, and try to convince them that George V's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Woodsworth, and our support for the Center candidate R.B. Bennett in the 1925 monarchial election.
+We remind the RPC leaders of George V's anti-Catholicism, and try to convince them that George V's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Woodsworth, and our support for the RPC candidate R.B. Bennett in the 1925 monarchial election.
 
 @rpc_success
 go-to: woodsworth_campaign
 
-The Center are convinced! They will be part of the Woodsworth coalition.
+The RPC are convinced! They will be part of the Woodsworth coalition.
 
 @rpc_partial
 
-The Center are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
+The RPC are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
 
 - @pay_rpc: Give them the resources they need.
-- @woodsworth_campaign: Forget about the Center.
+- @woodsworth_campaign: Forget about the RPC.
 
 @pay_rpc
 choose-if: resources >= 3
@@ -107,7 +107,7 @@ unavailable-subtitle: Not enough resources (need 3)
 on-arrival: resources -= 3; rpc_support_woodsworth = 1
 go-to: woodsworth_campaign
 
-With our resources, the Center are convinced to support Woodsworth over George V.
+With our resources, the RPC are convinced to support Woodsworth over George V.
 
 @rpc_failed
 go-to: woodsworth_campaign
@@ -283,7 +283,7 @@ There is no majority in this round. In the second round, any candidate who wins 
 
 @round2_menu
 
-- @round2_convince_rpc: Convince the Center to switch their support to us.
+- @round2_convince_rpc: Convince the RPC to switch their support to us.
 - @round2_convince_cp: Convince the CP to switch their support to us. 
 - @round2_georgev: Switch our support to George V.
 - @round2_thalmann: Switch our support to Thälmann of the CP.
@@ -293,7 +293,7 @@ There is no majority in this round. In the second round, any candidate who wins 
 @round2_convince_rpc
 view-if: woodsworth_campaign > 0 and rpc_support_woodsworth != 1 
 choose-if: ccf_votes >= rpc_votes
-unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
+unavailable-subtitle: The RPC knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: {!
 Q.rpc_support_woodsworth = 0;
 // if George V support is greater than Hitler and Woodsworth support, this should be much harder
@@ -319,16 +319,16 @@ max-visits: 1
 go-to: round2_menu
 on-departure: hitler_support_georgev = 1 if woodsworth_votes + rpc_votes > hitler_votes
 
-[? if hitler_support_georgev : The Center's opinion is affected by the Nazis' support of George V, and is willing to turn away from him. ?] The Center are convinced! They will be part of the Woodsworth coalition. [? if hitler_support_georgev : In addition, they will also bring in some minor parties who will support us. ?]
+[? if hitler_support_georgev : The RPC's opinion is affected by the Nazis' support of George V, and is willing to turn away from him. ?] The RPC are convinced! They will be part of the Woodsworth coalition. [? if hitler_support_georgev : In addition, they will also bring in some minor parties who will support us. ?]
 
-[? if not hitler_support_georgev and woodsworth_votes + rpc_votes > hitler_votes: With the Center Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed George V to prevent a socialist from becoming monarch. ?]
+[? if not hitler_support_georgev and woodsworth_votes + rpc_votes > hitler_votes: With the RPC Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed George V to prevent a socialist from becoming monarch. ?]
 
 @r2_rpc_partial
 
-The Center are not satisfied with our arguments, but they are open to being convinced[? if hitler_support_georgev: , especially given the Nazis' support for George V. ?]. They are willing to run a joint campaign if we front the resources.
+The RPC are not satisfied with our arguments, but they are open to being convinced[? if hitler_support_georgev: , especially given the Nazis' support for George V. ?]. They are willing to run a joint campaign if we front the resources.
 
 - @r2_pay_rpc: Give them the resources they need.
-- @round2_menu: Forget about the Center.
+- @round2_menu: Forget about the RPC.
 
 @r2_pay_rpc
 choose-if: resources >= 2
@@ -338,9 +338,9 @@ on-arrival: resources -= 2; rpc_support_woodsworth = 1
 on-departure: hitler_support_georgev = 1 if woodsworth_votes + rpc_votes > hitler_votes
 go-to: round2_menu
 
-With our resources, the Center are convinced to support Woodsworth over George V.
+With our resources, the RPC are convinced to support Woodsworth over George V.
 
-[? if not hitler_support_georgev and woodsworth_votes + rpc_votes > hitler_votes: With the Center Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed George V to prevent a socialist from becoming monarch. ?]
+[? if not hitler_support_georgev and woodsworth_votes + rpc_votes > hitler_votes: With the RPC Party supporting Woodsworth, [+ nsdap_candidate +] has dropped out of the race, and the Nazis have endorsed George V to prevent a socialist from becoming monarch. ?]
 
 @r2_rpc_failed
 go-to: round2_menu
@@ -397,7 +397,7 @@ on-departure: rpc_support_woodsworth = 0; cp_support_woodsworth = 0;
 
 Fine. We have thrown our support to Chairman Thälmann of the CP.
 
-[? if rpc_support_woodsworth : The Center Party is confused at our capricious behavior, and have switched their support to George V. ?]
+[? if rpc_support_woodsworth : The RPC Party is confused at our capricious behavior, and have switched their support to George V. ?]
 
 - @round2_vote: Let the second round voting begin.
 

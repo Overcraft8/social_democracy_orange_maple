@@ -40,7 +40,7 @@ on-arrival: scott_advisor = 0; center_dissent += 5; n_advisors -= 1
 tags: remove_advisor
 go-to: rm_main
 
-Scott has been removed as an advisor. The Centrist faction disapproves.
+Scott has been removed as an advisor. The Agrarian faction disapproves.
 
 @remove_coldwell
 title: Remove Coldwell
@@ -49,7 +49,7 @@ tags: remove_advisor
 on-arrival: coldwell_advisor = 0; center_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
-Coldwell has been removed as an advisor. The Centrist faction disapproves.
+Coldwell has been removed as an advisor. The Agrarian faction disapproves.
 
 @remove_douglas
 title: Remove Douglas
@@ -58,7 +58,7 @@ tags: remove_advisor
 on-arrival: douglas_advisor = 0; center_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
-Douglas has been removed as an advisor. The Centrist faction disapproves.
+Douglas has been removed as an advisor. The Agrarian faction disapproves.
 
 
 @remove_gardiner
@@ -68,7 +68,7 @@ tags: remove_advisor
 on-arrival: gardiner_advisor = 0; center_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
-Gardiner has been removed as an advisor. The Centrist faction disapproves.
+Gardiner has been removed as an advisor. The Agrarian faction disapproves.
 
 # reformists
 
@@ -290,7 +290,7 @@ tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_adv
 frequency: 1
 
 
-- @centrist: Add Centrists
+- @agrarian: Add Agrarians
 - @left: Add Leftists
 - @reformist: Add Reformists
 - @labor: Add Labor
@@ -299,7 +299,7 @@ frequency: 1
 - @rm_main: Remove advisors instead.
 - @remove_none: Stop changing advisors.
 
-@centrist
+@agrarian
 view-if: n_advisors < 3
 
 - #center_advisor
@@ -446,7 +446,7 @@ Stanley Knowles is now an advisor.
 
 @add_jamieson
 title: Laura Jamieson
-subtitle: Laura Jamieson is an anti-war and womens' rights advocate, and Reichstag member. {!<br><br>!}[? if difficulty < 0 : Actions - Left-Center Unity, Organizing Women, Against Toleration, Addressing the Economic Crisis ?]
+subtitle: Laura Jamieson is an anti-war and womens' rights advocate, and Reichstag member. {!<br><br>!}[? if difficulty < 0 : Actions - Left-Agrarian Unity, Organizing Women, Against Toleration, Addressing the Economic Crisis ?]
 is-card: true
 card-image: img/portraits/JamiesonLaura.jpeg
 view-if: jamieson_advisor = 0 and n_advisors < 3
@@ -484,7 +484,7 @@ William Irvine is now an advisor.
 title: Dorise Nielsen
 subtitle: Dorise Nielsen is an and educational reform advocate and pacifist, who was one of the few Canadian women to receive a PhD in the pre-war period. {!<br><br>!}[? if difficulty < 0 : Actions - Rally for Pacifism, Educational Curriculum, Educational Structure ?]
 is-card: true
-card-image: img/portraits/NielsenDorise.jpg
+card-image: img/portraits/NielsenDorise.png
 view-if: nielsen_advisor = 0 and n_advisors < 3 and left_split = 0
 on-arrival: nielsen_advisor = 1; n_advisors += 1; left_strength += 5
 go-to: advisor_menu

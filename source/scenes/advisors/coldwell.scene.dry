@@ -1,13 +1,13 @@
 title: Major James Coldwell
 is-pinned-card: true
-tags: advisor, centrist
+tags: advisor, agrarian
 card-image: img/portraits/ColdwellMajorJames.jpg
 view-if: coldwell_advisor = 1
 new-page: true
 
 = Major James Coldwell
 
-Coldwell is the long-time chairman of the CCF. He is a gifted organizer and a member of the centrist faction.
+Coldwell is the long-time chairman of the CCF. He is a gifted organizer and a member of the agrarian faction.
 
 - @clear_agenda
 - @party_discipline

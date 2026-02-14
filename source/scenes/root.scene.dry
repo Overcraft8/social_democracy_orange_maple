@@ -46,11 +46,11 @@ Q.dissent = 0.05;
 Q.dissent_percent = 5;
 
 // factions
-Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.factions = ['left', 'agrarian', 'labor', 'reformist', 'neorevisionist'];
 // should this be normalized to 100%?
 Q.left_strength = 15;
 Q.left_dissent = 20;
-Q.center_strength = 30;
+Q.agrarian_strength = 30;
 Q.center_dissent = 0;
 Q.labor_strength = 25;
 Q.labor_dissent = 5;
@@ -549,7 +549,7 @@ Q.knowles_dead = 0;
 Q.winch_advisor = 0; // Ernest Winch
 Q.seydewitrpc_advisor = 0; // William Irvine
 
-// centrist alternate advisors
+// agrarian alternate advisors
 Q.connell_advisor = 0; // Robert Connell
 Q.gardiner_advisor = 0; // Robert Gardiner
 

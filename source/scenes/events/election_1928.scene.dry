@@ -214,8 +214,8 @@ data = data.concat([
     },
     {
         "id": "rpc",
-        "legend": "Center",
-        "name": "Center",
+        "legend": "RPC",
+        "name": "RPC",
         "seats": Math.round((Q.rpc_r - 3)*5),
     },
     {
@@ -262,8 +262,8 @@ if (window && d3) {
 
     var parliament = d3.parliament();
     parliament.width(width).height(height).innerRadiusCoef(0.4);
-    parliament.enter.fromCenter(true).smallToBig(true);
-    parliament.exit.toCenter(false).bigToSmall(true);
+    parliament.enter.fromRPC(true).smallToBig(true);
+    parliament.exit.toRPC(false).bigToSmall(true);
     d3.select("#reichstag").datum(data).call(parliament);
 }
 !}
@@ -332,11 +332,11 @@ There are some potential coalition arrangements.
 @popular_front_coalition
 title: A new "Popular Front" coalition?
 subtitle: CCF + CP + RPC + [+ lpc_name +]  [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%)
-unavailable-subtitle: CCF + CP + RPC + [+ lpc_name +] [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%) - [? if ((cp_relation < 65 and cp_party_leader == "Thälmann") or (cp_relation < 45 and cp_party_leader == "Conciliators")): We do not have good enough relations with the CP. ?][? if (rpc_relation < 45 and rpc_party_leader == "Joos") or (rpc_relation < 65 and rpc_party_leader != "Joos" and cp_party_leader != "Conciliators") or (rpc_relation < 55 and rpc_party_leader != "Joos" and cp_party_leader == "Conciliators"): We do not have good enough relations with the Center Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?]
+unavailable-subtitle: CCF + CP + RPC + [+ lpc_name +] [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%) - [? if ((cp_relation < 65 and cp_party_leader == "Thälmann") or (cp_relation < 45 and cp_party_leader == "Conciliators")): We do not have good enough relations with the CP. ?][? if (rpc_relation < 45 and rpc_party_leader == "Joos") or (rpc_relation < 65 and rpc_party_leader != "Joos" and cp_party_leader != "Conciliators") or (rpc_relation < 55 and rpc_party_leader != "Joos" and cp_party_leader == "Conciliators"): We do not have good enough relations with the RPC Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?]
 view-if: popular_front_coalition >= 50
 choose-if: (((cp_relation >= 65 and cp_party_leader == "Thälmann") or (cp_relation >= 45 and cp_party_leader == "Conciliators")) and ((rpc_relation >= 45 and rpc_party_leader == "Joos") or (rpc_relation >= 65 and rpc_party_leader != "Joos" and cp_party_leader != "Conciliators") or (rpc_relation >= 55 and rpc_party_leader != "Joos" and cp_party_leader == "Conciliators")) and lpc_relation >= 50 and communist_coalition >= 3) or (rpc_party_leader == "Joos" and cp_party_leader == "Conciliators" and rpc_relation >= 30 and cp_relation >= 30)
 
-Could we really form a coalition that included both the Center and the Communists? It seems like an absurd concept, but given our good relationships with both sides, it is not an impossibility.
+Could we really form a coalition that included both the RPC and the Communists? It seems like an absurd concept, but given our good relationships with both sides, it is not an impossibility.
 
 The far-right might attempt a coup, if such a coalition were formed.
 
@@ -346,7 +346,7 @@ The far-right might attempt a coup, if such a coalition were formed.
 @popular_front_2
 view-if: rpc_party_leader != "Joos" or cp_party_leader != "Conciliators"
 
-Somehow, both the Communists and Center are at the very least willing to entertain negotiations. Of course, CP radicals and Center conservatives derail the negotiations almost immediately. The CP demands leadership of the coalition for themselves and their chairman Ernst Thälmann, [? if ccf_r > cp_r : despite our higher vote share, ?]while the Center is offended by the prospect of helping Bolsheviks enter government. *Something* must be done to restore balance.
+Somehow, both the Communists and RPC are at the very least willing to entertain negotiations. Of course, CP radicals and RPC conservatives derail the negotiations almost immediately. The CP demands leadership of the coalition for themselves and their chairman Ernst Thälmann, [? if ccf_r > cp_r : despite our higher vote share, ?]while the RPC is offended by the prospect of helping Bolsheviks enter government. *Something* must be done to restore balance.
 
 - @popular_front_resources
 - @popular_front_democracy
@@ -379,14 +379,14 @@ on-arrival: ccf_in_government = 1; in_popular_front = 1; prime_minister = "Gardi
 achievement: grosse_volksfront
 go-to: popular_front_civil_war if coup_progress >= 10; popular_front_no_civil_war if coup_progress < 10
 
-Somehow, the coalition is successfully formed! The conciliatory leadership of the Center Party and CP helped make the negotiations possible. We still need a prime_minister; the only acceptable choice among the parties was Robert Gardiner of the CCF, acceptable to the Center and CP [? if monarch == "George V" : as well as Monarch George V, albeit extremely reluctantly ?].
+Somehow, the coalition is successfully formed! The conciliatory leadership of the RPC Party and CP helped make the negotiations possible. We still need a prime_minister; the only acceptable choice among the parties was Robert Gardiner of the CCF, acceptable to the RPC and CP [? if monarch == "George V" : as well as Monarch George V, albeit extremely reluctantly ?].
 
 @popular_front_success
 on-arrival: ccf_in_government = 1; in_popular_front = 1; prime_minister = "Gardiner"; prime_minister_party = "CCF"; cp_relation += 10; coup_progress += 2; in_left_front = 0; in_weimar_coalition = 0; in_grand_coalition = 0; coalition_dissent = 0;
 go-to: popular_front_civil_war if coup_progress >= 10; popular_front_no_civil_war if coup_progress < 10
 achievement: volksfront
 
-Somehow, surprisingly, the coalition is successfully formed! We still need a prime_minister; the only acceptable choice among the parties was Robert Gardiner of the CCF, acceptable to the Center and CP [? if monarch == "George V" : as well as Monarch George V, albeit extremely reluctantly ?].
+Somehow, surprisingly, the coalition is successfully formed! We still need a prime_minister; the only acceptable choice among the parties was Robert Gardiner of the CCF, acceptable to the RPC and CP [? if monarch == "George V" : as well as Monarch George V, albeit extremely reluctantly ?].
 
 @popular_front_no_civil_war
 on-arrival: cp_goals_seen = 0; finance_minister_party = "RPC"; interior_minister_party = "RPC"; economic_minister_party = "RPC"; labor_minister_party = "RPC"; foreign_minister_party = "RPC"; agriculture_minister_party = "RPC"; reichswehr_minister = "I"; leverage = ccf_r + cp_r;
@@ -404,7 +404,7 @@ on-arrival: cp_relation = 80; reichswehr_loyalty += 0.25;
 
 In response to the CP's entrance into the government, the right-wing immediately launches a coup attempt. Troops of the Stahlhelm and Nazi SA enter Berlin and immediately begin clashing with our supporters! Reactionary officers within the Reichswehr have taken their troops out of the barracks and joined them with the Stahlhelm to stop us from taking power.
 
-The Center manages to diffuse some of the hostility from the Reichswehr and the Stahlhelm, but fail to prevent the outbreak of fighting. We are forced to fight on the same side as the CP, whether we want to or not.
+The RPC manages to diffuse some of the hostility from the Reichswehr and the Stahlhelm, but fail to prevent the outbreak of fighting. We are forced to fight on the same side as the CP, whether we want to or not.
 
 - @civil_war: A civil war, then.
 
@@ -470,7 +470,7 @@ A far left coalition is impossible.
 
 @left_coalition_possible
 
-The CP is still very reluctant to join a coalition, despite grassroots friendliness between our memberships. The Stalinist leadership is vehemently against such a thing. They demand the appointment of Ernst Thälmann as prime_minister in exchange for a coalition. [? if monarch == "George V" : There is no chance whatsoever that Monarch George V would approve of the appointment of a die-hard communist as prime_minister. ?] Alternatively, if our relations with them are good enough, we could convince them to support the appointment of one of our centrist or left-leaning members as prime_minister.
+The CP is still very reluctant to join a coalition, despite grassroots friendliness between our memberships. The Stalinist leadership is vehemently against such a thing. They demand the appointment of Ernst Thälmann as prime_minister in exchange for a coalition. [? if monarch == "George V" : There is no chance whatsoever that Monarch George V would approve of the appointment of a die-hard communist as prime_minister. ?] Alternatively, if our relations with them are good enough, we could convince them to support the appointment of one of our agrarian or left-leaning members as prime_minister.
 
 - @thalmann_prime_minister: Appoint Thälmann as prime_minister.
 - @left_coalition_resources
@@ -511,7 +511,7 @@ on-arrival: ccf_in_government = 1; in_left_front = 1; prime_minister = "Gardiner
 go-to: left_coalition_civil_war if coup_progress >= 10; left_coalition_no_civil_war if coup_progress < 10
 achievement: einheitsfront
 
-Somehow, surprisingly, the left coalition is successfully formed, without appointing Thälmann as prime_minister. The consensus choice for prime_minister, accepted by the CCF, CP, and Monarch [+ monarch +], is Robert Gardiner, who belongs to the centrist faction of the CCF, but was acceptable to the left due to his previous membership in the left-wing anti-war UCCF.
+Somehow, surprisingly, the left coalition is successfully formed, without appointing Thälmann as prime_minister. The consensus choice for prime_minister, accepted by the CCF, CP, and Monarch [+ monarch +], is Robert Gardiner, who belongs to the agrarian faction of the CCF, but was acceptable to the left due to his previous membership in the left-wing anti-war UCCF.
 
 # just raise the coup limit, don't immediately go to civil war
 
@@ -536,11 +536,11 @@ In response to the CP's entrance into the government, the right-wing immediately
 @right_coalition
 title: Refuse to form a government, so that a right-wing coalition may be formed.
 subtitle: RPC + BVP + CPC + SCP + Others ([+ right_coalition +]%)
-unavailable-subtitle: The SCP is not interested in a coalition with the Center.
+unavailable-subtitle: The SCP is not interested in a coalition with the RPC.
 view-if: right_coalition >= 50
 choose-if: year < 1929
 
-There are enough votes for a right-wing coalition of the Center (+ BVP), CPC, SCP, and minor conservative parties. [? if largest_party == "CCF": However, this will be seen as abdicating responsibility for government, as we are the largest party. ?]
+There are enough votes for a right-wing coalition of the RPC (+ BVP), CPC, SCP, and minor conservative parties. [? if largest_party == "CCF": However, this will be seen as abdicating responsibility for government, as we are the largest party. ?]
 
 - @right_coalition_sure: Yes, we will abdicate our responsibility for government formation, and let a right-wing coalition take power.
 - @grand_coalition: Actually, we wish to form a grand coalition after all.
@@ -548,7 +548,7 @@ There are enough votes for a right-wing coalition of the Center (+ BVP), CPC, SC
 @no_right_coalition
 go-to: no_majority
 
-However, the SCP and its leader Hugenberg is refusing to partake in a coalition with the "November criminals" in the Center Party. Thus, there is no clear path towards a Reichstag majority.
+However, the SCP and its leader Hugenberg is refusing to partake in a coalition with the "November criminals" in the RPC Party. Thus, there is no clear path towards a Reichstag majority.
 
 @right_coalition_sure
 subtitle: This will be extremely unpopular within our party.
@@ -557,7 +557,7 @@ go-to: right_coalition_2
 
 
 @right_coalition_2
-unavailable-subtitle: The SCP is not interested in a coalition with the Center.
+unavailable-subtitle: The SCP is not interested in a coalition with the RPC.
 view-if: right_coalition >= 50
 choose-if: year < 1929
 on-arrival: ccf_in_government = 0; ccf_toleration = 0; prime_minister = "Brüning"; prime_minister_party = "RPC"; foreign_minister_party = "CPC"; interior_minister_party = "SCP"; justice_minister_party = "SCP"; labor_minister_party = "RPC"; reichswehr_minister_party = "I"; economic_minister_party = "CPC"; finance_minister_party = "RPC"; agriculture_minister_party = "SCP"; in_right_coalition = 1;
@@ -579,7 +579,7 @@ go-to: no_majority_bruning if prime_minister = "Brüning" or prime_minister = "W
 @no_majority_ccf
 on-arrival: prime_minister = "Brüning"; prime_minister_party = "RPC"
 
-There is no path to an obviously workable majority. Since Monarch George V is unwilling to work with a minority or caretaker CCF government, his preferred prime_minister is Heinrich Brüning of the Center Party, who could lead a "monarchial" government.
+There is no path to an obviously workable majority. Since Monarch George V is unwilling to work with a minority or caretaker CCF government, his preferred prime_minister is Heinrich Brüning of the RPC Party, who could lead a "monarchial" government.
 
 - @toleration_bruning: We will tolerate Brüning.
 - @new_grand_coalition: We will try to form a new grand coalition.
@@ -594,7 +594,7 @@ go-to: no_majority_bruning_toleration if (no_majority_elections <= 3 and anti_de
 @georgev_appoints_papen
 on-arrival: prime_minister = "Papen"; prime_minister_party = "I"; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; sa_banned = 0; pro_republic -= 8; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I";
 
-There is no path to a majority government. Monarch George V is tired of the chaos, and appoints Franz von Papen as prime_minister instead of Brüning. Papen is a indenpendent formerly from the Center Party, and is significantly to the right of the majority of the Center Party.
+There is no path to a majority government. Monarch George V is tired of the chaos, and appoints Franz von Papen as prime_minister instead of Brüning. Papen is a indenpendent formerly from the RPC Party, and is significantly to the right of the majority of the RPC Party.
 
 Papen is immediately faced with a vote of no confidence, given his unpopularity. However the CCF votes, he is guaranteed to fall, due to the unanimous hatred against him from all other parties.
 
@@ -620,9 +620,9 @@ title: A "New Grand Coalition" of all the constitutional parties?
 subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%)
 view-if: neo_weimar_coalition >= 50 and grand_coalition < 50
 choose-if: rpc_relation >= 50 and cpc_relation >= 30
-unavailable-subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%) - [? if rpc_relation < 50 : We do not have adequate relations with the Center Party. ?][? if cpc_relation < 30 : We do not have adequate relations with the CPC. ?]
+unavailable-subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%) - [? if rpc_relation < 50 : We do not have adequate relations with the RPC Party. ?][? if cpc_relation < 30 : We do not have adequate relations with the CPC. ?]
 
-How do we convince vehemently anti-socialist parties to allow us to form a majority coalition? Our largely benevolent relations with the Center and CPC may allow us some leverage.
+How do we convince vehemently anti-socialist parties to allow us to form a majority coalition? Our largely benevolent relations with the RPC and CPC may allow us some leverage.
 
 - @use_resources
 - @toleration_bruning: No. We will tolerate a minority government.
@@ -644,7 +644,7 @@ Now, we have a new grand coalition, a "Constitutional Coalition" of all the non-
 
 Who should be prime_minister?
 
-- @join_bruning: For better or for worse, it must be Heinrich Brüning of the Center.
+- @join_bruning: For better or for worse, it must be Heinrich Brüning of the RPC.
 - @woodsworth_prime_minister_new: Woodsworth for Prime Minister?
 
 @woodsworth_prime_minister_new
@@ -657,11 +657,11 @@ We have assembled a new coalition under Woodsworth.
 
 
 @unity_government
-title: The Center Party offers a "Government of National Unity" under Prime Minister Joseph Wirth.
+title: The RPC Party offers a "Government of National Unity" under Prime Minister Joseph Wirth.
 subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%)
 view-if: rpc_party_leader == "Joos" and neo_weimar_coalition >= 50 and weimar_coalition < 50 and rpc_relation >= 10
 
-The Center Party leader, Joseph Joos, clearly sees the threat from the ascension of the anti-democratic extremist parties, and thus tries to negotiate a "Government of National Unity" to save the republic. This coalition would be led by Joseph Wirth, a left-leaning member of the Center Party and former prime_minister, and would encompass all of the constitutional parties. Our role in this government might be limited, however.
+The RPC Party leader, Joseph Joos, clearly sees the threat from the ascension of the anti-democratic extremist parties, and thus tries to negotiate a "Government of National Unity" to save the republic. This coalition would be led by Joseph Wirth, a left-leaning member of the RPC Party and former prime_minister, and would encompass all of the constitutional parties. Our role in this government might be limited, however.
 
 - @unity_government_2
 - @reject_unity_government: No, we will not accept this offer.
@@ -692,7 +692,7 @@ choose-if: monarch == "Woodsworth"
 unavailable-subtitle: Monarch George V will not support a minority government led by Joseph Wirth.
 on-arrival: prime_minister = "Wirth"; prime_minister_party = "RPC"; ccf_in_government = 0; ccf_toleration = 1; rpc_relation += 5; foreign_minister_party = "CPC"; interior_minister_party = "RPC"; justice_minister_party = "I"; labor_minister_party = "RPC"; reichswehr_minister_party = "I"; economic_minister_party = lpc_name; finance_minister_party = "CPC"; agriculture_minister_party = "RPC"; pro_republic -= 2;
 
-We have supported a minority government led by the Center Party under Prime Minister Joseph Wirth.
+We have supported a minority government led by the RPC Party under Prime Minister Joseph Wirth.
 
 
 
@@ -797,8 +797,8 @@ Yes, an emergency minority government, with the support of the CCF. Who should l
 
 - @woodsworth_emergency_prime_minister: Woodsworth for Prime Minister-Monarch!
 - @gardiner_emergency_prime_minister: Robert Gardiner for emergency Prime Minister.
-- @bruning_emergency_prime_minister: Brüning of the Center Party, as a goodwill gesture toward the bourgeoisie.
-- @wirth_emergency_prime_minister: Joseph Wirth of the Center Party, as a gesture of republican unity.
+- @bruning_emergency_prime_minister: Brüning of the RPC Party, as a goodwill gesture toward the bourgeoisie.
+- @wirth_emergency_prime_minister: Joseph Wirth of the RPC Party, as a gesture of republican unity.
 
 @woodsworth_emergency_prime_minister
 subtitle: This is unprecedented.
@@ -825,7 +825,7 @@ We have appointed Robert Gardiner as emergency prime_minister. The Communists co
 @bruning_emergency_prime_minister
 on-arrival: prime_minister = "Brüning"; prime_minister_party = "RPC"; ccf_in_government = 1; rpc_relation += 10; foreign_minister_party = "CCF"; interior_minister_party = "CCF"; justice_minister_party = "CCF"; labor_minister_party = "CCF"; reichswehr_minister_party = "CCF"; economic_minister_party = "CCF"; finance_minister_party = "CCF"; agriculture_minister_party = "CCF" 
 
-The Center Party is pleased, and somewhat surprised, that we have appointed [+ prime_minister +] as prime_minister.
+The RPC Party is pleased, and somewhat surprised, that we have appointed [+ prime_minister +] as prime_minister.
 
 - @far_right_coup
 - @emergency_no_confidence
@@ -834,7 +834,7 @@ The Center Party is pleased, and somewhat surprised, that we have appointed [+ p
 view-if: rpc_party_leader == "Joos"
 on-arrival: prime_minister = "Wirth"; prime_minister_party = "RPC"; ccf_in_government = 1; rpc_relation += 10; foreign_minister_party = "CCF"; interior_minister_party = "CCF"; justice_minister_party = "CCF"; labor_minister_party = "CCF"; reichswehr_minister_party = "CCF"; economic_minister_party = "CCF"; finance_minister_party = "CCF"; agriculture_minister_party = "CCF" 
 
-The Center Party is pleased that we have appointed [+ prime_minister +] as prime_minister.
+The RPC Party is pleased that we have appointed [+ prime_minister +] as prime_minister.
 
 - @far_right_coup
 - @emergency_no_confidence
@@ -858,7 +858,7 @@ title: The Nazis immediately call a no-confidence vote against us...
 view-if: far_right_coalition < 45
 on-arrival: rpc_no_confidence = 1 if rpc_relation < 45; cp_no_confidence = 1 if cp_relation < 45; other_no_confidence = 1 if (rpc_relation + cpc_relation)/2 < 45; cpc_no_confidence = 1 if cpc_relation < 45; sa_strength += 200; sh_strength += 200; no_confidence_votes = nsdap_r + scp_r; no_confidence_votes += rpc_r if rpc_no_confidence; no_confidence_votes += cpc_r if cpc_no_confidence; no_confidence_votes += cp_r if cp_no_confidence; no_confidence_votes += other_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
 
-The NSDAP and SCP will vote against us, of course. The other parties vote their conscience. [? if rpc_no_confidence: The Center Party is voting against us. ?] [? if cp_no_confidence: The CP votes against us. ?] [? if other_no_confidence: The assortment of minor parties are voting against us. ?]
+The NSDAP and SCP will vote against us, of course. The other parties vote their conscience. [? if rpc_no_confidence: The RPC Party is voting against us. ?] [? if cp_no_confidence: The CP votes against us. ?] [? if other_no_confidence: The assortment of minor parties are voting against us. ?]
 
 In total, [+ no_confidence_votes +]% of the Reichstag is against us. [? if no_confidence_succeeds : We have lost the vote of no confidence. ?]
 
@@ -925,7 +925,7 @@ view-if: weimar_coalition >= 50
 on-arrival: leverage += 5; leverage += 5 if rpc_party_leader == "Joos"; in_weimar_coalition = 1; ccf_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "RPC"; interior_minister_party = "RPC"; justice_minister_party = lpc_name; labor_minister_party = "RPC"; reichswehr_minister_party = "I"; economic_minister_party = lpc_name; finance_minister_party = "RPC"; agriculture_minister_party = "RPC"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Koch-Weser"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Dietrich"; finance_minister = "Köhler"; agriculture_minister = "Hermes";
 achievement: weimar_coalition
 
-We have enough votes to form a "Weimar Coalition" government consisting of the CCF, Center (RPC) and Democratic ([+ lpc_name +]) parties! This has been our preferred governing coalition since 1919.
+We have enough votes to form a "Weimar Coalition" government consisting of the CCF, RPC and Democratic ([+ lpc_name +]) parties! This has been our preferred governing coalition since 1919.
 
 Who should be the prime_minister?
 
@@ -959,13 +959,13 @@ go-to: grand_coalition_ccf_lead if (n_elections <= 1 and largest_party == "CCF")
 @grand_coalition_rpc_lead
 go-to: grand_coalition_rpc_lead_2 if cpc_relation >= 30; grand_coalition_fail if cpc_relation < 30
 
-There are enough votes to form a majority coalition consisting of the CCF, Center (RPC), Bavarian People's (BVP), Democratic ([+ lpc_name +]), and People's (CPC) parties. Given our rather weak electoral performance, [? if ccf_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_ccf = 1 : and the vote of no confidence against us, ?] Monarch George V has asked the Center Party to take the lead role in forming a government.
+There are enough votes to form a majority coalition consisting of the CCF, RPC, Bavarian People's (BVP), Democratic ([+ lpc_name +]), and People's (CPC) parties. Given our rather weak electoral performance, [? if ccf_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_ccf = 1 : and the vote of no confidence against us, ?] Monarch George V has asked the RPC Party to take the lead role in forming a government.
 
 # TODO: if the CCF participated in bringing down the previous government via a vote-of-no-confidence, or if we were essentially removed from government by our coalition partners, we should be more reluctant to participate in a new government.
 
 @grand_coalition_rpc_lead_2
 
-The Center prime_minister is likely to be Heinrich Brüning of the Center Party [? if prime_minister = "Brüning" : again. ?][? if prime_minister != "Brüning": . ?] He is known for his conservatism and sympathy for monarchism, being on the right wing of the Center. [? if austerity >= 2 : Due to the government's austerity policies, many of our members are reluctant to participate in this coalition again. Some support a "toleration" arrangement in which we will provide outside support to prevent the far-right from either entering government or calling a successful no-confidence vote. Others support entering into pure opposition, and letting the right do what it wishes. ?]
+The RPC prime_minister is likely to be Heinrich Brüning of the RPC Party [? if prime_minister = "Brüning" : again. ?][? if prime_minister != "Brüning": . ?] He is known for his conservatism and sympathy for monarchism, being on the right wing of the RPC. [? if austerity >= 2 : Due to the government's austerity policies, many of our members are reluctant to participate in this coalition again. Some support a "toleration" arrangement in which we will provide outside support to prevent the far-right from either entering government or calling a successful no-confidence vote. Others support entering into pure opposition, and letting the right do what it wishes. ?]
 
 Brüning is not opposed to a coalition with us. Alternatively, we could enter a "toleration" agreement.
 
@@ -984,7 +984,7 @@ Heinrich Brüning welcomes us into his new cabinet. Now, we have our pick of min
 @bruning_oppo
 on-arrival: ccf_in_government = 0; ccf_toleration = 0; prime_minister = "Brüning"; prime_minister_party = "RPC"; foreign_minister_party = "CPC"; interior_minister_party = "RPC"; justice_minister_party = "RPC"; labor_minister_party = "RPC"; reichswehr_minister_party = "I"; economic_minister_party = "RPC"; finance_minister_party = "RPC"; agriculture_minister_party = "RPC"; grand_coalition_failed = 1
 
-By refusing to join the grand coalition or tolerating it, we essentially throw the balance of government to the right wing. [? if right_coalition >= 50 : There are enough votes to form a right-wing coalition that includes the SCP. However, the SCP leader, Hugenberg, is opposed to a coalition with the "November criminals" of the Center Party. And of course, the NSDAP is not interested in coalition government. This means that there will not be enough votes to form a majority coalition. ?][? if right_coalition < 50 : There are not enough votes to form a right-wing coalition that includes the SCP, and they are not interested in joining in a coalition with the "November criminals" of the Center Party, anyhow. And of course, the NSDAP is not interested in coalition government. This means that there is no route to a majority coalition. ?]
+By refusing to join the grand coalition or tolerating it, we essentially throw the balance of government to the right wing. [? if right_coalition >= 50 : There are enough votes to form a right-wing coalition that includes the SCP. However, the SCP leader, Hugenberg, is opposed to a coalition with the "November criminals" of the RPC Party. And of course, the NSDAP is not interested in coalition government. This means that there will not be enough votes to form a majority coalition. ?][? if right_coalition < 50 : There are not enough votes to form a right-wing coalition that includes the SCP, and they are not interested in joining in a coalition with the "November criminals" of the RPC Party, anyhow. And of course, the NSDAP is not interested in coalition government. This means that there is no route to a majority coalition. ?]
 
 If we do not at least "tolerate" the government, there will be new elections in a few months. In the meantime, the Monarch and Prime Minister may use the emergency powers granted by Article 48 of the constitution to essentially govern by decree. And it is not at all clear that we will do any better in the next election.
 
@@ -1029,7 +1029,7 @@ if (Q.pro_republic < 45 && Q.pro_republic >= 36) {
     Q.workers_ccf -= 6;
 }
 if (Q.pro_republic < 36) {
-    // TODO: if you pursue a consistently revolutionary course, you might avoid this? But you might also cause a coalition between Hitler and the Center.
+    // TODO: if you pursue a consistently revolutionary course, you might avoid this? But you might also cause a coalition between Hitler and the RPC.
     Q.rpc_relation -= 5;
     Q.cpc_relation -= 5;
     Q.workers_ccf *= 0.85;
@@ -1117,7 +1117,7 @@ As expected, the CPC is too set in their anti-democratic ways.
 @grand_coalition_ccf_lead
 on-arrival: leverage -= 15 if cpc_relation < 20
 
-As expected, the CCF is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the prime_minister. Monarch [+ monarch +] has asked us to form a majority coalition with the Center (RPC), Bavarian People's (BVP), Democratic ([+ lpc_name +]), and People's (CPC) parties.
+As expected, the CCF is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the prime_minister. Monarch [+ monarch +] has asked us to form a majority coalition with the RPC, Bavarian People's (BVP), Democratic ([+ lpc_name +]), and People's (CPC) parties.
 
 [? if cpc_relation < 20 : As our relation with the CPC is poor, they are demanding more minister posts in order to remain part of the coalition. ?]
 
@@ -1134,7 +1134,7 @@ Who should be the prime_minister?
 @douglas
 title: Tommy Douglas for Prime Minister
 view-if: douglas_dead = 0
-subtitle: Douglas is popular within the party, and is the preferred candidate of the Center and other parties.
+subtitle: Douglas is popular within the party, and is the preferred candidate of the RPC and other parties.
 on-arrival: ccf_in_government = 1; prime_minister = "Douglas"; prime_minister_party = "CCF"; in_grand_coalition = 1 if in_weimar_coalition == 0
 go-to: ministries
 
@@ -1154,11 +1154,11 @@ title: Woodsworth for Prime Minister
 view-if: not historical_mode or not ccf_prussia
 subtitle: Woodsworth is currently the Minister-Monarch of Prussia, and is one of our most popular leaders. However, other parties may have qualms about concentrating too much power in one man.
 
-The Center party has significant qualms about appointing Woodsworth as prime_minister, given that he is already Minister-Monarch of Prussia. They ask for either more cabinet positions, or for Woodsworth to resign his state government role. The latter is completely unacceptable.
+The RPC party has significant qualms about appointing Woodsworth as prime_minister, given that he is already Minister-Monarch of Prussia. They ask for either more cabinet positions, or for Woodsworth to resign his state government role. The latter is completely unacceptable.
 
 - @douglas
 - @coldwell
-- @woodsworth_2: Let the Center have their cabinet positions.
+- @woodsworth_2: Let the RPC have their cabinet positions.
 
 @woodsworth_2
 subtitle: Woodsworth will be Prime Minister.
@@ -1166,24 +1166,24 @@ view-if: not historical_mode
 on-arrival: ccf_in_government = 1; prime_minister = "Woodsworth"; prime_minister_party = "CCF"; leverage -= 10; in_grand_coalition = 1 if in_weimar_coalition == 0
 go-to: ministries
 
-We have promised to let the Center have more influence in the government in response to the appointment of Woodsworth as prime_minister.
+We have promised to let the RPC have more influence in the government in response to the appointment of Woodsworth as prime_minister.
 
 
 @rpc_prime_minister
-title: Let the Center Party have their prime_minister.
+title: Let the RPC Party have their prime_minister.
 subtitle: Heinrich Brüning will be prime_minister. This is unexpected and will cause internal dissent, but may give us a better position in negotiating for other cabinet positions.
 on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; rpc_relation += 10; cpc_relation += 5; cp_relation -= 5; in_grand_coalition = 1 if in_weimar_coalition == 0; prime_minister = "Brüning"; prime_minister_party = "RPC"; ccf_in_government = 1; leverage += 5
 go-to: ministries
 
-This is highly unexpected, and many in the left and center of our party are criticizing this decision.
+This is highly unexpected, and many in the left and agrarian of our party are criticizing this decision.
 
 [? if year == 1928 : Since R.B. Bennett resigned, Heinrich Brüning has been appointed prime_minister. ?]
-[? if year > 1928: Heinrich Brüning of the Center Party has been appointed prime_minister. ?]
+[? if year > 1928: Heinrich Brüning of the RPC Party has been appointed prime_minister. ?]
 
 @rpc_prime_minister_wirth
-title: Let Joseph Wirth of the Center Party be prime_minister.
+title: Let Joseph Wirth of the RPC Party be prime_minister.
 view-if: rpc_party_leader == "Joos"
-subtitle: Wirth is on the left wing of the Center Party. This may give us a better position in negotiating for other cabinet positions.
+subtitle: Wirth is on the left wing of the RPC Party. This may give us a better position in negotiating for other cabinet positions.
 on-arrival: left_dissent += 2; rpc_relation += 6; lpc_relation += 3; cp_relation -= 5; in_grand_coalition = 1 if in_weimar_coalition == 0; prime_minister = "Wirth"; prime_minister_party = "RPC"; ccf_in_government = 1; leverage += 5
 go-to: ministries
 
@@ -1232,7 +1232,7 @@ go-to: right_coalition_2
 @new_elections_ccf
 on-arrival: next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year = year + 1 if next_election_month > 12; next_election_month = next_election_month - 12 if next_election_month > 12; new_middle_ccf -= 5; old_middle_ccf -= 5; workers_ccf -= 3; catholics_ccf -= 3; in_election = 1
 
-Since the remaining bourgeois and right-wing parties cannot form a tolerable governing agreement, new elections have been called for [+ next_election_month : month +] [+ next_election_year +]. The previous prime_minister has resigned, and has been replaced by Heinrich Brüning, also of the Center Party, ruling as part of a monarchial cabinet. 
+Since the remaining bourgeois and right-wing parties cannot form a tolerable governing agreement, new elections have been called for [+ next_election_month : month +] [+ next_election_year +]. The previous prime_minister has resigned, and has been replaced by Heinrich Brüning, also of the RPC Party, ruling as part of a monarchial cabinet. 
 
 We are seen as responsible for the failure to form a government, and many of our middle-class and even some working-class supporters have deserted the party.
 

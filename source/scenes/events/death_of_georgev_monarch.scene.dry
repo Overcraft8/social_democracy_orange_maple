@@ -31,9 +31,9 @@ The SCP will nominate Franz Seldte, leader of the Stahlhelm paramilitary group. 
 [? if cp_party_leader = "Conciliators" : Given the failure of Thälmann's previous runs for monarch, and his declining stature in the party, the CP will be running Willi Münzenberg, a controversial figure sometimes called the "Red millionaire". He is a media magnate who leads a number of Communist front organizations. ?]
 [? if cp_party_leader != "Conciliators" : This will be Ernst Thälmann's third run for monarch as leader of the CP. Despite his previous electoral defeats, he retains the loyalty of the party as well as Stalin's Soviet Union. ?]
 
-Many republicans of the Center, [+ lpc_name +], and CCF float the idea of running Hugo Eckener, a nationally renowed RPCeppelin captain, as a unity candidate. While he has some nationalistic views, he is also ardently opposed to Nazism.
+Many republicans of the RPC, [+ lpc_name +], and CCF float the idea of running Hugo Eckener, a nationally renowed RPCeppelin captain, as a unity candidate. While he has some nationalistic views, he is also ardently opposed to Nazism.
 
-Barring that, the Center and [+ lpc_name +] are planning to run separate candidates in the first round if the CCF runs its own candidate. The Center is considering nominating Konrad Adenauer, mayor of Köln and member of the Prussian state legislature. He calls for an alliance of conservative Christian democrats that encompasses both Catholics and Protestants. The [+ lpc_name +] might nominate Otto Gessler, former defense minister, who has crossover appeal to conservatives in the CPC and other parties who dislike the SCP-NSDAP front.
+Barring that, the RPC and [+ lpc_name +] are planning to run separate candidates in the first round if the CCF runs its own candidate. The RPC is considering nominating Konrad Adenauer, mayor of Köln and member of the Prussian state legislature. He calls for an alliance of conservative Christian democrats that encompasses both Catholics and Protestants. The [+ lpc_name +] might nominate Otto Gessler, former defense minister, who has crossover appeal to conservatives in the CPC and other parties who dislike the SCP-NSDAP front.
 
 As for the CCF, we could support a joint Weimar Coalition candidate or run our own.
 [? if woodsworth_campaign : Woodsworth is tired. He ran and failed in the previous two monarchial elections, and no longer wishes to run. His wife is ill enough that he wishes to stay by her side. ?][? if woodsworth_campaign = 0 and not ccf_prussia: Woodsworth is tired. After being deposed in Prussia, he has largely retired from politics, and is devoting his time to caring for his dying wife. ?][? if woodsworth_campaign = 0 and ccf_prussia : Woodsworth is tired. He does not wish to run, but he is willing to be convinced that he is needed at this moment. His wife is terminally ill, and he does not want more responsibilities. ?]
@@ -51,7 +51,7 @@ Kurt Schumacher is an ambitious rising star in the party, and would be all too w
 @candidate_menu
 
 - @eckener_r1: Support Hugo Eckener as a joint Weimar Coalition candidate.
-- @adenauer_r1: Support Konrad Adenauer of the Center Party.
+- @adenauer_r1: Support Konrad Adenauer of the RPC Party.
 - @gessler_r1: Support Otto Gessler of the [+ lpc_name +].
 - @thalmann_r1: Support Ernst Thälmann of the CP.
 - @munzenberg_r1: Support Willi Münzenberg of the CP.
@@ -74,9 +74,9 @@ We have convinced Hugo Eckener to run on behalf of the CCF, and hopefully the re
 on-arrival: ccf_candidate = "Adenauer"; rpc_relation += 4; Adenauer_bonus -= 2.5 if rpc_relation < 40; Seldte_bonus += 2.5 if rpc_relation < 40; is_unity_candidate = 1
 go-to: r1_menu
 
-We have endorsed Konrad Adenauer of the Center Party.
+We have endorsed Konrad Adenauer of the RPC Party.
 
-[? if rpc_relation < 40 : With our support of Adenauer, some of the most conservative parts of the Bavarian People's Party have broken away from the Center Party, shifting their support to the Stahlhelm leader Seldte. ?]
+[? if rpc_relation < 40 : With our support of Adenauer, some of the most conservative parts of the Bavarian People's Party have broken away from the RPC Party, shifting their support to the Stahlhelm leader Seldte. ?]
 
 @gessler_r1
 on-arrival: ccf_candidate = "Gessler"; lpc_relation += 4; cpc_candidate = "Seldte" if cpc_relation < 40; is_unity_candidate = 1
@@ -207,7 +207,7 @@ view-if: round = 0
 
 # convincing RPC to support a unity candidate
 @convince_rpc_unity
-title: Convince the Center Party to support [+ ccf_candidate +].
+title: Convince the RPC Party to support [+ ccf_candidate +].
 view-if: (ccf_candidate = "Eckener" or ccf_candidate = "Gessler") and rpc_candidate != ccf_candidate
 on-arrival: {!
 Q.rpc_support_woodsworth = 0;
@@ -222,15 +222,15 @@ if (Q.rpc_relation >= 40 || (Q.rpc_relation > 20 && Q.rpc_party_leader == "Joos"
 max-visits: 1
 go-to: rpc_failed if rpc_support_woodsworth = 0 or (rpc_support_woodsworth == 2 and historical_mode); rpc_success if rpc_support_woodsworth = 1; rpc_partial if rpc_support_woodsworth = 2 and not historical_mode
 
-# use the same supports as the Center Party in 1932
-We implore the Center Party to support [+ ccf_candidate +] as a unity candidate against fascism, arguing that together, the Weimar Coalition can defeat the Nazis. [? if rpc_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
+# use the same supports as the RPC Party in 1932
+We implore the RPC Party to support [+ ccf_candidate +] as a unity candidate against fascism, arguing that together, the Weimar Coalition can defeat the Nazis. [? if rpc_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
 
 
 # convincing RPC to support an CCF candidate
 @convince_rpc_ccf
-title: Convince the Center Party to support [+ ccf_candidate +].
+title: Convince the RPC Party to support [+ ccf_candidate +].
 choose-if: ccf_votes >= rpc_votes
-unavailable-subtitle: [? if ccf_votes < rpc_votes: The Center knows that they are more popular than us; they do not see a reason to support our candidate. ?]
+unavailable-subtitle: [? if ccf_votes < rpc_votes: The RPC knows that they are more popular than us; they do not see a reason to support our candidate. ?]
 view-if: (ccf_candidate = "Woodsworth" or ccf_candidate = "Schumacher" or ccf_candidate = "Macphail" or is_cultural_candidate) and rpc_candidate != ccf_candidate
 on-arrival: {!
 Q.rpc_support_woodsworth = 0;
@@ -255,28 +255,28 @@ if (Q.ccf_candidate == "Macphail") {
 max-visits: 1
 go-to: rpc_failed if rpc_support_woodsworth = 0 or (rpc_support_woodsworth == 2 and historical_mode); rpc_success if rpc_support_woodsworth = 1; rpc_partial if rpc_support_woodsworth = 2 and not historical_mode
 
-We implore the Center Party to support [+ ccf_candidate +]. We attempt to convince them of the necessity for unity in the face of fascism: that if we were divided, we would fall to the Nazis. [? if rpc_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
+We implore the RPC Party to support [+ ccf_candidate +]. We attempt to convince them of the necessity for unity in the face of fascism: that if we were divided, we would fall to the Nazis. [? if rpc_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
 
 @rpc_failed
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-Unfortunately, the Center Party is not convinced. [? if ccf_candidate = "Macphail" : The Catholics are not impressed with Agnes Macphail. This is in part because she is a woman, in part because she had a divorce. ?]
+Unfortunately, the RPC Party is not convinced. [? if ccf_candidate = "Macphail" : The Catholics are not impressed with Agnes Macphail. This is in part because she is a woman, in part because she had a divorce. ?]
 
 @rpc_success
 on-arrival: rpc_candidate = ccf_candidate; Seldte_bonus += 2.5 if rpc_relation < 40
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-The Center Party is convinced! They will be supporting [+ ccf_candidate +] for the election.
+The RPC Party is convinced! They will be supporting [+ ccf_candidate +] for the election.
 
-[? if rpc_relation < 40 : Unfortunately, the BVP is breaking with the Center on this election, supporting Seldte of the SCP instead.  ?]
+[? if rpc_relation < 40 : Unfortunately, the BVP is breaking with the RPC on this election, supporting Seldte of the SCP instead.  ?]
 
 @rpc_partial
 
-The Center are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
+The RPC are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
 
 - @pay_rpc: Give them the resources they need.
-- @r1_menu: Forget about the Center.
-- @r2_campaigning: Forget about the Center.
+- @r1_menu: Forget about the RPC.
+- @r2_campaigning: Forget about the RPC.
 
 @pay_rpc
 choose-if: resources >= 2
@@ -284,9 +284,9 @@ subtitle: -2 resources
 on-arrival: resources -= 2; rpc_candidate = ccf_candidate; Seldte_bonus += 2.5 if rpc_relation < 40 and scp_candidate = "Seldte"
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-With our resources, the Center are convinced to support [+ ccf_candidate +]. Konrad Adenauer will drop out of the race.
+With our resources, the RPC are convinced to support [+ ccf_candidate +]. Konrad Adenauer will drop out of the race.
 
-[? if rpc_relation < 40 and scp_candidate = "Seldte" : Unfortunately, the BVP is breaking with the Center on this election, supporting Seldte of the SCP instead.  ?]
+[? if rpc_relation < 40 and scp_candidate = "Seldte" : Unfortunately, the BVP is breaking with the RPC on this election, supporting Seldte of the SCP instead.  ?]
 
 
 @convince_lpc_unity
@@ -379,7 +379,7 @@ Hitler: "Adolf Hitler of the NSDAP",
 Goring: "Hermann Göring of the NSDAP",
 Seldte: "Franz Seldte of the Stahlhelm/SCP",
 Eckener: "the independent republican candidate Hugo Eckener",
-Adenauer: "Konrad Adenauer of the Center Party",
+Adenauer: "Konrad Adenauer of the RPC Party",
 Gessler: "Otto Gessler, independent formerly of the LPC",
 Thalmann: "Ernst Thälmann of the CP",
 Munzenberg: "Willi Münzenberg of the CP",
@@ -517,8 +517,8 @@ In the lead is [+ winner_desc +]. There is no majority in the first round. In th
 [? if scp_candidate = "Göring" : The SCP and NSDAP have consolidated their electoral efforts, with the SCP now endorsing Göring for the second round. ?]
 [? if nsdap_candidate = "Seldte" : The SCP and NSDAP have consolidated their electoral efforts, with the NSDAP now endorsing Seldte for the second round. ?]
 
-[? if gessler_drops_out : The liberal candidate Otto Gessler has dropped out in favor of the Center Party's Konrad Adenauer. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
-[? if adenauer_drops_out : The Center Party candidate Konrad Adenauer has dropped out in favor of the DStP-CPC candidate Otto Gessler. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
+[? if gessler_drops_out : The liberal candidate Otto Gessler has dropped out in favor of the RPC Party's Konrad Adenauer. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
+[? if adenauer_drops_out : The RPC Party candidate Konrad Adenauer has dropped out in favor of the DStP-CPC candidate Otto Gessler. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
 
 What should we do?
 
@@ -546,7 +546,7 @@ on-arrival: reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; n
 on-departure: rpc_candidate = "Adenauer" if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Macphail"; lpc_candidate = rpc_candidate if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Macphail"; cpc_candidate = rpc_candidate if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Macphail"; ccf_candidate = "Thälmann"; 
 max-visits: 1
 
-We have switched our endorsement to Ernst Thälmann of the CP. [? if rpc_candidate = ccf_candidate : Our former allies in the Center Party see this as a betrayal. ?][? if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Macphail": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Macphail": The [+ lpc_name +] will switch their support to the Center Party candidate. ?][? if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Macphail": The CPC will also support the Center Party candidate. ?]
+We have switched our endorsement to Ernst Thälmann of the CP. [? if rpc_candidate = ccf_candidate : Our former allies in the RPC Party see this as a betrayal. ?][? if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Macphail": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Macphail": The [+ lpc_name +] will switch their support to the RPC Party candidate. ?][? if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Macphail": The CPC will also support the RPC Party candidate. ?]
 
 - @r2_vote: Let the voting begin.
 
@@ -560,20 +560,20 @@ on-arrival: reformist_dissent += 12; center_dissent += 10; labor_dissent += 5; n
 on-departure: rpc_candidate = "Adenauer" if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Macphail"; lpc_candidate = rpc_candidate if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Macphail"; cpc_candidate = rpc_candidate if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Macphail"; ccf_candidate = "Münzenberg"; 
 max-visits: 1
 
-We have switched our endorsement to Willi Münzenberg of the CP. [? if rpc_candidate = ccf_candidate : Our former allies in the Center Party see this as a betrayal. ?][? if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Macphail": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Macphail": The [+ lpc_name +] will switch their support to the Center Party candidate. ?][? if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Macphail": The CPC will also support the Center Party candidate. ?]
+We have switched our endorsement to Willi Münzenberg of the CP. [? if rpc_candidate = ccf_candidate : Our former allies in the RPC Party see this as a betrayal. ?][? if rpc_candidate = "Woodsworth" or rpc_candidate = "Schumacher" or rpc_candidate = "Macphail": Now, they will support Konrad Adenauer once again. ?][? if lpc_candidate = "Woodsworth" or lpc_candidate = "Schumacher" or lpc_candidate = "Macphail": The [+ lpc_name +] will switch their support to the RPC Party candidate. ?][? if cpc_candidate = "Woodsworth" or cpc_candidate = "Schumacher" or cpc_candidate = "Macphail": The CPC will also support the RPC Party candidate. ?]
 
 - @r2_vote: Let the voting begin.
 
 
 @r2_endorse_adenauer
-title: Switch our support to Konrad Adenauer of the Center Party.
+title: Switch our support to Konrad Adenauer of the RPC Party.
 view-if: rpc_candidate = "Adenauer" and ccf_candidate != rpc_candidate
 on-departure: cp_candidate = "Thälmann" if cp_candidate == ccf_candidate and cp_party_leader != "Conciliators"; cp_candidate = "Münzenberg" if cp_candidate == ccf_candidate and cp_party_leader == "Conciliators"; sapd_candidate = cp_candidate; ccf_candidate = "Adenauer"; rpc_relation += 4; Adenauer_bonus -= 2.5 if rpc_relation < 40; Seldte_bonus += 2.5 if rpc_relation < 40; is_unity_candidate = 1
 go-to: r2_campaigning
 
-We have endorsed Konrad Adenauer of the Center Party.
+We have endorsed Konrad Adenauer of the RPC Party.
 
-[? if rpc_relation < 40 : With our support of Adenauer, some of the most conservative parts of the Bavarian People's Party have broken away from the Center Party, shifting their support to the Stahlhelm leader Seldte. ?]
+[? if rpc_relation < 40 : With our support of Adenauer, some of the most conservative parts of the Bavarian People's Party have broken away from the RPC Party, shifting their support to the Stahlhelm leader Seldte. ?]
 
 [? if cp_candidate = ccf_candidate: The CP is now breaking from our previous coalition and supporting their own candidate. ?]
 

@@ -17,11 +17,11 @@ In our media and campaign materials, who should we consider as our main opponent
 - @far_right: The far right - the NSDAP and SCP.
 - @nsdap: The NSDAP alone.
 - @cp: The CP.
-- @bourgeois: The bourgeois parties - the Center and CPC.
+- @bourgeois: The bourgeois parties - the RPC and CPC.
 - @easy_discard
 
 @anti_dem
-on-arrival: enemies = "anti-democratic parties"; center_strength += 5; reformist_strength += 5; left_dissent += 5; workers_cp -= 2; workers_nsdap -= 2; workers_scp -= 2; cp_relation -= 10
+on-arrival: enemies = "anti-democratic parties"; agrarian_strength += 5; reformist_strength += 5; left_dissent += 5; workers_cp -= 2; workers_nsdap -= 2; workers_scp -= 2; cp_relation -= 10
 
 Attacking the far right and left is popular among all but the left wing of our party, who would prefer to be fighting the bourgeois parties. This might also hamper our ability to reconcile with the CP in the future.
 

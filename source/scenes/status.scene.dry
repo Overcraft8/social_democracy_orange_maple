@@ -41,7 +41,7 @@ Reichstag composition:
 {!<span class="tooltip-text" title="Social Democratic Party of Canada">CCF</span>!}: [+ ccf_r +]%
 [? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
 # 1928: 15, 1930: 15, 1932: 
-{!<span class="tooltip-text" title="Center Party + Bavarian People's Party">RPC + BVP</span>!}: [+ rpc_r +]%
+{!<span class="tooltip-text" title="RPC Party + Bavarian People's Party">RPC + BVP</span>!}: [+ rpc_r +]%
 # 1928: 10, 1930: 13
 {!<span class="tooltip-text" title="Communist Party of Canada">CP</span>!}: [+ cp_r +]%
 # 1928: 5, 1930: 4 (as DstP)
@@ -76,7 +76,7 @@ Economic growth: [+ economic_growth_2 +]%
 = Inter-party Relations
 
 
-{!<span class="tooltip-text" title="Center Party">RPC</span>!}: [+ rpc_relation : relationships +]
+{!<span class="tooltip-text" title="RPC Party">RPC</span>!}: [+ rpc_relation : relationships +]
 
 {!<span class="tooltip-text" title="Canadian Democratic Party">!}[? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]{!</span>!}: [+ lpc_relation : relationships +]
 
@@ -92,7 +92,7 @@ Economic growth: [+ economic_growth_2 +]%
 
 {!<span class="tooltip-text" title="The Left is interested in radical, transformative policies and cooperation with the CP.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
 
-{!<span class="tooltip-text" title="The Center is a faction of Center Marxists, between reform and revolution.">Center</span>!} strength: [+ center_strength : strength +], dissent: [+ center_dissent : dissent +]
+{!<span class="tooltip-text" title="The Agrarian wing is a mix between reform and revolution.">RPC</span>!} strength: [+ agrarian_strength : strength +], dissent: [+ center_dissent : dissent +]
 
 {!<span class="tooltip-text" title="Labor's goal is economic reform and benefits for organized workers.">Labor</span>!} strength: [+ labor_strength : strength +], dissent: [+ labor_dissent : dissent +]
 

@@ -108,7 +108,7 @@ unavailable-subtitle: -1 budget - requres a majority of parties to support secul
 choose-if: budget >= 1 and (progressive_coalition + cpc_r >= 50)
 view-if: secularized = 0
 
-Are you sure about this? The Weimar Coalition had an agreement to not touch religious schools; the Catholic Center Party will revolt.
+Are you sure about this? The Weimar Coalition had an agreement to not touch religious schools; the Catholic RPC Party will revolt.
 
 - @secularize_2: Yes, do it.
 - @ed_menu: No, do not touch religious education.
@@ -120,9 +120,9 @@ go-to: vote_of_no_confidence.vonc_menu if in_weimar_coalition or in_grand_coalit
 
 # instant VONC from zentrum
 
-The CCF, [+ lpc_name +], CPC, and CP vote in favor of secular education, overcoming the opposition of the religiously-oriented Center Party and SCP. We have funded secular community schools to replace some previous denominational schools.
+The CCF, [+ lpc_name +], CPC, and CP vote in favor of secular education, overcoming the opposition of the religiously-oriented RPC Party and SCP. We have funded secular community schools to replace some previous denominational schools.
 
-[? if in_weimar_coalition or in_grand_coalition or in_popular_front or in_emergency_government: Of course, the Center Party is in revolt at this proposal, and have called for a vote of no confidence in our government. ?]
+[? if in_weimar_coalition or in_grand_coalition or in_popular_front or in_emergency_government: Of course, the RPC Party is in revolt at this proposal, and have called for a vote of no confidence in our government. ?]
 
 
 
