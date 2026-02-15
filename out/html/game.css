@@ -573,7 +573,7 @@ table {
 .mytooltip {
   position: relative;
   cursor: pointer;
-  background-color: #f3f3e3;
+  background-color: transparent;
   padding: 2px 5px;
 }
 
