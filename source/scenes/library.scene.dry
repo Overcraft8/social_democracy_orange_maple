@@ -71,7 +71,7 @@ Reichstag composition:
 CCF: [+ ccf_r +]%
 [? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
 # 1928: 15, 1930: 15, 1932: 
-RPC + BVP: [+ rpc_r +]%
+RPC: [+ rpc_r +]%
 # 1928: 10, 1930: 13
 CP: [+ cp_r +]%
 # 1928: 5, 1930: 4 (as DstP)
@@ -163,7 +163,7 @@ CCF: [+ ccf_votes +]%
 [? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
 
 # 1928: 15, 1930: 15, 1932: 
-RPC + BVP: [+ rpc_votes +]%
+RPC: [+ rpc_votes +]%
 
 # 1928: 10, 1930: 13
 CP: [+ cp_votes +]%
@@ -331,7 +331,7 @@ Dissent: [+ neorevisionist_dissent : dissent +]
 @figures
 title: Figures and Charts
 go-to: menu
-on-arrival: rpc_minus_bvp_r = rpc_r - 3;
+on-arrival: rpc_r = rpc_r - 3;
 on-display: {!
 data = [
     {
@@ -366,12 +366,6 @@ data = data.concat([
         "legend": "RPC",
         "name": "RPC",
         "seats": (Q.rpc_r - 3)*5,
-    },
-    {
-        "id": "bvp",
-        "legend": "BVP",
-        "name": "BVP",
-        "seats": 3*5,
     },
     {
         "id": "cpc",
@@ -417,7 +411,7 @@ if (d3 && window) {
     var lines = d3.linegraph(false, false,
             Q.parties,
             {'ccf': '#D26E28', 'cp': '#8B0000', 'lpc': '#BE0028', 'rpc': '#E7DB73', 'cpc': '#0055A5', 'scp': '#50E23D', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'ccf': 'CCF', 'cp': 'CP', 'lpc': Q.lpc_name, 'rpc': 'RPC + BVP', 'cpc': 'CPC', 'scp': 'SCP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+            {'ccf': 'CCF', 'cp': 'CP', 'lpc': Q.lpc_name, 'rpc': 'RPC', 'cpc': 'CPC', 'scp': 'SCP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
@@ -430,7 +424,7 @@ if (d3 && window) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
             {'ccf': '#D26E28', 'cp': '#8B0000', 'lpc': '#BE0028', 'rpc': '#E7DB73', 'cpc': '#0055A5', 'scp': '#50E23D', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'ccf': 'CCF', 'cp': 'CP', 'lpc': Q.lpc_name, 'rpc': 'RPC + BVP', 'cpc': 'CPC', 'scp': 'SCP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+            {'ccf': 'CCF', 'cp': 'CP', 'lpc': Q.lpc_name, 'rpc': 'RPC', 'cpc': 'CPC', 'scp': 'SCP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
@@ -460,9 +454,8 @@ if (d3 && window) {
 
 {!<tr><td><div class="box" style='background-color:#BE0028'> </div></td><td>!} [+ lpc_name +]: {!</td><td>!} [+ lpc_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E7DB73'> </div></td><td>!} RPC: {!</td><td>!} [+ rpc_minus_bvp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E7DB73'> </div></td><td>!} RPC: {!</td><td>!} [+ rpc_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#69A2BE'> </div></td><td>!} BVP: {!</td><td>!} 3% {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#0055A5'> </div></td><td>!} CPC: {!</td><td>!} [+ cpc_r +]% {!</td></tr>!}
 

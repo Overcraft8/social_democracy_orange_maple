@@ -350,8 +350,8 @@ Q.nsdap_in_government = 0;
 Q.in_right_coalition = 0;
 // Weimar coalition = CCF + RPC + LPC
 Q.in_weimar_coalition = 0;
-// Grand coalition = CCF + RPC + BVP + LPC + CPC
-// also includes the "new grand coalition" of CCF + RPC + BVP + LPC + CPC + Others
+// Grand coalition = CCF + RPC + LPC + CPC
+// also includes the "new grand coalition" of CCF + RPC + LPC + CPC + Others
 Q.in_grand_coalition = 0;
 // Popular front = CCF + CP + RPC + LPC
 Q.in_popular_front = 0;

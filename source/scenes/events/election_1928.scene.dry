@@ -168,7 +168,7 @@ Q.reichswehr_goal_completed = 0;
 
 Q.strike_term_seen = 0;
 
-Q.rpc_minus_bvp_r = Q.rpc_r - 3;
+Q.rpc_r = Q.rpc_r - 3;
 
 // understanding the enemy
 if (Q.nsdap_r >= 15) {
@@ -217,12 +217,6 @@ data = data.concat([
         "legend": "RPC",
         "name": "RPC",
         "seats": Math.round((Q.rpc_r - 3)*5),
-    },
-    {
-        "id": "bvp",
-        "legend": "BVP",
-        "name": "BVP",
-        "seats": Math.round(3*5),
     },
     {
         "id": "cpc",
@@ -283,9 +277,7 @@ go-to: coalition_menu
 
 {!<tr><td><div class="box" style='background-color:#BE0028'> </div> !} [+ lpc_name +]: {!</td><td>!} [+ lpc_r +]% {!</td><td>!} [+ str_change_lpc +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E7DB73'> </div> !} RPC: {!</td><td>!} [+ rpc_minus_bvp_r +]% {!</td><td>!} [+ str_change_rpc +] {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#69A2BE'> </div> !} BVP: {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E7DB73'> </div> !} RPC: {!</td><td>!} [+ rpc_r +]% {!</td><td>!} [+ str_change_rpc +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#0055A5'> </div> !} CPC: {!</td><td>!} [+ cpc_r +]% {!</td><td>!} [+ str_change_cpc +] {!</td></tr>!}
  
@@ -300,11 +292,11 @@ go-to: coalition_menu
 
 Weimar Coalition (CCF + RPC + [+ lpc_name +]): [+ weimar_coalition +]%
 
-Grand Coalition (CCF + RPC + BVP + [+ lpc_name +] + CPC): [+ grand_coalition +]%
+Grand Coalition (CCF + RPC + [+ lpc_name +] + CPC): [+ grand_coalition +]%
 
-Bourgeois Coalition (RPC + BVP + [+ lpc_name +] + CPC + Others): [+ bourgeois_coalition +]%
+Bourgeois Coalition (RPC + [+ lpc_name +] + CPC + Others): [+ bourgeois_coalition +]%
 
-Right-wing Coalition (RPC + BVP + CPC + Others + SCP): [+ right_coalition +]%
+Right-wing Coalition (RPC + CPC + Others + SCP): [+ right_coalition +]%
 
 [? if nazi_urgency <= 1 and nsdap_r >= 15 : The rapid rise in NSDAP votes is extremely worrying. Many had believed that the party was moribund; now, some of us consider it to be the greatest threat to democracy in Canada. ?]
 
@@ -535,12 +527,12 @@ In response to the CP's entrance into the government, the right-wing immediately
 
 @right_coalition
 title: Refuse to form a government, so that a right-wing coalition may be formed.
-subtitle: RPC + BVP + CPC + SCP + Others ([+ right_coalition +]%)
+subtitle: RPC + CPC + SCP + Others ([+ right_coalition +]%)
 unavailable-subtitle: The SCP is not interested in a coalition with the RPC.
 view-if: right_coalition >= 50
 choose-if: year < 1929
 
-There are enough votes for a right-wing coalition of the RPC (+ BVP), CPC, SCP, and minor conservative parties. [? if largest_party == "CCF": However, this will be seen as abdicating responsibility for government, as we are the largest party. ?]
+There are enough votes for a right-wing coalition of the RPC, CPC, SCP, and minor conservative parties. [? if largest_party == "CCF": However, this will be seen as abdicating responsibility for government, as we are the largest party. ?]
 
 - @right_coalition_sure: Yes, we will abdicate our responsibility for government formation, and let a right-wing coalition take power.
 - @grand_coalition: Actually, we wish to form a grand coalition after all.
@@ -617,10 +609,10 @@ The third option is to have new elections.
 
 @new_grand_coalition
 title: A "New Grand Coalition" of all the constitutional parties?
-subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%)
+subtitle: CCF + RPC + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%)
 view-if: neo_weimar_coalition >= 50 and grand_coalition < 50
 choose-if: rpc_relation >= 50 and cpc_relation >= 30
-unavailable-subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%) - [? if rpc_relation < 50 : We do not have adequate relations with the RPC Party. ?][? if cpc_relation < 30 : We do not have adequate relations with the CPC. ?]
+unavailable-subtitle: CCF + RPC + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%) - [? if rpc_relation < 50 : We do not have adequate relations with the RPC Party. ?][? if cpc_relation < 30 : We do not have adequate relations with the CPC. ?]
 
 How do we convince vehemently anti-socialist parties to allow us to form a majority coalition? Our largely benevolent relations with the RPC and CPC may allow us some leverage.
 
@@ -658,7 +650,7 @@ We have assembled a new coalition under JS_Woodsworth.
 
 @unity_government
 title: The RPC Party offers a "Government of National Unity" under Prime Minister Joseph Wirth.
-subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%)
+subtitle: CCF + RPC + [+ lpc_name +] + CPC + Others ([+ neo_weimar_coalition +]%)
 view-if: rpc_party_leader == "Joos" and neo_weimar_coalition >= 50 and weimar_coalition < 50 and rpc_relation >= 10
 
 The RPC Party leader, Joseph Joos, clearly sees the threat from the ascension of the anti-democratic extremist parties, and thus tries to negotiate a "Government of National Unity" to save the republic. This coalition would be led by Joseph Wirth, a left-leaning member of the RPC Party and former prime_minister, and would encompass all of the constitutional parties. Our role in this government might be limited, however.
@@ -949,7 +941,7 @@ Robert Gardiner has been appointed prime_minister.
 @grand_coalition
 title: We can form a Grand Coalition.
 view-if: grand_coalition >= 50 and grand_coalition_failed == 0
-subtitle: CCF + RPC + BVP + [+ lpc_name +] + CPC ([+ grand_coalition +]%)
+subtitle: CCF + RPC + [+ lpc_name +] + CPC ([+ grand_coalition +]%)
 on-arrival: in_grand_coalition = 1; in_popular_front = 0; in_left_front = 0
 go-to: grand_coalition_ccf_lead if (n_elections <= 1 and largest_party == "CCF") or (largest_party == "CCF" and ccf_r >= 30) or monarch = "JS_Woodsworth"; grand_coalition_rpc_lead if monarch != "JS_Woodsworth" and ((n_elections > 1 and ccf_r < 30) or (n_elections <= 1 and largest_party != "CCF"))
 
@@ -959,7 +951,7 @@ go-to: grand_coalition_ccf_lead if (n_elections <= 1 and largest_party == "CCF")
 @grand_coalition_rpc_lead
 go-to: grand_coalition_rpc_lead_2 if cpc_relation >= 30; grand_coalition_fail if cpc_relation < 30
 
-There are enough votes to form a majority coalition consisting of the CCF, RPC, Bavarian People's (BVP), Democratic ([+ lpc_name +]), and People's (CPC) parties. Given our rather weak electoral performance, [? if ccf_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_ccf = 1 : and the vote of no confidence against us, ?] Monarch George V has asked the RPC Party to take the lead role in forming a government.
+There are enough votes to form a majority coalition consisting of the CCF, RPC, Democratic ([+ lpc_name +]), and People's (CPC) parties. Given our rather weak electoral performance, [? if ccf_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_ccf = 1 : and the vote of no confidence against us, ?] Monarch George V has asked the RPC Party to take the lead role in forming a government.
 
 # TODO: if the CCF participated in bringing down the previous government via a vote-of-no-confidence, or if we were essentially removed from government by our coalition partners, we should be more reluctant to participate in a new government.
 
@@ -1066,7 +1058,7 @@ We have decided to tolerate Brüning's government. This means that we will vote 
 @grand_coalition_fail
 on-arrival: grand_coalition_failed = 1
 
-Unfortunately, the CPC and BVP are unwilling to enter into another coalition with the CCF, so the grand coalition is unable to be formed.
+Unfortunately, the CPC are unwilling to enter into another coalition with the CCF, so the grand coalition is unable to be formed.
 
 - @no_majority: Thus, there is no clear majority.
 - @woodsworths_dilemma
@@ -1083,7 +1075,7 @@ go-to: cpc_conservative if stresemann_dead == 1; cpc_majority if stresemann_dead
 @cpc_majority
 go-to: join_bruning
 
-Under the influence of Gustav Stresemann, the CPC agrees to allow us into the coalition, and so does the BVP.
+Under the influence of Gustav Stresemann, the CPC agrees to allow us into the coalition.
 
 
 @cpc_conservative
@@ -1117,7 +1109,7 @@ As expected, the CPC is too set in their anti-democratic ways.
 @grand_coalition_ccf_lead
 on-arrival: leverage -= 15 if cpc_relation < 20
 
-As expected, the CCF is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the prime_minister. Monarch [+ monarch +] has asked us to form a majority coalition with the RPC, Bavarian People's (BVP), Democratic ([+ lpc_name +]), and People's (CPC) parties.
+As expected, the CCF is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the prime_minister. Monarch [+ monarch +] has asked us to form a majority coalition with the RPC, Democratic ([+ lpc_name +]), and People's (CPC) parties.
 
 [? if cpc_relation < 20 : As our relation with the CPC is poor, they are demanding more minister posts in order to remain part of the coalition. ?]
 

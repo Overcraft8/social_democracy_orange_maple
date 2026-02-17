@@ -5,7 +5,9 @@ card-image: img/portraits/DouglasTommy.jpg
 new-page: true
 view-if: douglas_advisor = 1
 
-= Herman Douglas
+= Tommy Douglas
+
+Tommy Douglas is a minister hailing from Saskatchewan. He is known for his skill in oratory.
 
 
 Douglas is a former [? if prime_minister = "Douglas": and current ?] Prime Minister, and is a long-time Social Democratic leader.

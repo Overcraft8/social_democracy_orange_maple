@@ -382,7 +382,7 @@ Robert Gardiner is now an advisor.
 
 @add_macinnis
 title: Angus MacInnis
-subtitle: Angus MacInnis is a trade unionist. He was one of the ILP MPs who formed first the Ginger Group and later the CCF. {!<br><br>!}[? if difficulty < 0 : Actions - Prussian Bulwark, Police Affairs ?]
+subtitle: Angus MacInnis is a trade unionist. He was one of the ILP MPs who helped form first the Ginger Group and later the CCF. {!<br><br>!}[? if difficulty < 0 : Actions - Prussian Bulwark, Police Affairs ?]
 is-card: true
 card-image: img/portraits/MacInnisAngus.jpg
 tags: reformist_advisor
@@ -458,7 +458,7 @@ Laura Jamieson is now an advisor.
 
 @add_winch
 title: Ernest Winch
-subtitle: Ernest Winch is a left CCF who has supported other Leftist parties in the past. He is known for seving as President of the Vancouver Trade and Labour Council. {!<br><br>!}[? if difficulty < 0 : Actions - Building the Left, Cooperation with the CP, Against Toleration ?]
+subtitle: Ernest Winch is a left CCF who has supported other Leftist parties in the past. He is known for serving as President of the Vancouver Trade and Labour Council. {!<br><br>!}[? if difficulty < 0 : Actions - Building the Left, Cooperation with the CP, Against Toleration ?]
 is-card: true
 card-image: img/portraits/WinchErnest.jpg
 view-if: winch_advisor = 0 and n_advisors < 3 and left_split = 0
@@ -535,7 +535,7 @@ Joseph Noseworthy is now an advisor.
 
 @add_forsey
 title: Eugene Forsey
-subtitle: Eugene Forsey is lecterur on economics and political science. He is a convert from the CPC and member of the LSR. . {!<br><br>!}[? if difficulty < 0 : Actions - Addressing the Economic Crisis, Carrying Out the Economic Plan ?]
+subtitle: Eugene Forsey is lecterur on economics and political science. He is a convert from the CPC and member of the LSR. {!<br><br>!}[? if difficulty < 0 : Actions - Addressing the Economic Crisis, Carrying Out the Economic Plan ?]
 is-card: true
 card-image: img/portraits/ForseyEugene.jpg
 tags: labor_advisor
