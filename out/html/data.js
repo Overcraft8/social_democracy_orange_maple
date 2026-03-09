@@ -1,53 +1,273 @@
 const tooltipList = [{
-    searchString: "CCF",
-    explanationText: "<img src=img/CCF_logo.jpg> The Co-operative Commonwealth Federation - \n Us"
+    // for organizations and parties
+    searchString: "FLP",
+    explanationText: "The Farmer-Labour Group - Our Party"
 }, 
 {
     searchString: "CP", 
     explanationText: "The Communist Party"
 },
 {
-    searchString: "LPC", 
+    searchString: "LPS", 
     explanationText: "The Liberal Party"
 },
 {
-    searchString: "RPC", 
-    explanationText: "The Reconstruction Party"
+    searchString: "PPS", 
+    explanationText: "The Progressive Party"
 },
 {
-    searchString: "CPC", 
+    searchString: "CPS", 
     explanationText: "The Conservative Party"
 },
 {
     searchString: "SCP", 
     explanationText: "The Social Credit Party"
-}
+}, 
+{
+    searchString: "UFC",
+    explanationText: "The United Farmers of Canada (Saskatchewan Section)"
+},
+{
+    searchString: "CCYM",
+    explanationText: "The Cooperative Commonwealth Youth Movement."
+},
+{
+    searchString: "ILP",
+    explanationText: "The Independent Labour Party.\n They have merged into the FLP. "
+},
+{
+    searchString: "FUL",
+    explanationText: "The Farmer's Unity League."
+},
+{
+    searchString: "WUL",
+    explanationText: "The Worker's Unity League. "
+},
+{
+    searchString: "Cooperative Coalition", 
+    explanationText: "A coalition of Conservatives, Progressives, and Independents"
+},
+{
+    searchString: "KKK", 
+    explanationText: "The Ku Klux Klan."
+},
+{
+    searchString: "STA", 
+    explanationText: "The Saskatchewan Teacher's Alliance. "
+},
+{
+    searchString: "TLC", 
+    explanationText: "The Trades and Labour Congress of Canada. "
+},
 ];
 
 
 const colourList = [{
-        word: "CCF",
+    // For organizations + parties
+        word: "FLP",
         style: "color: #D26E28; font-weight: bold;"
     },
     {
         word: "CP", 
-        style: "color: #8B0000; font-weight: bold;"
+        style: "color: #920c0c; font-weight: bold;"
     },
     {
-        word: "LPC", 
+        word: "LPS", 
         style: "color: #BE0028; font-weight: bold;"
     },
     {
-        word: "RPC", 
+        word: "PPS", 
         style: "color: #E7DB73; font-weight: bold;"
     },
     {
-        word: "CPC", 
+        word: "CPS", 
         style: "color: #0055A5; font-weight: bold;"
     },
     {
         word: "SCP", 
         style: "color: #50E23D; font-weight: bold;"
-    }
+    },
+    {
+        word: "UFC",
+        style: "color: #86a71b; font-weight: bold;"
+    },
+    {
+        word: "Agrarian",
+        style: "color: #86a71b; font-weight: bold;"
+    },
+    {
+        word: "agrarian",
+        style: "color: #86a71b; font-weight: bold;"
+    },
+    {
+        word: "Farmer",
+        style: "color: #86a71b; font-weight: bold;"
+    },
+    {
+        word: "farmer",
+        style: "color: #86a71b; font-weight: bold;"
+    },
+    {
+        word: "ILP",
+        style: "color: #b06262; font-weight: bold;"
+    },
+    {
+        word: "Labour", 
+        style: "color: #0F52BA; font-weight: bold;"
+    },
+    {
+        word: "labour", 
+        style: "color: #0F52BA; font-weight: bold;"
+    },
+    {
+        word: "Left", 
+        style: "color: #7b1616; font-weight: bold;"
+    },
+    {
+        word: "Reformist", 
+        style: "color: #d26e28; font-weight: bold;"
+    },
+    {
+        word: "Cooperative Coalition", 
+        style: "color: #288ed2; font-weight: bold;"
+    },
+    {
+        word: "CCYM", 
+        style: "color: #7b1616; font-weight: bold;"
+    },
+    {
+        word: "Union", 
+        style: "color: #0F52BA; font-weight: bold;"
+    },
+    {
+        word: "FUL", 
+        style: "color: #920c0c; font-weight: bold;"
+    },
+    {
+        word: "WUL", 
+        style: "color: #920c0c; font-weight: bold;"
+    },
+    {
+        word: "Ku Klux Klan", 
+        style: "color: #626262; font-weight: bold;"
+    },
+    {
+        word: "KKK", 
+        style: "color: #626262; font-weight: bold;"
+    },
+    {
+        word: "STA", 
+        style: "color: #b06262; font-weight: bold;"
+    },
+    {
+        word: "TLC", 
+        style: "color: #b33a3a; font-weight: bold;"
+    },
+    // Below this for states of qdisplays
+    //dissents
+    {
+        word: "very low", 
+        style: "color: #54e02a; font-weight: bold;"
+    },
+    {
+        word: "low", 
+        style: "color: #9ae02a; font-weight: bold;"
+    },
+    {
+        word: "medium", 
+        style: "color: #e0d12a; font-weight: bold;"
+    },
+    {
+        word: "high", 
+        style: "color: #e0702a; font-weight: bold;"
+    },
+    {
+        word: "very high", 
+        style: "color: #e0332a; font-weight: bold;"
+    },
+    //Relationships
+    {
+        word: "very friendly", 
+        style: "color: #54e02a; font-weight: bold;"
+    },
+    {
+        word: "friendly", 
+        style: "color: #9ae02a; font-weight: bold;"
+    },
+    {
+        word: "warm", 
+        style: "color: #c5e02a; font-weight: bold;"
+    },
+    {
+        word: "neutral", 
+        style: "color: #e0d12a; font-weight: bold;"
+    },
+    {
+        word: "cool", 
+        style: "color: #e0a62a; font-weight: bold;"
+    },
+    {
+        word: "cold", 
+        style: "color: rgb(224, 118, 42); font-weight: bold;"
+    },
+    {
+        word: "frigid", 
+        style: "color: rgb(224, 81, 42); font-weight: bold;"
+    },
+    {
+        word: "hostile", 
+        style: "color: rgb(224, 48, 42); font-weight: bold;"
+    },
+    //Population Percentage || Pop
+    {
+        word: "Scarce", 
+        style: "color: #54e02a; font-weight: bold;"
+    },
+    {
+        word: "Scarce", 
+        style: "color: #ace02a; font-weight: bold;"
+    },
+    {
+        word: "Prevalent", 
+        style: "color: #e0b52a; font-weight: bold;"
+    },
+    {
+        word: "Severe", 
+        style: "color: #e0792a; font-weight: bold;"
+    },
+    {
+        word: "Disastrous", 
+        style: "color: #e03c2a; font-weight: bold;"
+    },
+    // Militancy
+    {
+        word: "Nonexistent", 
+        style: "color: #3ce02a; font-weight: bold;"
+    },
+    {
+        word: "Very Low", 
+        style: "color: #70e02a; font-weight: bold;"
+    },
+    {
+        word: "Low", 
+        style: "color: #a0e02a; font-weight: bold;"
+    },
+    {
+        word: "Medium-Low", 
+        style: "color: #bfe02a; font-weight: bold;"
+    },
+    {
+        word: "Medium", 
+        style: "color: #e0b22a; font-weight: bold;"
+    },
+    {
+        word: "High", 
+        style: "color: #e07f2a; font-weight: bold;"
+    },
+    {
+        word: "Very High", 
+        style: "color: #e0572a; font-weight: bold;"
+    },
 ];
+
 

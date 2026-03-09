@@ -3,13 +3,13 @@ new-page: true
 is-card: true
 tags: govt_affairs
 on-arrival: war_guilt_timer = 6; month_actions += 1
-view-if: ccf_in_government = 1 and war_guilt_timer = 0
+view-if: flp_in_government = 1 and war_guilt_timer = 0
 card-image: img/reichstag_1.jpg
 max-visits: 1
 
-= Commons War Guilt Inquiry
+= Assembly War Guilt Inquiry
 
-The War Guilt Inquiry has been an intermittent Commons committee for investigating the causes of the Great War and the Canadian defeat. So far, it has faced massive resistance from the military establishment up to Monarch George V.
+The War Guilt Inquiry has been an intermittent Assembly committee for investigating the causes of the Great War and the Saskatchewanian defeat. So far, it has faced massive resistance from the military establishment up to Monarch George V.
 
 - @restart: Restart the inquiry.
 - @root: Do nothing.
@@ -22,7 +22,7 @@ on-arrival: war_guilt += 1
 What is the goal of this tribunal?
 
 - @pure_history: To provide a historical record of the events of the war.
-- @rewrite: To revise the popular Canadian histories and finally put to rest the "stabbed in the back" myth.
+- @rewrite: To revise the popular Saskatchewanian histories and finally put to rest the "stabbed in the back" myth.
 
 @pure_history
 

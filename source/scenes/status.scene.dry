@@ -20,173 +20,276 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-CCF position: [? if ccf_toleration : toleration ?][? if ccf_in_government : in government - ?][? if ccf_toleration == 0 and ccf_in_government == 0 and ccf_caretaker == 0 : opposition ?][? if ccf_caretaker : caretaker government ?]
-[? if in_weimar_coalition and ccf_in_government: Weimar Coalition ?][? if in_grand_coalition and ccf_in_government: Grand Coalition ?][? if in_popular_front and ccf_in_government: Popular Front ?][? if in_left_front and ccf_in_government: Left Front ?][? if in_ccf_majority and ccf_in_government: CCF majority ?][? if in_minority_government and ccf_in_government: minority government ?][? if in_emergency_government and ccf_in_government: emergency government ?]
+FLP position: [? if flp_toleration : toleration ?][? if flp_in_government : in government - ?][? if flp_toleration == 0 and flp_in_government == 0 and flp_caretaker == 0 : opposition ?][? if flp_caretaker : caretaker government ?]
+[? if in_weimar_coalition and flp_in_government: Weimar Coalition ?][? if in_grand_coalition and flp_in_government: Grand Coalition ?][? if in_popular_front and flp_in_government: Popular Front ?][? if in_left_front and flp_in_government: Left Front ?][? if in_flp_majority and flp_in_government: FLP majority ?][? if in_minority_government and flp_in_government: minority government ?]
 
-[? if ccf_in_government and not in_ccf_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+[? if flp_in_government and not in_flp_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
 
-[? if ccf_in_government and (in_left_front or in_popular_front): CP coalition dissent: [+ cp_coalition_dissent : coalition_dissent +] ?]
+[? if flp_in_government and (in_left_front or in_popular_front): CP coalition dissent: [+ cp_coalition_dissent : coalition_dissent +] ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
 = Government
 
+Government: [+ ruling_government +]
+
 Monarch: [+ monarch +]
 
-Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])
+Premier: [+ premier +] ([+ premier_party +])
 
-Commons composition:
+Assembly composition:
+
 
 # 1928: 30, 1930: 25, 1932: 22
-{!<span class="tooltip-text" title="Co-operative Commonwealth Federation">!}[? if not ccf_name: CCF?][? if ccf_name != 0 : [+ ccf_name +]?]{!</span>!}: [+ ccf_r +]%
+{!<span class="tooltip-text" title="Farmer-Labour Group">!}[? if not flp_name: FLP?][? if flp_name != 0 : [+ flp_name +]?]{!</span>!}: [+ flp_r +]%
 [? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
 # 1928: 15, 1930: 15, 1932: 
-{!<span class="tooltip-text" title="Reconstruction Party">!}[? if not rpc_name: RPC?][? if rpc_name != 0 : [+ rpc_name +]?]{!</span>!}: [+ rpc_r +]%
+{!<span class="tooltip-text" title="Progressive Party">!}[? if not pps_name: PPS?][? if pps_name != 0 : [+ pps_name +]?]{!</span>!}: [+ pps_r +]%
 # 1928: 10, 1930: 13
-{!<span class="tooltip-text" title="Communist Party of Canada">!}[? if not cp_name: CP?][? if cp_name != 0 : [+ cp_name +]?]{!</span>!}: [+ cp_r +]%
+{!<span class="tooltip-text" title="Communist Party of Saskatchewan">!}[? if not cp_name: CP?][? if cp_name != 0 : [+ cp_name +]?]{!</span>!}: [+ cp_r +]%
 # 1928: 5, 1930: 4 (as DstP)
-{!<span class="tooltip-text" title="Liberal Party">!}[? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]{!</span>!}: [+ lpc_r +]%
+{!<span class="tooltip-text" title="Liberal Party">!}[? if not lps_name: LPS?][? if lps_name != 0 : [+ lps_name +]?]{!</span>!}: [+ lps_r +]%
 # 1928: 9, 1930: 5
-{!<span class="tooltip-text" title="Conservative Party">!}[? if not cpc_name: CPC?][? if cpc_name != 0 : [+ cpc_name +]?]{!</span>!}: [+ cpc_r +]%
+{!<span class="tooltip-text" title="Conservative Party">!}[? if not cps_name: CPS?][? if cps_name != 0 : [+ cps_name +]?]{!</span>!}: [+ cps_r +]%
 # 1928: 14, 1930: 7
 {!<span class="tooltip-text" title="Social Credit Party">!}[? if not scp_name: SCP?][? if scp_name != 0 : [+ scp_name +]?]{!</span>!}: [+ scp_r +]%
-# 1928: 3, 1930: 18
-{!<span class="tooltip-text" title="National-Socialist Canadian Worker's Party (Nazis)">NSDAP</span>!}: [+ nsdap_r +]%
 # 1928: 9, 1930: 10
 Others: [+ other_r +]%
 
-[? if ccf_in_government = 1 : Budget: [+ budget +] ?]
+[? if flp_in_government = 1 : Budget: [+ treasury +] ?]
 
-Next Parliamentary Election: [+ next_parl_election_month : month +] [+ next_parl_election_year +]
-
-= Economics
-
-Inflation: [+ inflation_2 +]%
-
-[? if black_thursday_seen = 1 : Unemployment: [+ unemployed_2 +]% ?]
-
-Economic growth: [+ economic_growth_2 +]%
+Next Legislative Election: [+ next_parl_election_month : month +] [+ next_parl_election_year +]
 
 
 # = Public Opinion
 
 @politics
 
-= Inter-party Relations
+{!<div style="max-height:350px; overflow-y:auto; padding:6px;">!}
+
+= Inter-party Relations and Voteshare Estimates
+
+{!<table class="poll-table">!}
+
+{!<tr><td>Party</td><td>Relationships</td><td>Polling</td><tr>!}
+
+{!<tr><td>!} **FLP** {!</td><td>!}Our Party{!</td><td>!} **Poll:** [+ flp_votes +]% {!</td><tr>!}
+
+{!<tr><td>!} PPS {!</td><td>!}[+ pps_relation : relationships +]{!</td><td>!} [+ pps_votes +]% {!</td><tr>!}
+
+{!<tr><td>!} LPS {!</td><td>!}[+ lps_relation : relationships +]{!</td><td>!} [+ lps_votes +]% {!</td><tr>!}
+
+{!<tr><td>!} CPS {!</td><td>!}[+ cps_relation : relationships +]{!</td><td>!} [+ cps_votes +]% {!</td><tr>!}
+
+{!<tr><td>!} CP {!</td><td>!}[+ cp_relation : relationships +]{!</td><td>!} [+ cp_votes +]% {!</td><tr>!}
+
+{!<tr><td>!} Others {!</td><td>!} Varied {!</td><td>!} [+ other_votes +]% {!</td><tr>!}
+
+{!<tr><td>!} SCP {!</td><td>!}[+ scp_relation : relationships +]{!</td><td>!} [+ scp_votes +]% {!</td><tr>!}
 
 
-{!<span class="tooltip-text" title="Reconstruction Party">!}[? if not rpc_name: RPC?][? if rpc_name != 0 : [+ rpc_name +]?]{!</span>!}: [+ rpc_relation : relationships +]
+{!</table>!}
 
-{!<span class="tooltip-text" title="Liberal Party">!}[? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]{!</span>!}: [+ lpc_relation : relationships +]
-
-{!<span class="tooltip-text" title="Conservative Party">!}[? if not cpc_name: CPC?][? if cpc_name != 0 : [+ cpc_name +]?]{!</span>!}: [+ cpc_relation : relationships +]
-
-{!<span class="tooltip-text" title="Communist Party">!}[? if not cp_name: CP?][? if cp_name != 0 : [+ cp_name +]?]{!</span>!}: [+ cp_relation : relationships +]
-
-{!<span class="tooltip-text" title="Social Credit Party">!}[? if not scp_name: SCP?][? if scp_name != 0 : [+ scp_name +]?]{!</span>!}: [+ scp_relation : relationships +]
-
-{!<span class="tooltip-text" title="National-Socialist Canadian Worker's Party (Nazis)">NSDAP</span>!}: [+ nsdap_relation : relationships +]
-
-= Internal Factions of the CCF
-
-{!<span class="tooltip-text" title="The Left is interested in radical, transformative policies and cooperation with the CP.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
-
-{!<span class="tooltip-text" title="The Agrarian wing is a mix between reform and revolution.">Agrarian</span>!} strength: [+ agrarian_strength : strength +], dissent: [+ center_dissent : dissent +]
-
-{!<span class="tooltip-text" title="Labor's goal is economic reform and benefits for organized workers.">Labor</span>!} strength: [+ labor_strength : strength +], dissent: [+ labor_dissent : dissent +]
-
-{!<span class="tooltip-text" title="Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy.">Reformist</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
-
-[? if neorevisionism > 0 : Neorevisionist strength: [+ neorevisionist_strength : strength +], dissent: [+ neorevisionist_dissent : dissent +] ?]
+{!</div>!}
 
 
-@paramilitaries
+{!<div style="max-height:350px; overflow-y:auto; padding:6px;">!}
+
+=                                     Class Polling
+
+{!<table class="poll-table">!}
+
+{!<tr><td>Party</td><td>Workers</td><td>Rural</td><td>Unemployed</td><td>New Middle</td><td>Old Middle</td><tr>!}
+
+{!<tr><td><div class="box" style='background-color:#D26E28; outline: 2px; outline-style: solid;'> </div> !} **FLP:** {!</td><td>!} **[+ workers_flp_display +]%** {!</td><td>!} **[+ rural_flp_display +]%** {!</td><td>!} **[+ unemployed_flp_display +]%** {!</td><td>!} **[+ new_middle_flp_display +]%** {!</td><td>!} **[+ old_middle_flp_display +]%** {!</td><tr>!}
+
+[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ workers_sapd_display +]% {!</td><td>!} [+ rural_sapd_display +]% {!</td><td>!} [+ unemployed_sapd_display +]% {!</td><td>!} [+ new_middle_sapd_display +]% {!</td><td>!} [+ old_middle_sapd_display +]% {!</td></tr>!} ?]
+
+{!<tr><td><div class="box" style='background-color:#920c0c'> </div> !} CP: {!</td><td>!} [+ workers_cp_display +]% {!</td><td>!} [+ rural_cp_display +]% {!</td><td>!} [+ unemployed_cp_display +]% {!</td><td>!} [+ new_middle_cp_display +]% {!</td><td>!} [+ old_middle_cp_display +]% {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#BE0028'> </div> !} [+ lps_name +]: {!</td><td>!} [+ workers_lps_display +]% {!</td><td>!} [+ rural_lps_display +]% {!</td><td>!} [+ unemployed_lps_display +]% {!</td><td>!} [+ new_middle_lps_display +]% {!</td><td>!} [+ old_middle_lps_display +]% {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E7DB73'> </div> !} PPS: {!</td><td>!} [+ workers_pps_display +]% {!</td><td>!} [+ rural_pps_display +]% {!</td><td>!} [+ unemployed_pps_display +]% {!</td><td>!} [+ new_middle_pps_display +]% {!</td><td>!} [+ old_middle_pps_display +]% {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#0055A5'> </div> !} CPS: {!</td><td>!} [+ workers_cps_display +]% {!</td><td>!} [+ rural_cps_display +]% {!</td><td>!} [+ unemployed_cps_display +]% {!</td><td>!} [+ new_middle_cps_display +]% {!</td><td>!} [+ old_middle_cps_display +]% {!</td></tr>!}
+ 
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ workers_other_display +] % {!</td><td>!} [+ rural_other_display +]% {!</td><td>!} [+ unemployed_other_display +]% {!</td><td>!} [+ new_middle_other_display +]% {!</td><td>!} [+ old_middle_other_display +]% {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#50E23D'> </div> !} SCP: {!</td><td>!} [+ workers_scp_display +]% {!</td><td>!} [+ rural_scp_display +]% {!</td><td>!} [+ unemployed_scp_display +]% {!</td><td>!} [+ new_middle_scp_display +]% {!</td><td>!} [+ old_middle_scp_display +]% {!</td></tr>!}
+
+{!</table>!}
+
+{!</div>!}
+
+
+@organizations
 on-arrival: {!
-if (Q.rb_strength) {
-    Q.rb_strength_2 = Q.rb_strength.toFixed(1);
+if (Q.ufc_strength) {
+    Q.ufc_strength_2 = Q.ufc_strength.toFixed(2);
 }
-if (Q.rfb_strength) {
-    Q.rfb_strength_2 = Q.rfb_strength.toFixed(1);
+if (Q.wul_strength) {
+    Q.wul_strength_2 = Q.wul_strength.toFixed(2);
 }
-if (Q.sh_strength) {
-    Q.sh_strength_2 = Q.sh_strength.toFixed(1);
+if (Q.kkk_strength) {
+    Q.kkk_strength_2 = Q.kkk_strength.toFixed(2);
 }
-if (Q.sa_strength) {
-    Q.sa_strength_2 = Q.sa_strength.toFixed(1);
+if (Q.ful_strength) {
+    Q.ful_strength_2 = Q.ful_strength.toFixed(2);
 }
 !}
 
-= Paramilitaries
+= Saskatchewan Organizations
 
-{!<span class="tooltip-text" title="The Reichsbanner Schwarz-Rot-Gold is a popular organization for defending democracy, mostly affiliated with the CCF.">Reichsbanner</span>!} Strength: [+ rb_strength_2 +] thousand
+[? if 1 == 1 :
+KKK Strength: [+ kkk_strength_2 +] Thousand<br>
+KKK Militancy: [+ kkk_militancy : militancy +]<br>
+?]
 
-Reichsbanner Militarization: [+ rb_militancy : militancy +]
+[? if 1 == 1 : 
+FUL Strength: [+ ful_strength_2 +] Thousand<br>
+FUL Militancy: [+ ful_militancy : militancy +]<br>
+?]
 
-{!<span class="tooltip-text" title="The RFB (Rotfrontkämpferbund) is a communist group associated with the CP.">RFB</span>!} Strength: [+ rfb_strength_2 +] thousand
+[? if 1 == 1 :
+WUL Strength: [+ wul_strength_2 +] Thousand<br>
+WUL Militancy: [+ wul_militancy : militancy +]<br>
+?]
 
-RFB Militarization: [+ rfb_militancy : militancy +]
+[? if sta_affiliated == 0 :
+STA Relations: [+ sta_relations : relationships +]<br>
+STA Militancy: [+ sta_militancy : militancy +]<br>
+STA Strength: [+ sta_strength +] Thousand<br>
+?]
 
-{!<span class="tooltip-text" title="The Stahlhelm is a right-wing organization of war veterans associated with the SCP.">Stahlhelm</span>!} Strength: [+ sh_strength_2 +] thousand
+[? if tlc_affiliated == 0 :
+TLC Relations: [+ tlc_relations : relationships +]<br>
+TLC Militancy: [+ tlc_militancy : militancy +]<br>
+TLC Strength: [+ tlc_strength +] Thousand<br>
+?]
 
-Stahlhelm Militarization: [+ sh_militancy : militancy +]
+= Law Enforcement
 
-{!<span class="tooltip-text" title="The SA (Sturmabteilung) is the Nazi paramilitary.">SA</span>!} Strength: [+ sa_strength_2 +] thousand
+RCMP Suspicion: [+ rcmp_suspicion : suspicion +]
 
-SA Militarization: [+ sa_militancy : militancy +]
+Urban police: [+ city_police_strength : strength +] Thousand
 
-= Official military/paramilitaries
+Urban police loyalty: [+ city_police_loyalty : loyalty +]
 
-Reichswehr: [+ reichswehr_strength +] thousand troops.
+Support for Socialism: [+ socialism +]
 
-Reichswehr Loyalty: [+ reichswehr_loyalty : loyalty +]
 
-Prussian police: [+ prussian_police_strength +] thousand members.
 
-Prussian police loyalty: [+ prussian_police_loyalty : loyalty +]
+@interior
 
-[? if ccf_in_government : Interior police loyalty: [+ interior_police_loyalty : loyalty +] ?]
+= Infrastructure
 
-@polls
-on-arrival: {!
-Q.pro_republic_disp = Math.round(Q.pro_republic);
-Q.nationalism_disp = Math.round(Q.nationalism);
-Q.socialism_disp = Math.round(Q.socialism);
+
+Railway length: [+ railway_length +] km
+Road length: [+ road_length +] km
+
+= Tax Rates 
+
+Lower income tax: [+ lower_tax_rates +]%
+Upper income tax: [+ Upper_tax_rates +]%
+Tariffs: [+ tariffs +]%
+
+= Living Standards
+
+Welfare: [+ welfare +]
+
+Basic Education quality: [+ educationquality +]
+Higher Education quality: [+ highereducationquality +]
+Curriculum: [+ Curriculum +]
+
+Healthcare quality: [+ healthcarequality +]
+
+= Rural Standards
+
+Rural Electrification: [+ rural_electrification +]%
+Rural Sanitation Access: [+ rural_sanitation +]%
+Rural Telephone Access: [+ rural_telephone +]%
+
+@economy
+
+= Status of the Economy
+
+Inflation: [+ inflation_2 +]%
+
+Unemployment: [+ unemployed_2 : pop_percentage +]
+
+Rural Poverty Incidence: [+ poverty : pop_percentage +]
+
+GDP Growth: [+ economic_growth_2 +]%
+
+Saskatchewan GDP: [+ str_saskatchewan_gdp +] Million
+
+Total Saskatchewan Debt: $[+ saskatchewan_debt +] Million
+
+@situations 
+
+= Situations
+
+[? if depression == 1:
+{!
+  <div style="text-align: center; font-weight: bold; margin-bottom: 5px;">
+    The Great Depression
+    <img 
+      src="img/Melfort_Market.jpg" 
+      style="width: 60%; display: block; margin: auto; cursor: pointer;"
+      onclick="goToDepressionSituation()"
+    >
+  <div>
 !}
+?]
 
-= Projected election results
+[? if depression == 1:
+{!
+  <div style="text-align: center; font-weight: bold; margin-bottom: 5px;">
+    The Dirty Thirties
+    <img 
+      src="img/Dirty_Thirties.jpg" 
+      style="width: 60%; display: block; margin: auto; cursor: pointer;"
+      onclick="goToDepressionSituation()"
+    >
+  <div>
+!}
+?]
 
-(if the election were to be held now):
+[? if depression == 1:
+{!
+  <div style="text-align: center; font-weight: bold; margin-bottom: 5px;">
+    Underdeveloped Countryside
+    <img 
+      src="img/Quil_Lake_1917.jpg" 
+      style="width: 60%; display: block; margin: auto; cursor: pointer;"
+      onclick="goToDepressionSituation()"
+    >
+  <div>
+!}
+?]
 
-CCF: [+ ccf_votes +]%
+[? if depression == 1:
+{!
+  <div style="text-align: center; font-weight: bold; margin-bottom: 5px;">
+    Extensive Privatized Rail
+    <img 
+      src="img/Regina_Train_1951.jpg" 
+      style="width: 60%; display: block; margin: auto; cursor: pointer;"
+      onclick="goToDepressionSituation()"
+    >
+  <div>
+!}
+?]
 
-[? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
-
-RPC: [+ rpc_votes +]%
-
-CP: [+ cp_votes +]%
-
-[? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]: [+ lpc_votes +]%
-
-CPC: [+ cpc_votes +]%
-
-SCP: [+ scp_votes +]%
-
-NSDAP: [+ nsdap_votes +]%
-
-Others: [+ other_votes +]%
-
-**Detailed results for each demographic**
-
-Workers: CCF: [+ workers_ccf_display +]%, RPC: [+ workers_rpc_display +]%, CP: [+ workers_cp_display +]%, [? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]: [+ workers_lpc_display +]%, CPC: [+ workers_cpc_display +]%; SCP: [+ workers_scp_display +]%, NSDAP: [+ workers_nsdap_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
-
-New Middle Class: CCF: [+ new_middle_ccf_display +]%, RPC: [+ new_middle_rpc_display +]%, CP: [+ new_middle_cp_display +]%, [? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]: [+ new_middle_lpc_display +]%, CPC: [+ new_middle_cpc_display +]%; SCP: [+ new_middle_scp_display +]%, NSDAP: [+ new_middle_nsdap_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
-
-Old Middle Class: CCF: [+ old_middle_ccf_display +]%, RPC: [+ old_middle_rpc_display +]%, CP: [+ old_middle_cp_display +]%, [? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]: [+ old_middle_lpc_display +]%, CPC: [+ old_middle_cpc_display +]%; SCP: [+ old_middle_scp_display +]%, NSDAP: [+ old_middle_nsdap_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
-
-Rural: CCF: [+ rural_ccf_display +]%, RPC: [+ rural_rpc_display +]%, CP: [+ rural_cp_display +]%, [? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]: [+ rural_lpc_display +]%, CPC: [+ rural_cpc_display +]%; SCP: [+ rural_scp_display +]%, NSDAP: [+ rural_nsdap_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
-
-Unemployed: CCF: [+ unemployed_ccf_display +]%, RPC: [+ unemployed_rpc_display +]%, CP: [+ unemployed_cp_display +]%, [? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]: [+ unemployed_lpc_display +]%, CPC: [+ unemployed_cpc_display +]%; SCP: [+ unemployed_scp_display +]%, NSDAP: [+ unemployed_nsdap_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
-
-Catholics: CCF: [+ catholics_ccf_display +]%, RPC: [+ catholics_rpc_display +]%, CP: [+ catholics_cp_display +]%, [? if not lpc_name: LPC?][? if lpc_name != 0 : [+ lpc_name +]?]: [+ catholics_lpc_display +]%, CPC: [+ catholics_cpc_display +]%; SCP: [+ catholics_scp_display +]%, NSDAP: [+ catholics_nsdap_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
-
-Support for the Republic: [+ pro_republic_disp +]%
+[? if depression == 1:
+{!
+  <div style="text-align: center; font-weight: bold; margin-bottom: 5px;">
+    Meager Labour Regulation
+    <img 
+      src="img/Saskatoon_StreetcarRail_Construction.jpg" 
+      style="width: 60%; display: block; margin: auto; cursor: pointer;"
+      onclick="goToDepressionSituation()"
+    >
+  <div>
+!}
+?]

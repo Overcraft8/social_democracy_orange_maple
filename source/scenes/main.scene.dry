@@ -1,5 +1,5 @@
 title: Next month
-set-bg: img/map_of_canada.jpg
+set-bg: img/Saskatchewan_grid_map2.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
@@ -14,7 +14,7 @@ max-cards: 3
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
-[? if year = 1928 and month = 2 : The current bourgeois-right government has fallen. The next elections are slated for May of this year. ?]
+[? if year = 1932 and month = 2 : The current bourgeois-right government has fallen. The next elections are slated for May of this year. ?]
 
 - @party
 - @govt
@@ -22,7 +22,7 @@ max-cards: 3
 - @shuffle_leadership_pinned
 
 @main_easy
-set-bg: img/map_of_canada.jpg
+set-bg: img/Saskatchewan_grid_map2.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
@@ -37,17 +37,18 @@ max-cards: 4
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
-[? if year = 1928 and month = 2 : The current bourgeois-right government has fallen. The next elections are slated for May of this year. ?]
+[? if year = 1932 and month = 2 : The Anderson government continues to mismanage the crisis ?]
 
 - @party
 - @govt
+- @programme
 - #advisor
 - @shuffle_leadership_pinned
 
 
 @party
 title: Party Affairs
-card-image: img/Vorwaerts_nr_1.png
+card-image: img/CCF_logo.jpg
 is-deck: true
 
 - #party_affairs
@@ -55,7 +56,15 @@ is-deck: true
 @govt
 title: Government Affairs
 view-if: time >= 6
-card-image: img/reichstag_2.jpg
+card-image: img/Saskatchewan_Legislature.jpg
 is-deck: true
 
 - #govt_affairs
+
+@programme 
+title: Party Programme
+view-if: 1 == 1
+card-image: img/Sask_CCF_Programme.jpg
+is-deck: true
+
+- #programme

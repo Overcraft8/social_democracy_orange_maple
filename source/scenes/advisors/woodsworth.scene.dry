@@ -7,37 +7,37 @@ new-page: true
 
 = J. S. Woodsworth
 
-James Woodsworth is a former methodist minister, and one of the most recognizable and well-known Democratic Socialist leaders. He is the CCF's Party Leader.
+James Woodsworth is a former methodist minister, and one of the most recognizable and well-known Democratic Socialist leaders. He is the FLP's Party Leader.
 
-J. S. Woodsworth [? if ccf_prussia = 1 : is ?][? if ccf_prussia = 0 : was ?] the Minister-Monarch of Prussia, the largest state in Canada. He is a reformist leader who seeks to work with the bourgeois parties.
+J. S. Woodsworth [? if flp_prussia = 1 : is ?][? if flp_prussia = 0 : was ?] the Minister-Monarch of City Police, the largest state in Saskatchewan. He is a reformist leader who seeks to work with the bourgeois parties.
 
 - @coalition
-- @prussian_bulwark
+- @city_bulwark
 - @snap_election
 - @root: Return to main
 
 @coalition
 title: Negotiating with the Coalition
-subtitle: J.S. Woodsworth can improve our relationships with our centrist and center-right coalition partners in Prussia as well as in the Commons.
-choose-if: advisor_action_timer <= 0 and (ccf_prussia or in_weimar_coalition or in_grand_coalition or in_popular_front)
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if not ccf_prussia : The CCF does not control the Prussian government. ?]
-on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if ccf_in_government = 1 and coalition_dissent > 0; rpc_relation += 6; lpc_relation += 6; cpc_relation += 2; cpc_relation += 3 if in_grand_coalition
+subtitle: J.S. Woodsworth can improve our relationships with our centrist and center-right coalition partners in City Police as well as in the Assembly.
+choose-if: advisor_action_timer <= 0 and (flp_prussia or in_weimar_coalition or in_grand_coalition or in_popular_front)
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if not flp_prussia : The FLP does not control the Urban government. ?]
+on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if flp_in_government = 1 and coalition_dissent > 0; pps_relation += 6; lps_relation += 6; cps_relation += 2; cps_relation += 3 if in_grand_coalition
 
-We have improved our relations with the [? if in_grand_coalition : RPC Party, [+ lpc_name +], and CPC, ?][? if not in_grand_coalition: RPC Party and [+ lpc_name +], ?] and reduced tensions with the coalition.
+We have improved our relations with the [? if in_grand_coalition : PPS Party, [+ lps_name +], and CPS, ?][? if not in_grand_coalition: PPS Party and [+ lps_name +], ?] and reduced tensions with the coalition.
 
-@prussian_bulwark
-title: The Prussian Bulwark
-subtitle: As the Minister-Monarch of Prussia, J.S. Woodsworth has power over the Prussian bureaucracy and security services.
-choose-if: advisor_action_timer <= 0 and ccf_prussia = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if ccf_prussia == 0 : The CCF does not control Prussia. ?]
-on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
-go-to: prussian_affairs
+@city_bulwark
+title: The Urban Bulwark
+subtitle: As the Minister-Monarch of City Police, J.S. Woodsworth has power over the Urban bureaucracy and security services.
+choose-if: advisor_action_timer <= 0 and flp_prussia = 1
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if flp_prussia == 0 : The FLP does not control City Police. ?]
+on-arrival: advisor_action_timer = 6; city_affairs_timer -= 6; last_advisor_action = 1
+go-to: city_affairs
 
 @snap_election
 title: Snap Election
 subtitle: Call a snap election.
-unavailable-subtitle: [? if prime_minister != "J. S. Woodsworth" and monarch != "J. S. Woodsworth" : J. S. Woodsworth must be Prime Minister or Monarch. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if monarch = "J. S. Woodsworth" and monarchial_powers : We have removed this power from the monarch with a constitutional reform. ?]
-choose-if: advisor_action_timer == 0 and (prime_minister == "J. S. Woodsworth" or (monarch == "J. S. Woodsworth" and not monarchial_powers))
+unavailable-subtitle: [? if premier != "J. S. Woodsworth" and monarch != "J. S. Woodsworth" : J. S. Woodsworth must be Premier or Monarch. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if monarch = "J. S. Woodsworth" and monarchial_powers : We have removed this power from the monarch with a constitutional reform. ?]
+choose-if: advisor_action_timer == 0 and (premier == "J. S. Woodsworth" or (monarch == "J. S. Woodsworth" and not monarchial_powers))
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_parl_election_month = month + 3 if next_election_time >= time+3; next_parl_election_year = year if next_election_time >= time+3; next_parl_election_year += 1 if next_parl_election_month > 12; next_parl_election_month -= 12 if next_parl_election_month > 12; 
 
 We have called for new elections, set for [+ next_parl_election_month : month +] [+ next_parl_election_year +].

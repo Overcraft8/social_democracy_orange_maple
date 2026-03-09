@@ -14,6 +14,7 @@ go-to: start_menu_2
 - @election_simulation: Election simulation
 - @credits: Credits
 - @game_over.achievements
+- @Preface: Preface
 
 
 @start
@@ -21,17 +22,18 @@ on-arrival: {!
 Q.started = 1;
 // time elapsed (in months)
 Q.time = 1;
-Q.year = 1928;
+Q.year = 1932;
 Q.month = 1;
 // how many actions have been taken this month?
 Q.month_actions = 0;
+Q.last_month = 0
 
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
 // old demographics
 Q.old_demographics = 0;
-// use decimals for commons seats
+// use decimals for assembly seats
 // TODO: not yet implemented
 Q.use_decimals = 1;
 
@@ -46,39 +48,40 @@ Q.dissent = 0.05;
 Q.dissent_percent = 5;
 
 // factions
-Q.factions = ['left', 'agrarian', 'labor', 'reformist', 'neorevisionist'];
+Q.factions = ['left', 'agrarian', 'labour', 'reformist', 'neorevisionist'];
 // should this be normalized to 100%?
-Q.left_strength = 15;
+Q.left_strength = 5;
 Q.left_dissent = 20;
-Q.agrarian_strength = 30;
-Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
-Q.reformist_strength = 25;
+Q.agrarian_strength = 55;
+Q.agrarian_dissent = 0;
+Q.labour_strength = 25;
+Q.labour_dissent = 5;
+Q.reformist_strength = 15;
 Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 5;
+Q.neorevisionist_strength = 0;
 Q.neorevisionist_dissent = 10;
+
 
 // secret events...
 Q.unions_independent = 0;
-Q.centrists_resign = 0;
+Q.agrarians_resign = 0;
 Q.left_split = 0;
 Q.reformists_resigned = 0;
 
 // have we discovered neorevisionism?
 Q.neorevisionism = 0;
 
-// crisis_urgency indicates how seriously the CCF is taking the economic crisis - scale from 0 to 10.
+// crisis_urgency indicates how seriously the FLP is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
-// nazi_urgency indicates how seriously the CCF takes the nazis - scale from 0 to 10.
-Q.nazi_urgency = 0;
-// radicalization indicates how radical the CCF's rhetoric is - scale from 0 to 10.
+// scp_urgency indicates how seriously the FLP takes the scp - scale from 0 to 10.
+Q.scp_urgency = 0;
+// radicalization indicates how radical the FLP's rhetoric is - scale from 0 to 10.
 Q.radicalization = 0;
 // Support for the WTB plan and proto-Keynesian works creation plans in general
 Q.wtb_support = 0;
-// Support for Pacifism within the CCF relative to 1928
+// Support for Pacifism within the FLP relative to 1928
 Q.pacifism = 0;
-// Support for democratic reform within the CCF relative to 1928
+// Support for democratic reform within the FLP relative to 1928
 Q.democratization = 0;
 // Support for a communist coalition relative to 1928
 Q.communist_coalition = 0;
@@ -101,25 +104,37 @@ Q.moderate_plan_adopted = 0;
 // organizations
 
 // inter-party relations
-Q.rpc_relation = 50;
+Q.pps_relation = 50;
 Q.cp_relation = 25;
-Q.lpc_relation = 60;
-Q.cpc_relation = 35;
-// SCP and NSDAP are invariably hostile
+Q.lps_relation = 60;
+Q.cps_relation = 35;
+// SCP are invariably hostile
 Q.SCP_relation = 10;
-Q.NSDAP_relation = 0;
+
+
+Q.flp_legislative_leader = "None";
+Q.flp_legislative_leader_img = "Question_Mark.jpg";
+Q.flp_president = "None";
+Q.flp_president_img = "Question_Mark.jpg";
+
+Q.flp_board_one = "Alexander Nicholson";
+Q.flp_board_one_faction = "agrarian";
+Q.flp_board_two = "Louise Lucas";
+Q.flp_board_one_faction = "agrarian";
+Q.flp_board_three = "John Brockelbank";
+Q.flp_board_one_faction = "agrarian";
+Q.flp_board_four = "Clarence Fines";
+Q.flp_board_one_faction = "labour";
+
 
 Q.cp_leader = "Tim Buck";
-// alternative is the Conciliators as party leader
-Q.ccf_party_leader = "J.S. Woodsworth";
 Q.cp_party_leader = "Tim Buck";
-Q.cpc_leader = "R. B. Bennett";
-Q.lpc_leader = "Mackenzie King";
-Q.scp_leader = "William Aberhart"; 
-Q.rpc_leader = "Henry Stevens";
-// party leader - can be Ludwig Kaas, Joseph Joos, or Adam Stegerwald after the 1928 December conference. Joos will be most friendly to the CCF.
-Q.rpc_party_leader = "Henry Stevens";
-Q.nsdap_leader = "Hitler";
+Q.cps_leader = "James Anderson";
+Q.lps_leader = "James Gardiner";
+Q.scp_leader = "Joseph Needham"; 
+Q.pps_leader = "Henry Stevens";
+// party leader - can be Ludwig Kaas, Joseph Joos, or Adam Stegerwald after the 1928 December conference. Joos will be most friendly to the FLP.
+Q.pps_party_leader = "Henry Stevens";
 
 // hmm... maybe we can play nice with George V???
 Q.georgev_relation = 25;
@@ -127,43 +142,10 @@ Q.georgev_relation = 25;
 Q.georgev_enabled = 0;
 
 
-// Does the CCF lead in Prussia?
-Q.ccf_prussia = 1;
-// Options: ccf, z, scp, papen, nsdap
-Q.prussian_government = "CCF";
-
-// The array of forces - paramilitary groups
-// Number of members in 1928 (in thousands)
-// Reichsbanner, stahlhelm, SA, rotfrontkämpferbund
-Q.rb_strength = 2000;
-Q.rb_militancy = 0.01;
-Q.women_in_rb = 0;
-Q.rb_banned = 0;
-Q.sh_strength = 500;
-Q.sh_militancy = 0.5;
-Q.sh_banned = 0;
-Q.sh_banned_prussia = 0;
-Q.sa_strength = 80;
-Q.sa_militancy = 0.5;
-Q.sa_banned = 0;
-Q.sa_banned_prussia = 0;
-Q.rfb_strength = 130;
-Q.rfb_militancy = 0.5;
-Q.rfb_banned = 0;
-Q.rfb_banned_prussia = 0;
-
-Q.interior_police_strength = 50;
-Q.interior_police_militancy = 1;
-Q.interior_police_loyalty = 0.45;
-
-Q.prussian_police_strength = 90;
-Q.prussian_police_militancy = 1;
-Q.prussian_police_loyalty = 0.5;
-
-// strength includes actual military and de facto reserves?
-Q.reichswehr_strength = 100;
-Q.reichswehr_militancy = 5;
-Q.reichswehr_loyalty = 0.2;
+// Does the FLP lead in City Police?
+Q.flp_prussia = 1;
+// Options: flp, lps, cps, scp
+Q.city_government = "FLP";
 
 // The state of the country
 
@@ -178,7 +160,7 @@ Q.pro_republic = 59;
 
 Q.emergency_rule = 0;
 
-// minimum percentage of votes to be represented in the Commons
+// minimum percentage of votes to be represented in the Assembly
 Q.electoral_threshold = 0;
 // constitutional reform level
 Q.constitutional_reform = 0;
@@ -189,14 +171,13 @@ Q.monarchial_powers = 0;
 // allows banning of non-constitutional parties
 Q.constitutional_protection = 0;
 Q.cp_banned = 0;
-Q.nsdap_banned = 0;
 
 // coups and capital strikes happen when you upset the right or the capitalists too much with your policies. they're an additional check on your policies, when purely electoral checks don't suffice.
 // when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
 Q.coup_progress = 0;
 Q.capital_strike_progress = 0;
 
-Q.budget = 4;
+Q.treasury = 10;
 
 
 //District data
@@ -222,20 +203,20 @@ Q.mannar_d_old_middle = 20;
 Q.mannar_d_new_middle = 20;
 Q.mannar_d_worker = 20;
 Q.mannar_d_rural = 20;
-Q.mannar_d_catholic = 20
+Q.mannar_d_catholic = 20;
 
 Q.mannar_d_seats = 5;
 Q.mannar_d_pop_weight = 0.72;
 
 // Proportion of different social groups
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 45, table 3.4 - using 1925 figures
-Q.workers = 48; // industry and trade
-Q.old_middle = 13; // "old mittelstand"
+Q.workers = 17; // industry and trade
+Q.old_middle = 8; // "old mittelstand"
 // 16.4 trade & commerce, 6.6 public and private services, 4.4 domestic help
 Q.new_middle = 14; // "new mittelstand"
-Q.rural = 25; // agriculture and forestry employment... but many of those are proletarians so...
+Q.rural = 61; // agriculture and forestry employment... but many of those are proletarians so...
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
-Q.unemployed = 8.6;
+Q.unemployed = 15;
 Q.catholics = 30;
 
 // unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
@@ -244,16 +225,23 @@ Q.catholics = 30;
 Q.income = 1600;
 // what about incomes for different classes? rural workers? middle-class workers?
 
-// inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BCCFRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
+// inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BFLPRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
 Q.inflation = 2.9;
 
 // economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
 Q.economic_growth = 4.4;
+Q.monthly_economic_growth = 1;
+
+Q.saskatchewan_debt = Number((160).toFixed(1));
+Q.saskatchewan_gdp = Number((200).toFixed(1)); // new GDP
+// Q.saskatchewan_old_gdp should already exist
+
+Q.depression = 1;
 
 // economic expansion timer
 Q.economic_expansion = 0;
 
-// quality of life (as % of 1928 - currently unused - should be welfare-adjusted.)
+// quality of life (as % of 1932 - currently unused - should be welfare-adjusted.)
 Q.workers_qol = 100;
 Q.rural_qol = 100;
 Q.unemployed_qol = 100;
@@ -261,100 +249,95 @@ Q.old_middle_qol = 100;
 Q.new_middle_qol = 100;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['ccf', 'cp', 'rpc', 'lpc', 'cpc', 'scp', 'nsdap', 'other'];
+Q.parties = ['flp', 'cp', 'pps', 'lps', 'cps', 'scp', 'other'];
+
+
+
 
 // TODO: add 'sapd' later on
 Q.sapd_formed = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_ccf = 10;
+Q.workers_flp = 10;
 Q.workers_cp = 3;
-Q.workers_rpc = 3;
-Q.workers_lpc = 35;
-Q.workers_cpc = 32;
-Q.workers_scp = 5;
-Q.workers_nsdap = 0;
+Q.workers_pps = 3;
+Q.workers_lps = 38;
+Q.workers_cps = 34;
+Q.workers_scp = 0;
 Q.workers_other = 12;
 
-Q.old_middle_ccf = 2;
+Q.old_middle_flp = 2;
 Q.old_middle_cp = 0;
-Q.old_middle_rpc = 5;
-Q.old_middle_lpc= 38;
-Q.old_middle_cpc = 35;
-Q.old_middle_scp = 15;
-Q.old_middle_nsdap = 0;
-Q.old_middle_other = 2;
+Q.old_middle_pps = 10;
+Q.old_middle_lps= 40;
+Q.old_middle_cps = 45;
+Q.old_middle_scp = 0;
+Q.old_middle_other = 3;
 
-Q.new_middle_ccf = 5;
-Q.new_middle_cp = 1;
-Q.new_middle_rpc = 12;
-Q.new_middle_lpc= 34;
-Q.new_middle_cpc = 31;
-Q.new_middle_scp = 13;
-Q.new_middle_nsdap = 0;
+Q.new_middle_flp = 5;
+Q.new_middle_cp = 0;
+Q.new_middle_pps = 12;
+Q.new_middle_lps= 43;
+Q.new_middle_cps = 38;
+Q.new_middle_scp = 0;
 Q.new_middle_other = 2;
 
-Q.rural_ccf = 13;
+Q.rural_flp = 13;
 Q.rural_cp = 0;
-Q.rural_rpc = 6;
-Q.rural_lpc= 36;
-Q.rural_cpc = 32;
-Q.rural_scp = 10;
-Q.rural_nsdap = 0;
+Q.rural_pps = 6;
+Q.rural_lps= 41;
+Q.rural_cps = 37;
+Q.rural_scp = 0;
 Q.rural_other = 3;
 
-Q.unemployed_ccf = 9;
-Q.unemployed_cp = 4;
-Q.unemployed_rpc = 7;
-Q.unemployed_lpc = 37;
-Q.unemployed_cpc = 30;
-Q.unemployed_scp = 6;
-Q.unemployed_nsdap = 0;
+Q.unemployed_flp = 9;
+Q.unemployed_cp = 5;
+Q.unemployed_pps = 7;
+Q.unemployed_lps = 40;
+Q.unemployed_cps = 32;
+Q.unemployed_scp = 0;
 Q.unemployed_other = 5;
 
-Q.catholics_ccf = 7;
+Q.catholics_flp = 7;
 Q.catholics_cp = 2;
-Q.catholics_rpc = 10;
-Q.catholics_lpc = 40;
-Q.catholics_cpc = 30;
-Q.catholics_scp = 5;
-Q.catholics_nsdap = 0;
+Q.catholics_pps = 10;
+Q.catholics_lps = 45;
+Q.catholics_cps = 30;
+Q.catholics_scp = 0;
 Q.catholics_other = 6;
 
 
-// Current Commons composition
-// % of Commons in Jan 1928
+// Current Assembly composition
+// % of Assembly in Jan 1932
 // source: wikipedia
 // since they were ideologically similar, but they were separate parties.
 // They did not have a CDU/CSU-style relationship.
-Q.ccf_r = 0;
+Q.flp_r = 0;
 Q.cp_r = 0;
-Q.rpc_r = 1;
-Q.lpc_r = 42;
-Q.cpc_r = 53;
+Q.pps_r =  8;
+Q.lps_r = 44;
+Q.cps_r = 38;
 Q.scp_r = 0;
-Q.nsdap_r = 0;
-Q.other_r = 4;
+Q.other_r = 10;
 
 // diff from prev
-Q.old_ccf_r = 26;
+Q.old_flp_r = 26;
 Q.old_cp_r = 9;
-Q.old_rpc_r = 17;
-Q.old_lpc_r = 6;
-Q.old_cpc_r = 10;
+Q.old_pps_r = 17;
+Q.old_lps_r = 6;
+Q.old_cps_r = 10;
 Q.old_scp_r = 20;
-Q.old_nsdap_r = 3;
 Q.old_other_r = 9;
 
 // sapd isn't formed yet, but it may be formed
 Q.sapd_r = 0;
 Q.old_sapd_r = 0;
 
-// for changing the LPC's name to the DStP
-Q.lpc_name = "LPC";
+// for changing the LPS's name to the DStP
+Q.lps_name = "LPS";
 
-// array of objects of the form {date: Date(), ccf: 10, cp: 12, ...} for each election
+// array of objects of the form {date: Date(), flp: 10, cp: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
 Q.party_support_records = [];
@@ -364,32 +347,31 @@ Q.economic_records = [];
 
 // State of the government
 Q.monarch = "George V";
-// starting prime_minister: R.B. Bennett
-Q.prime_minister = "R.B. Bennett";
-Q.prime_minister_party = 'CPC';
-Q.ccf_in_government = 0;
-Q.rpc_in_government = 0;
-Q.lpc_in_government = 0;
-Q.cpc_in_government = 1;
+// starting premier: James Anderson
+Q.premier = "James Anderson";
+Q.premier_party = 'CPS';
+Q.flp_in_government = 0;
+Q.pps_in_government = 0;
+Q.lps_in_government = 0;
+Q.cps_in_government = 1;
 Q.scp_in_government = 0;
 Q.cp_in_government = 0;
-Q.nsdap_in_government = 0;
 
 Q.in_right_coalition = 0;
-// Weimar coalition = CCF + RPC + LPC
+// Weimar coalition = FLP + PPS + LPS
 Q.in_weimar_coalition = 0;
-// Grand coalition = CCF + RPC + LPC + CPC
-// also includes the "new grand coalition" of CCF + RPC + LPC + CPC + Others
+// Grand coalition = FLP + PPS + LPS + CPS
+// also includes the "new grand coalition" of FLP + PPS + LPS + CPS + Others
 Q.in_grand_coalition = 0;
-// Popular front = CCF + CP + RPC + LPC
+// Popular front = FLP + CP + PPS + LPS
 Q.in_popular_front = 0;
-// left coalition = CCF + CP + left-splinters
+// left coalition = FLP + CP + left-splinters
 Q.in_left_front = 0;
-// emergency government containing the CCF: only monarch JS_Woodsworth can do this.
+// emergency government containing the FLP: only monarch JS_Woodsworth can do this.
 Q.in_emergency_government = 0;
-Q.in_ccf_majority = 0;
+Q.in_flp_majority = 0;
 Q.grand_coalition_failed = 0;
-// if the CCF is ruling as part of a minority government
+// if the FLP is ruling as part of a minority government
 Q.in_minority_government = 0;
 // national unity governmet
 
@@ -398,29 +380,49 @@ Q.coalition_dissent = 0;
 // dissent from the CP, in a popular front or left front government
 Q.cp_coalition_dissent = 0;
 
-// does the CCF tolerate the government even if it is not a participant?
-Q.ccf_toleration = 0;
+// does the FLP tolerate the government even if it is not a participant?
+Q.flp_toleration = 0;
 
 // is the current government a monarchial minority government?
 Q.minority_government = 0;
+Q.ruling_government = "Cooperative Coalition";
 
 // ministries - which parties control the ministries?
 // starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
 // is the agricultural ministry useful at all?
+
+
+
+
+
+Q.cooperatives_minister = "None";
+Q.cooperatives_minister_party = "CPS";
+Q.education_minister = "None";
+Q.education_minister_party = "CPS";
+Q.mineral_resources_minister = "None";
+Q.mineral_resources_minister_party = "CPS";
+Q.municipal_minister = "None";
+Q.municipal_minister_party = "CPS";
+Q.transportation_minister = "None";
+Q.transportation_minister_party = "CPS";
+Q.telephones_telegraphs_minister = "None";
+Q.telephones_telegraphs_minister_party = "CPS";
+
+
 Q.foreign_minister = 'Streseman';
-Q.foreign_minister_party = 'CPC';
+Q.foreign_minister_party = 'CPS';
 Q.interior_minister = 'von Keudell';
 Q.interior_minister_party = 'SCP';
 Q.justice_minister = 'Hergt';
 Q.justice_minister_party = 'SCP';
-Q.labor_minister = 'JS_Woodsworth';
-Q.labor_minister_party = 'RPC';
-Q.reichswehr_minister = 'Groener';
-Q.reichswehr_minister_party = 'I';
+Q.labour_minister = 'JS_Woodsworth';
+Q.labour_minister_party = 'PPS';
+Q.rcmp_minister = 'Groener';
+Q.rcmp_minister_party = 'I';
 Q.economic_minister = 'Curtius';
-Q.economic_minister_party = 'CPC';
+Q.economic_minister_party = 'CPS';
 Q.finance_minister = 'Köhler';
-Q.finance_minister_party = 'RPC';
+Q.finance_minister_party = 'PPS';
 Q.agriculture_minister = 'Schiele';
 Q.agriculture_minister_party = 'SCP';
 
@@ -438,20 +440,12 @@ Q.judicial_reform = 0;
 Q.bureaucratic_reform = 0;
 Q.military_reform = 0;
 Q.womens_rights = 0;
-// level of welfare relative to 1928 (can go negative)
-Q.welfare = 0;
 // level of support for farmers
 Q.agricultural_policy = 0;
 Q.land_reform = 0;
 // works-creation programs (i.e. WTB-plan) - how much have they implemented?
 Q.works_program = 0;
 Q.wtb_implemented = 0;
-// Relations with the Western countries (France, UK).
-Q.west_relation = 0;
-// Relations with the Eastern countries (Poland, Czechoslovakia)
-Q.east_relation = 0;
-// Relations with the Soviet Union
-Q.soviet_relation = 0;
 // How much have we exposed the secret rearmament programs?
 Q.rearmament_exposed = 0;
 // reparations vs baseline: young plan is -1.
@@ -461,7 +455,7 @@ Q.reparations_negotiation = 0;
 Q.nationalization_progress = 0;
 // socializations is part of the economic democracy card.
 Q.socializations = 0;
-Q.nationalize_budget = 4;
+Q.nationalize_treasury = 4;
 // have there been any factory takeovers?
 Q.factory_takeovers = 0;
 // progress on the moderate economic plan
@@ -473,6 +467,56 @@ Q.eu_progress = 0;
 Q.science = 0;
 Q.education_science = 0;
 
+//                     Economy 
+
+Q.monthly_economic_growth = Q.economic_growth / 12;
+Q.saskatchewan_old_gdp = Q.saskatchewan_gdp;
+Q.saskatchewan_gdp = Number(
+  (Q.saskatchewan_gdp * (Q.monthly_economic_growth / 100 + 1)).toFixed(1));
+
+var gdp_sign_img =
+    Q.saskatchewan_gdp > Q.saskatchewan_old_gdp
+        ? '<img src="img/GreenPlus.png"> '
+        : Q.saskatchewan_gdp < Q.saskatchewan_old_gdp
+            ? '<img src="img/RedNegative.png"> '
+            : '<img src="img/BlueStatic.png"> ';
+
+Q.str_saskatchewan_gdp = gdp_sign_img + "$" + Q.saskatchewan_gdp;
+
+
+//                   Living Standards
+// level of welfare relative to 1932 (can go negative)
+Q.welfare = 0;
+Q.educationquality = "Basic";
+Q.highereducationquality = "Basic";
+Q.Curriculum = "Traditional";
+Q.healthcarequality = "Basic";
+Q.poverty = 10;
+//  
+//                   Rural living standards
+// Rural Access to electricity
+Q.rural_electrification = 0;
+// Rural Access to sanitation
+Q.rural_sanitation = 0;
+Q.rural_telephone = 0;
+
+//                 Foreign Relations
+// Relations with the UFUL
+Q.american_relation = 0;
+// Relations with Britain
+Q.britain_relation = 0;
+// Relations with the Soviet Union
+Q.soviet_relation = 0;
+
+//                  Interior Policies
+// Have we introduced an intraprovincial public transit option?
+Q.public_transit = 0;
+// Have we nationalized the provinces' resources?
+Q.resource_nationalization = 0;
+// Railway Length
+Q.railway_length = 6500; // in km
+Q.road_length = 20000; // in km
+
 // Tax rates relative to 1928 baseline
 Q.lower_tax_rates = 0;
 Q.upper_tax_rates = 0;
@@ -481,41 +525,120 @@ Q.tariffs = 0;
 Q.electoral_threshold = 0;
 
 // our conduct in the government, and the conduct of our coalition opponents.
-// did the CCF vote against the previous government in a vote of no confidence?
-Q.ccf_no_confidence = 0;
-// was the last CCF government taken down in a vote of no confidence by right-wing coalition partners?
-Q.no_confidence_against_ccf = 0;
+// did the FLP vote against the previous government in a vote of no confidence?
+Q.flp_no_confidence = 0;
+// was the last FLP government taken down in a vote of no confidence by right-wing coalition partners?
+Q.no_confidence_against_flp = 0;
+
+
+// Deaths
+Q.George_Williams_Dead = 0;
+
+
+
+// Saskatchewan Organizations
+
+
+Q.ccym_influence = 25;
+Q.ccym_strength = 3;
+Q.ccym_relations = 60;
+Q.ccym_militancy = 0.15;
+
+Q.ufc_influence = 60;
+Q.ufc_relations = 70;
+Q.ufc_affiliated = 1;
+Q.ufc_strength = 35.00;
+Q.ufc_militancy = 0.30;
+
+Q.sta_affiliated = 0;
+Q.sta_strength = 5.00;
+Q.sta_relations = 50;
+Q.sta_militancy = 0.30;
+
+Q.tlc_relations = 40;
+Q.tlc_militancy = 0.20;
+Q.tlc_strength = 30.00;
+
+
+Q.women_in_rb = 0;
+Q.ufc_banned = 0;
+
+
+Q.kkk_strength = 15.00;
+Q.kkk_militancy = 0.5;
+Q.kkk_banned = 0;
+Q.kkk_banned_prussia = 0;
+
+Q.ful_strength = 8.00;
+Q.ful_militancy = 0.5;
+Q.ful_banned = 0;
+Q.ful_banned_prussia = 0;
+
+Q.wul_strength = 13.00;
+Q.wul_militancy = 0.5;
+Q.wul_banned = 0;
+Q.wul_banned_prussia = 0;
+
+Q.trek_support = 0;
+
+Q.interior_police_strength = 50;
+Q.interior_police_militancy = 1;
+Q.interior_police_loyalty = 0.45;
+
+Q.city_police_strength = 20;
+Q.city_police_militancy = 1;
+Q.city_police_loyalty = 0.25;
+
+// strength includes actual military and de facto reserves?
+Q.rcmp_strength = 100;
+Q.rcmp_militancy = 5;
+Q.rcmp_loyalty = 0.2;
+Q.rcmp_suspicion = 50;
+
+
+//                               FLP / CCF Programme
+use_lease_adopted = 0;
+
+
+
+
+
+
+
+
+
+
 
 // Advisors/Leaders
 Q.n_advisors = 3;
 // timer - this decrements by 1 every turn, and is set to 5 whenever an advisor action is used, so that you can only use one advisor action every 5 months.
 // let's just put all of the timers here...
 // most party affairs and government affairs cards are on a timer.
-Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
+Q.timers = ['advisor_action', 'confronting_scp', 'crisis_program',
             'fundraising', 'ideology',
             'inter_party_relationships', 'international_relations',
             'iron_front', 'media', 'enemies',
-            'party_organizations', 'rally', 'reichsbanner',
+            'party_organizations', 'rally', 'ufc',
             'shuffle_leadership', 'streetfighting', 'peoples_party',
             'party_disunity',
             // govt
             'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
-            'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
-            'police', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
+            'foreign_policy', 'judiciary', 'labour_affairs', 'military_policy',
+            'police', 'city_affairs', 'shuffle_cabinet', 'social_welfare',
             'homosexual_rights', 'economic_policy', 'coalition_affairs',
             'war_guilt', 'womens_rights', 'economic_democracy',
             'dealing_with_toleration',
-            'constitutional_reform', 'labor_rights',
+            'constitutional_reform', 'labour_rights',
             'education_science', 'curriculum',
             // events
             'emergency_cuts', 'unemployment_insurance',
-            'sa_ban', 'sh_ban', 'papen_prime_minister',
+            'ful_ban', 'kkk_ban', 'papen_premier',
             'cp_policy', 'cp_ultimatum', 'popular_front_dispute',
             'high_inflation', 'banking_crisis', 'march_on_berlin',
             'understanding_enemy', 'schleichers_schemes'];
 Q.advisor_action_timer = 0;
 // party affairs timers
-Q.confronting_nazis_timer = 0;
+Q.confronting_scp_timer = 0;
 Q.crisis_program_timer = 0;
 Q.fundraising_timer = 0;
 Q.ideology_timer = 0;
@@ -523,10 +646,13 @@ Q.inter_party_relationships_timer = 0;
 Q.international_relations_timer = 0;
 Q.iron_front_timer = 0;
 Q.media_timer = 0;
+Q.media_construction_timer = 0;
+Q.media_power = 0;
+Q.programme_timer = 0;
 Q.enemies_timer = 0;
 Q.party_organizations_timer =  0;
 Q.rally_timer = 0;
-Q.reichsbanner_timer = 0;
+Q.ufc_timer = 0;
 Q.shuffle_leadership_timer = 0;
 Q.streetfighting_timer = 0;
 Q.peoples_party_timer = 0;
@@ -536,9 +662,17 @@ Q.n_elections = 0;
 Q.no_majority_elections = 0;
 // elections are not on a timer, but rather there is an indicator for whether you're in an electoral cycle.
 Q.in_election = 1;
-Q.next_parl_election_year = 1928;
-Q.next_parl_election_month = 5;
-Q.next_election_time = 5;
+
+
+// Q.next_parl_election_year = 1934;
+// Q.next_parl_election_month = 6;
+// Q.next_election_time = 30; //months until the next election
+
+
+
+Q.next_parl_election_year = 1932;
+Q.next_parl_election_month = 6;
+Q.next_election_time = 6; //months until the next election
 // government affairs timers
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
@@ -546,10 +680,10 @@ Q.economic_policy_timer = 0;
 Q.fiscal_policy_timer = 0;
 Q.foreign_policy_timer = 0;
 Q.judiciary_timer = 0;
-Q.labor_affairs_timer = 0;
+Q.labour_affairs_timer = 0;
 Q.military_policy_timer = 0;
 Q.police_timer = 0;
-Q.prussian_affairs_timer = 0;
+Q.city_affairs_timer = 0;
 Q.shuffle_cabinet_timer = 0;
 Q.social_welfare_timer = 0;
 Q.war_guilt_timer = 0;
@@ -560,42 +694,40 @@ Q.coalition_affairs_timer = 0;
 // event timers
 Q.emergency_cuts_timer = 0;
 Q.unemployment_insurance_timer = 0;
-Q.sa_ban_timer = 0;
-Q.sh_ban_timer = 0;
+Q.ful_ban_timer = 0;
+Q.kkk_ban_timer = 0;
 Q.cp_ultimatum_timer = 0;
 Q.march_on_berlin_timer = 0;
 
 
 // all the initial advisors are centrists.
 Q.coldwell_advisor = 1; // Major James Coldwell
-Q.douglas_advisor = 1; // Tommy Douglas
+Q.douglas_advisor = 0; // Tommy Douglas
 Q.douglas_dead = 0;
-// okay I know Arthur Crispien was a leader irl but i couldn't find much interesting about him...
-Q.crispien_advisor = 0; // Arthur Crispien
-Q.scott_advisor = 1; // Frank Scott
+Q.nicholson_advisor = 0; // Alexander Nicholson
 
 // left advisors
 Q.jamieson_advisor = 0; // Laura Jamieson
-Q.knowles_advisor = 0; // Stanley Knowles
-Q.knowles_dead = 0;
+Q.fines_advisor = 0; // Clarence Fines
+Q.fines_dead = 0;
 Q.winch_advisor = 0; // Ernest Winch
-Q.seydewitrpc_advisor = 0; // William Irvine
+Q.irvine_advisor = 0; // William Irvine
 
 // agrarian alternate advisors
-Q.connell_advisor = 0; // Robert Connell
-Q.gardiner_advisor = 0; // Robert Gardiner
+Q.eliason_advisor = 1; // Frank Eliason
+Q.williams_advisor = 1; // George Hara Williams
 
 // Reformist advisors
-Q.macinnis_advisor = 0; // Angus MacInnis
+Q.brockelbank_advisor = 0; // John Brockelbank
 Q.woodsworth_advisor = 0; // JS_Woodsworth
-Q.juchaczrpc_advisor = 0; // Agnes Macphail
+Q.lucas_advisor = 0; // Louise Lucas
 Q.wright_advisor = 0; // Percy Wright
 
-// Labor advisors
+// Labour advisors
 Q.heaps_advisor = 0; // Albert Heaps
-Q.gillis_advisor = 0; // Clarence Gillis
+Q.phelps_advisor = 0; // Joe Phelps
 Q.forsey_advisor = 0; // Eugene Forsey (post-1930)
-Q.noseworthy_advisor = 0; // Joseph Noseworthy
+Q.carlyle_advisor = 0; // Carlyle King
 
 // Revisionist advisors
 Q.mierendorff_advisor = 0; // Carlo Mierendorf (post-1930)
@@ -604,62 +736,78 @@ Q.leber_advisor = 0; // Julius Leber (post-1930)
 Q.schumacher_advisor = 0; // Kurt Schumacher (post-1930)
 
 // Nonfactional advisors
-Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
 Q.underhill_advisor = 0; // Frank Underhill
 Q.spry_advisor = 0; // Graham Spry
 !}
-set-bg: img/map_of_canada.jpg
+set-bg: img/Saskatchewan_grid_map2.jpg
 new-page: true
 
-> *"Such a general development cannot be attributed to the false tactics of any single party or to the mistakes of individual leaders. On the contrary, the conduct of individual leaders is determined largely by the sentiments of the people as a whole. It would be erroneous, however, to regard the sentiments of the moment as reflecting the natural make-up and character of the people. They are merely the consequence of the special circumstances which have brought about this profound degradation of the entire nation."*
+> *"Emergency measures, however, are of only temporary value, for the present depression is a sign of the mortal sickness of the whole capitalist system, and this sickness cannot be cured by the application of salves. These leave untouched the cancer which is eating at the heart of our society, namely, the economic system in which our natural resources and our principal means of production and distribution are owned, controlled and operated for the private profit of a small proportion of our population.
 
- - Karl Kautsky, *Hitlerism and Social Democracy*, 1934
+> No CCF Government will rest content until it has eradicated capitalism and put into operation the full programme of socialized planning which will lead to the establishment in Canada of the Cooperative Commonwealth."*
+
+ - Regina Manifesto, 1933
 
 This is a game of alternate history. While historical accuracy is a major concern, keep in mind that this is a *game*, and that any divergence from actual events will necessarily have to involve some element of make-believe. Nevertheless, please let the author know if there are any glaring mistakes.
 
-For more information on the politics and government of Canada, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
+For more information on the politics and government of Saskatchewan, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
 
-- @1928_easy: Begin (easy difficulty)
-- @1928_main: Begin (normal difficulty)
-- @1928_hard: Begin (hard difficulty)
-- @1928_historical: Begin (historical mode)
+- @1932_easy: Begin (easy difficulty)
+- @1932_main: Begin (normal difficulty)
+- @1932_hard: Begin (hard difficulty)
+- @1932_historical: Begin (historical mode)
 
-@1928_easy
-on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; cp_relation = 29; rpc_relation = 54; cpc_relation = 49; budget = 5;
-go-to: 1928_main
+@1932_easy
+on-arrival: difficulty = -1; resources = 4; dues = 3; ufc_strength = 35.00; cp_relation = 29; pps_relation = 54; cps_relation = 49; treasury = 15;
+go-to: 1932_main
 
-@1928_hard
-on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; rpc_relation = 41; cp_relation = 16; cpc_relation = 31; budget = 3;
-go-to: 1928_main
+@1932_hard
+on-arrival: difficulty = 1; resources = 0; dues = 1; ufc_strength = 25.00; reformist_dissent = 25; left_dissent = 30; labour_dissent = 25; agrarian_dissent = 25; pps_relation = 41; cp_relation = 16; cps_relation = 31; treasury = 5;
+go-to: 1932_main
 
-@1928_historical
+@1932_historical
 subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
 on-arrival: {!
 Q.difficulty = 2;
 Q.historical_mode = 1;
 Q.resources = 2;
 Q.dues = 1;
-Q.rb_strength = 2000;
+Q.ufc_strength = 15.00;
 Q.reformist_dissent = 25;
 Q.left_dissent = 30;
-Q.labor_dissent = 25;
-Q.center_dissent = 25;
-Q.rpc_relation = 41;
+Q.labour_dissent = 25;
+Q.agrarian_dissent = 25;
+Q.pps_relation = 41;
 Q.cp_relation = 16;
-Q.cpc_relation = 31;
-Q.budget = 2;
+Q.cps_relation = 31;
+Q.treasury = 12;
 this.state.disableSaves = true;
 !}
-go-to: 1928_main
+go-to: 1932_main
 
-@1928_main
-audio: shuffle music/1928_1930/FruhlingsliedMendelssohn.mp3 music/1928_1930/AUF_HOHEN_BERGEN_noise_reduced.mp3 music/1928_1930/MarekWeber.mp3 music/1928_1930/BAUERNKAPELLE.mp3 music/1928_1933/DERLINDENBAUM_normalized.mp3 music/1928_1933/RPCurSonne_rpcurFreiheit.mp3 music/1928_1933/arbeiter_marseille.mp3 music/1928_1933/Wann_wir_schreiten_Seit_an_Seit.mp3 music/1930_1933/Internationale-de_normalized.ogg music/1928_1930/LiedDerPompadour.mp3 music/1928_1933/SozialistenMarsch.mp3
+@1932_main
+audio: shuffle music/OCanadaColdstreamGuards.mp3 music/COURAGE.mp3 music/CoveredWagonDays.mp3 music/WhiteRiverStomp.mp3 music/CoaxingthePiano.mp3 
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
-= 1928
+= 1932
 
-It is a dire time for the Dominion of Canada. The Great Depression has begun, and the government of R.B. Bennett is proving itself incapable of dealing with the crisis. The Liberal Party of Mackenzie King is promising reform, but their commitment to capitalism and the status quo is clear. 
+It is a dire time for Saskatchewan. The Great Depression has begun, and the government of James Anderson has resorted to a policy of retrenchment. The government had previously attempted relief with deficit financing but this effort has been halted by business interests. As a result, Anderson's Cooperative Coalition Government has raised taxes on corporations but also levied taxes on gross revenue and oil storage tanks. Civil Service pay has fallen by 9-14%, loans to farmers have all but halted, and the Highways Budget provides for no construction. The province is in the midst of a severe drought, and many farmers are on the brink of ruin.
 
-The Cooperative Commonwealth Federation (CCF) is the only party offering a real alternative to the old order. However, we are a young and inexperienced party, and we face opposition not only from the right-wing parties but also from within our own ranks, torn between the Agrarian vision of George Williams and the Labour oriented J. S. Woodsworth and M. J. Coldwell. The CCF's success in the upcoming election will depend on your ability to navigate these challenges and present a compelling vision for the future of Canada.
+The Farmer-Labour Group (FLP) is the only party offering a real alternative to the old capitalist order. However, we are a young and inexperienced party, and we face opposition not only from opposing parties but also from within our own ranks, torn between the Agrarian vision of George Williams and the Labour oriented M. J. Coldwell. The FLP's success in the upcoming election will depend on your ability to navigate these challenges and present a compelling vision for the future of Saskatchewan.
 
+@Preface 
+
+= Background to the Mod
+
+This mod was given birth to in December of 2025. I was visiting some relatives in Regina and after having lunch, we headed off to Indigo to make use of a giftcard. While browsing, I came upon this intriguing book called "The Prairie Populist" by J. F. Conway. 
+
+This book was interesting. The back cover said, quote, "George Hara Williams was undermined by Tommy Douglas and M.J. Coldwell just as Saskatchewan's CCF was on the threshold of power." As a Saskatchewanian (lol), I had grown up hearing stories about Tommy Douglas, the so called "Greatest Canadian" who had introduced universal healthcare and won five consecutive elections on a Social Democratic platform in backwater, rural, conservative Saskatchewan. 
+
+So who was this "George Hara Williams" and what did good old Tommy do to him? I bought the book and devoured it for the next week or so. Turns out, George Williams had been the decisive role in rallying Saskatchewan farmers to the FLP and later, the CCF/NDP. This was quite shocking considering how forgotten Williams is nowadays. 
+
+And that made me think about all the other stories that have been lost to time. How much of my province's history has been wiped clean off the slate in popular consciousness, only remaining alive in tedious though thorough academic papers and old books? That thought stayed with me for quite a while. 
+
+In the end, I decided that I might make my own dedication to my province in the form of a mod for Autumn's SDAAH. Though I did try my best, much of the mod is rather shoddily built, both functionality-wise and software-wise. My only experience with coding prior was with simple C++ Arduinos and rudimentary Python from a 10-level Computer Science Course way back when. In spite of this, this mod makes me quite proud. Really, this is a loveletter to my home province and I hope that this mod helps keep Saskatchewan's rich political history alive and accessible. 
+
+I hope you will enjoy In the Prairie Sun as much as I have. 

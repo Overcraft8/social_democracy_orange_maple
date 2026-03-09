@@ -1,22 +1,27 @@
 body {
-  --bg-color: #f3f3e3;
+  --bg-color: #555555;
   --border-color: #000;
-  --content-bg-color: #f3f3f3;
+  --content-bg-color: #f5ebd6;
   --text-color: #431;
   --link-color: #900;
   --link-hover-color: rgba(0, 0, 0, 0.05);
   --unavailable-bg-color: rgba(0, 0, 0, 0.1);
-  --unavailable-color: #999;
-  --tab-bg-color: #dedede;
-  --tab-color: #ddd;
-  --tab-hover-color: #ececec;
-  --card-border-color: #ccc; 
-  --card-bg-color: #ddd; 
+  --unavailable-color: #9a795f;
+  --tab-bg-color: #e5d7b4;
+  --tab-color: #e5d7b4;
+  --tab-hover-color: #dfd1ae;
+  --card-border-color: #dfd1ba; 
+  --card-bg-color: #ede1c2; 
   font-family: "Minion Pro", Georgia, serif;
   background-color: var(--bg-color);
   padding: 0;
   line-height: 155%;
   overflow-y: scroll;
+  --button-bg-color: #bba993;
+  --button-border-color: #876;
+  --bgBack-color: rgba(0,0,0,0.2);
+  --hover-color: rgba(0,0,0,0.1);
+  --htext-color: #431;
 }
 body.dark-mode {
   --bg-color: #000;
@@ -43,7 +48,7 @@ body.dark-mode .tools {
 }
 header, #content, footer {
   color: var(--text-color);
-  max-width: 540px;
+  max-width: 450px;
   margin: 0 auto;
   overflow: auto;
 }
@@ -70,18 +75,42 @@ header {
   float: left;
   display: inline-block;
   margin-bottom: 0.5em;
+  padding: 0;
   padding-left: 1em;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-  background-color: var(--bg-color);
+  background-color: transparent;
 }
 #header-links a {
-  padding-right: 1em;
+      display: inline-block;
+  padding: 0.35em 0.9em;
+  margin-right: 0.4em;
+  border-radius: 4px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+#header-links a:last-of-type {
+  margin-right: 0;
+}
+
+/* These are the colors for Library, Save, Options */
+
+#header-links a:first-of-type {   
+  background-color: #eded36;
+  color: #8a8a66;
+}
+#header-links a:nth-of-type(2) {
+  background-color: #786d3e;
+  color: #c5b697;
+}
+#header-links a:nth-of-type(3) {
+  background-color: #8dd33e;
+  color: #475948;
 }
 header h1, header h2 {
   display: inline-block;
   font-weight: normal;
   margin: 0;
   font-size: 1em;
+  color: #FFFFFF;
 }
 header h1 {
   font-weight: bold;
@@ -168,9 +197,32 @@ blockquote.attribution {
 blockquote + blockquote.attribution {
   margin-top: -1em;
 }
+img.inline-img {
+  display: inline !important;
+  height: 1.2em !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  vertical-align: middle !important;
+  margin: 0 0.2em !important;
+  border-radius: 2px;
+}
+img.inline-img.small {
+  height: 0.9em !important;
+}
+img.inline-img.medium {
+  height: 1.5em !important;
+}
+img.inline-img.large {
+  height: 2em !important;
+}
+img.inline-img.icon {
+  height: 1em !important;
+  margin: 0 0.1em !important;
+}
 /* This is mostly copied from undum. */
 #mid_panel {
-  margin: 0 16rem;
+  margin: 0 11rem;
 }
 #page {
   margin: 0 auto;
@@ -179,14 +231,14 @@ blockquote + blockquote.attribution {
 #tools_wrapper {
   position: absolute;
   width: 100%;
-  max-width: 69em;
+  max-width: 85em;
   left: 0;
   right: 0;
   margin: 0 auto;
 }
 .tools {
   padding: 0.6em;
-  width: 14rem;
+  width: 25rem;
   color: var(--text-color);
   background-color: var(--content-bg-color);
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
@@ -218,7 +270,25 @@ blockquote + blockquote.attribution {
 #qualities h1 + p:first-line {
   font-weight: normal;
 }
-
+#qualities_right {
+  text-indent: 0;
+  line-height: 1.3em;
+}
+#qualities_right p {
+  text-indent: 0;
+}
+#qualities_right h1 {
+  font-size: 1.1em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 2px,
+               rgba(0, 0, 0, 0.1) -1px -1px 2px;
+}
+#qualities_right h1 + p:first-line {
+  font-weight: normal;
+}
 
 /* tabs */
 .tab_container {
@@ -243,6 +313,39 @@ blockquote + blockquote.attribution {
     background-color: var(--tab-hover-color);
 }
 
+
+/* status buttons */
+.tab_button_wide {width: 100%;}
+
+.status_button {
+  font-family: "Minion Pro", Georgia, serif;
+  color: var(--text-color);
+  background-color: var(--button-bg-color);
+  border: 2px solid var(--button-border-color);
+  outline: none;
+  border-radius: 0.4rem;
+  padding: 4px;
+  box-shadow: 1px 1px 5px var(--bgBack-color);
+}
+.status_button:hover {
+  background-color: var(--hover-color);
+  border: 2px solid var(--htext-color);
+}
+.status_button_wide {
+  font-family: "Minion Pro", Georgia, serif;
+  width: 220px;
+  color: var(--htext-color);
+  background-color: var(--button-bg-color);
+  border: 2px solid var(--button-border-color);
+  outline: none;
+  border-radius: 0.4rem;
+  padding: 4px;
+  box-shadow: 1px 1px 5px var(--bgBack-color);
+}
+.status_button_wide:hover {
+  background-color: var(--hover-color);
+  border: 2px solid var(--htext-color);
+}
 
 .overlay {
     background: rgba(0,0,0,0.7);
@@ -295,12 +398,6 @@ blockquote + blockquote.attribution {
 #bg1 {
     z-index: -99;
 }
-.b {
-}
-.save_button {
-}
-.delete_button {
-}
 
 /*
  * Card stuff for dendrynexus
@@ -310,18 +407,6 @@ blockquote + blockquote.attribution {
 ul.decks, ul.hand, ul.pinned-cards {
   list-style: none;
   padding-left: 0;
-}
-
-.hand {
-
-}
-
-.pinned-cards {
-
-}
-
-.deck {
-
 }
 
 a.card {
@@ -399,6 +484,16 @@ a.card:focus .card-tooltip, a.card:hover .card-tooltip {
   border: 5px solid var(--card-border-color);
   float: left;
   max-width: 35%;
+  /*max-height: 180px;*/
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+.face-figure2 {
+  /*vertical-align: top;*/
+  display: inline-block;
+  border: 5px solid #ccc;
+  float: left;
   /*max-height: 180px;*/
   margin-right: 1em;
   margin-bottom: 0.5em;
@@ -538,20 +633,20 @@ table {
 
 /* Styles for parties */
 .seat.cp {
-    fill: #8B0000;
+    fill: #920c0c;
 }
-.seat.ccf {
+.seat.flp {
     fill: #D26E28;
     stroke: var(--border-color);
     stroke-width: 1.5px;
 }
-.seat.lpc {
+.seat.lps {
     fill: #BE0028;
 }
-.seat.rpc {
+.seat.pps {
     fill: #E7DB73;
 }
-.seat.cpc {
+.seat.cps {
     fill: #0055A5;
 }
 .seat.other {
@@ -559,9 +654,6 @@ table {
 }
 .seat.scp {
     fill: #50E23D;
-}
-.seat.nsdap {
-    fill: #954B00;
 }
 .seat.sapd {
     fill: #C40000;
@@ -579,7 +671,7 @@ table {
 .mytooltip .mytooltiptext {
   position: fixed;
   z-index: 999999;
-  width: 260px;
+  width: 130px;
   background: #fff4e6;
   color: #3b1f0a;
   text-align: left;
@@ -605,4 +697,70 @@ table {
   top: calc(var(--mouse-y, 0px) - 20px);
   left: calc(var(--mouse-x, 0px));
   transform: translate(-50%, -100%);
+}
+
+.bar-container {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    border: 2px solid #333;
+    margin: 10px 0;
+}
+
+.segment {
+    height: 100%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+
+
+
+/* Wrapper handles scrolling and hides scrollbar */
+.poll-wrapper {
+  max-height: 350px;         /* table height limit */
+  overflow-y: auto;          /* scroll if too tall */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.poll-wrapper::-webkit-scrollbar {
+  display: none;             /* Chrome, Edge, Safari */
+}
+
+/* Table styling */
+.poll-table {
+  font-size: 0.85em;         /* smaller font */
+  line-height: 1.1;          /* tighter rows */
+  border: 1px solid #6d6d6d;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Cell styling */
+.poll-table td {
+  border: 1px solid #000;
+  padding: 2px 4px;
+  text-align: center;
+}
+
+/* First column left-aligned */
+.poll-table td:first-child {
+  text-align: left;
+}
+
+/* Header row styling */
+.poll-table tr:first-child td {
+  background-color: #f2d3a8;
+  font-weight: bold;
+}
+
+/* Shrink party color boxes */
+.box {
+  height: 0.7em;
+  width: 0.7em;
+  display: inline-block;
 }
